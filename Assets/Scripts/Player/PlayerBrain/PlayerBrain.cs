@@ -1,17 +1,18 @@
 using UnityEngine;
+using Game.Data;
 
 namespace Game.Player.Brain
-{
-    [RequireComponent (typeof(PlayerInputController))]
-    [RequireComponent (typeof(PlayerLocomotionController))]
-    [RequireComponent (typeof(PlayerCombatController))]
-    [RequireComponent (typeof(PlayerHealthController))]
-    [RequireComponent (typeof(PlayerDamageController))]
-
+{    
     [RequireComponent (typeof(Rigidbody2D))]
         
     public class PlayerBrain : MonoBehaviour
     {
+        [SerializeField] private PlayerBrainDataSo _data;
+
+        //Este campo no puede estar serializado porque los jugadores se van a instanciar
+        //Se lo debe inicializar, queda asi solo como método de prueba hasta entonces
+        [SerializeField] private PlayerDeviceManager _deviceManager;
+
         private PlayerInputController _inputController;
         private PlayerLocomotionController _locomotionController;
         private PlayerCombatController _combatController;
@@ -20,11 +21,15 @@ namespace Game.Player.Brain
 
         private void Awake()
         {
-            _inputController = GetComponent<PlayerInputController>();
-            _locomotionController = GetComponent<PlayerLocomotionController>();
-            _combatController = GetComponent<PlayerCombatController>();
-            _healthController = GetComponent<PlayerHealthController>();
-            _damageController = GetComponent<PlayerDamageController>();
+            _inputController = new PlayerInputController(_data.InputData, true);
+            _deviceManager.RegisterGamepad(_data.InputData.playerType, _data.InputData.GamepadIndex);
+
+            _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
+        }
+
+        private void FixedUpdate()
+        {
+            _locomotionController.Update(_inputController.PlayerInputs.Direction);
         }
     }
 

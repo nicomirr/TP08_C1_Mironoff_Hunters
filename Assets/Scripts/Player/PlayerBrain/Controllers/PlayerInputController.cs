@@ -1,19 +1,18 @@
-using UnityEngine;
+using Game.Data;
 
 namespace Game.Player.Brain
 {
-    public class PlayerInputController : MonoBehaviour
-    {
+    public class PlayerInputController 
+    {        
         private PlayerInputs _playerInputs;
-
-        private void Awake()
+        public PlayerInputs PlayerInputs => _playerInputs;
+               
+        //Esto tiene que llegar desde afuera, para determinar si usa gamepad o no
+        public PlayerInputController(PlayerInputDataSo data, bool useGamepad)
         {
-            //_playerInputs = new PlayerInputs()
-        }
+            int gamepadIndex = useGamepad ? data.GamepadIndex : -1;
 
-        public void Initialize(PlayerType playerType, int gamepadIndex)
-        {
-            _playerInputs = new PlayerInputs(playerType, gamepadIndex);
+            _playerInputs = new PlayerInputs(data.playerType, gamepadIndex);
         }
     }
 

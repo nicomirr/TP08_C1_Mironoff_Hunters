@@ -2,19 +2,9 @@ using UnityEngine;
 
 namespace Game.Player.Brain
 {
-    public class PlayerHealthController : MonoBehaviour
+    public class PlayerHealthController 
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 
 }

@@ -1,19 +1,23 @@
 using UnityEngine;
+using Game.Data;
 
 namespace Game.Player.Brain
 {
-    public class PlayerLocomotionController : MonoBehaviour
+    public class PlayerLocomotionController 
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
+        private PlayerMovement _movement;
+        private PlayerFacing _facing;
 
+        public PlayerLocomotionController(PlayerLocomotionDataSo data, Rigidbody2D rb, Transform ownerTransform)
+        {
+            _movement = new PlayerMovement(data.MovementData, rb);
+            _facing = new PlayerFacing(ownerTransform);
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Update(float direction)
         {
-
+            _facing.Flip(direction);
+            _movement.Move(direction);
         }
     }
 
