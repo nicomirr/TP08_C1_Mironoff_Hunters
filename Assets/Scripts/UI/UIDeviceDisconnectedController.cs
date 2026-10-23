@@ -8,18 +8,16 @@ public class UIDeviceDisconnectedController : MonoBehaviour
     [SerializeField] private CanvasGroup _playerOneTextCanvasGroup;
     [SerializeField] private CanvasGroup _playerTwoTextCanvasGroup;
 
-    private int _disconnectedDevices;
-
     private void OnEnable()
     {
         _deviceManager.OnPlayerDeviceDisconnected += Display;
-        _deviceManager.OnPlayerDeviceReconnected += Hide;
+        _deviceManager.OnPlayerDeviceConnected += Hide;
     }
 
     private void OnDisable()
     {
         _deviceManager.OnPlayerDeviceDisconnected -= Display;
-        _deviceManager.OnPlayerDeviceReconnected -= Hide;
+        _deviceManager.OnPlayerDeviceConnected -= Hide;
     }
 
     private void Display(PlayerType playerType)
@@ -35,14 +33,12 @@ public class UIDeviceDisconnectedController : MonoBehaviour
                 _playerTwoTextCanvasGroup.alpha = 1;
                 break;
         }
-
-        _disconnectedDevices++;
     }
 
     private void Hide(PlayerType playerType)
     {
         switch (playerType)
-        {
+        {           
             case PlayerType.KeyboardP1:
                 _playerOneTextCanvasGroup.alpha = 0;
                 break;
@@ -51,7 +47,5 @@ public class UIDeviceDisconnectedController : MonoBehaviour
                 _playerTwoTextCanvasGroup.alpha = 0;
                 break;
         }
-
-        _disconnectedDevices--;
     }
 }
