@@ -49,6 +49,9 @@ namespace Game.Player.Brain
         {
             _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
             HandleJumpUpdate();
+
+            if (_inputController.PlayerInputs.AttackPressed)
+                _animationsController.TriggerAttack();
         }
 
         private void OnDisable()

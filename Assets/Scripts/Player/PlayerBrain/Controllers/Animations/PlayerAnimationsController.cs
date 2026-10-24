@@ -24,5 +24,10 @@ namespace Game.Player
         {
             _animator.SetBool(_data.IsJumpingBoolHash, value);
         }        
+
+        public void TriggerAttack()
+        {
+            _animator.SetTrigger(_data.AttackTriggerHash);
+        }
     }
 }

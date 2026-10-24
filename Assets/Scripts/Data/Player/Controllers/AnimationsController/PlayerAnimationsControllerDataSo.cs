@@ -10,6 +10,9 @@ namespace Game.Data
 
         [SerializeField] private string _isJumpingBool;
         public int IsJumpingBoolHash => Animator.StringToHash(_isJumpingBool);
+
+        [SerializeField] private string _attackTrigger;
+        public int AttackTriggerHash => Animator.StringToHash(_attackTrigger);
     }
 }
 
