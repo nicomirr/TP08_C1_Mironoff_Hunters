@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: PlayerLocomotionData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerLocomotionDataSo
   _movementData: {fileID: 11400000, guid: 845c2dc6613c80846959486d36a0c6e1, type: 2}
+  _jumpData: {fileID: 11400000, guid: c98f88789fbc92a40a2e612da66c7c36, type: 2}
+  _groundCheckData: {fileID: 11400000, guid: b892181768e50f545a75f8809d12aef7, type: 2}
+  _gravityData: {fileID: 11400000, guid: 80c72c9d65acef6499f826e2ed753430, type: 2}

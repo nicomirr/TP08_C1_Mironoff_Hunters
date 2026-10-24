@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.Data;
+using Game.Marker;
 
 namespace Game.Player.Brain
 {    
@@ -9,8 +10,6 @@ namespace Game.Player.Brain
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
-        //Este campo no puede estar serializado porque los jugadores se van a instanciar
-        //Se lo debe inicializar, queda asi solo como método de prueba hasta entonces
         [SerializeField] private PlayerDeviceManager _deviceManager;
 
         private PlayerInputController _inputController;
@@ -22,12 +21,12 @@ namespace Game.Player.Brain
 
         private void Awake()
         {
-            _inputController = new PlayerInputController(_data.InputData, true);
+            _inputController = new PlayerInputController(_data.InputData);
 
-            _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
+            _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
+                GetComponentInChildren<GroundCheckMarker>().transform);
 
             _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
-
         }
 
         private void OnEnable()
@@ -37,16 +36,19 @@ namespace Game.Player.Brain
             _deviceManager.OnKeyboardKeyPressed += _inputController.PlayerInputs.IsPlayerKeyboardKey;
 
             _inputController.PlayerInputs.OnKeyboardValidated += _deviceManager.ConfirmKeyboardConnection;
+
+            _locomotionController.OnJustLanded += HandleLand;
         }
 
         private void FixedUpdate()
         {
-            _locomotionController.Update(_inputController.PlayerInputs.Direction);
+            _locomotionController.UpdateMovement(_inputController.PlayerInputs.Direction);
         }
 
         private void Update()
         {
             _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
+            HandleJumpUpdate();
         }
 
         private void OnDisable()
@@ -55,8 +57,31 @@ namespace Game.Player.Brain
             _deviceManager.OnKeyboardKeyPressed -= _inputController.PlayerInputs.IsPlayerKeyboardKey;
 
             _inputController.PlayerInputs.OnKeyboardValidated -= _deviceManager.ConfirmKeyboardConnection;
+
+            _locomotionController.OnJustLanded -= HandleLand;
+        }
+
+        private void HandleJumpUpdate()
+        {
+            _locomotionController.UpdateCoyoteTime();
+            _locomotionController.UpdateGravity();
+            _locomotionController.UpdateGroundState();
+
+            if (_inputController.PlayerInputs.JumpReleased)
+                _locomotionController.CutJump();
+
+            if (_inputController.PlayerInputs.JumpPressed)
+            {
+                bool jumpPerformed = _locomotionController.HandleJump();
+                _animationsController.SetJumpAnimation(jumpPerformed);                
+            }
+        }
+
+        private void HandleLand()
+        {
+            _locomotionController.HandleLand();
+            _animationsController.SetJumpAnimation(false);
         }
     }
-
 }
 

@@ -19,7 +19,10 @@ namespace Game.Player
         {
             _animator.SetBool(_data.IsMovingBoolHash, value);
         }
-        
-    }
 
+        public void SetJumpAnimation(bool value)
+        {
+            _animator.SetBool(_data.IsJumpingBoolHash, value);
+        }        
+    }
 }

@@ -8,7 +8,13 @@ namespace Game.CameraSystem
         [SerializeField] private Transform _playerTwo;
 
         private void LateUpdate()
-        {
+        {            
+            if(!_playerTwo.gameObject.activeSelf)
+            {
+                this.transform.position = _playerOne.transform.position;
+                return;
+            }
+
             Vector3 midpoint = (_playerOne.position + _playerTwo.position) / 2f;
             this.transform.position = midpoint;
         }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3566de86e9b3ef845a1343c4c2a7cf59, type: 3}
   m_Name: PlayerHorizontalBoundsData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerHorizontalBoundsDataSo
-  _minXViewportPoint: 0
-  _maxXViewportPoint: 0
+  _minXViewportPoint: 0.05
+  _maxXViewportPoint: 0.95

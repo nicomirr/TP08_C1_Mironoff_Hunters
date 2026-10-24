@@ -7,6 +7,9 @@ namespace Game.Data
     {
         [SerializeField] private string _isMovingBool;
         public int IsMovingBoolHash => Animator.StringToHash(_isMovingBool);
+
+        [SerializeField] private string _isJumpingBool;
+        public int IsJumpingBoolHash => Animator.StringToHash(_isJumpingBool);
     }
 }
 

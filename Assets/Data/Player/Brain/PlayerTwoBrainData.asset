@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerBrainDataSo
   _inputData: {fileID: 11400000, guid: e6eb63e20737ee24a9ac81580ee1d845, type: 2}
   _locomotionData: {fileID: 11400000, guid: a44c753e0d3074a4b90dbba8209e5118, type: 2}
+  _animationsData: {fileID: 11400000, guid: 71188658d2cc59c43b46784b214f3ba8, type: 2}

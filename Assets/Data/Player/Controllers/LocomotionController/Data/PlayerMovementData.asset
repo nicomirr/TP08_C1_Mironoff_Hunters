@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerMovementDataSo
   _movementSpeed: 6
+  _playerBoundsData: {fileID: 11400000, guid: 3d19c55f4fd7d864894e83bda2d9ab26, type: 2}

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b642e0e73ff5fa4582c7756f77a29ce, type: 3}
   m_Name: PlayerAnimationsControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerAnimationsControllerDataSo
-  _isMovingBool: 
+  _isMovingBool: isMoving
+  _isJumpingBool: isJumping
