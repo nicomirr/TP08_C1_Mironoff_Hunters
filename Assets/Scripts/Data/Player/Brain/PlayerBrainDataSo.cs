@@ -1,3 +1,4 @@
+using Game.Player;
 using UnityEngine;
 
 namespace Game.Data
@@ -10,6 +11,9 @@ namespace Game.Data
 
         [SerializeField] private PlayerLocomotionDataSo _locomotionData;
         public PlayerLocomotionDataSo LocomotionData => _locomotionData;
+
+        [SerializeField] private PlayerAnimationsControllerDataSo _playerAnimationsData;
+        public PlayerAnimationsControllerDataSo AnimationsData => _playerAnimationsData;
     }
 }
 

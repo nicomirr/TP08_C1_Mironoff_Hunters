@@ -14,6 +14,7 @@ namespace Game.Player.Brain
         [SerializeField] private PlayerDeviceManager _deviceManager;
 
         private PlayerInputController _inputController;
+        private PlayerAnimationsController _animationsController;
         private PlayerLocomotionController _locomotionController;
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
@@ -24,6 +25,8 @@ namespace Game.Player.Brain
             _inputController = new PlayerInputController(_data.InputData, true);
 
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
+
+            _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
         }
 
         private void OnEnable()
@@ -38,6 +41,11 @@ namespace Game.Player.Brain
         private void FixedUpdate()
         {
             _locomotionController.Update(_inputController.PlayerInputs.Direction);
+        }
+
+        private void Update()
+        {
+            _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
         }
 
         private void OnDisable()
