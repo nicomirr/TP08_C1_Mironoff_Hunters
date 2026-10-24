@@ -8,9 +8,6 @@ namespace Game.Data
     {
         [SerializeField] private PlayerType _playerType;
         public PlayerType playerType => _playerType;
-
-        [SerializeField] private int _gamepadIndex;
-        public int GamepadIndex => _gamepadIndex;
     }
 }
 

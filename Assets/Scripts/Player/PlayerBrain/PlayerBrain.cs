@@ -22,7 +22,6 @@ namespace Game.Player.Brain
         private void Awake()
         {
             _inputController = new PlayerInputController(_data.InputData, true);
-            _deviceManager.RegisterGamepad(_data.InputData.playerType, _data.InputData.GamepadIndex);
 
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
         }
@@ -30,6 +29,7 @@ namespace Game.Player.Brain
         private void OnEnable()
         {
             _deviceManager.OnPlayerDeviceReconnected += _inputController.PlayerInputs.ReconnectGamepad;
+
             _deviceManager.OnKeyboardKeyPressed += _inputController.PlayerInputs.IsPlayerKeyboardKey;
 
             _inputController.PlayerInputs.OnKeyboardValidated += _deviceManager.ConfirmKeyboardConnection;

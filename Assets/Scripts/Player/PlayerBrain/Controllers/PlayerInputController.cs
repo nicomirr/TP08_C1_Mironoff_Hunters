@@ -10,9 +10,7 @@ namespace Game.Player.Brain
         //Esto tiene que llegar desde afuera, para determinar si usa gamepad o no
         public PlayerInputController(PlayerInputDataSo data, bool useGamepad)
         {
-            int gamepadIndex = useGamepad ? data.GamepadIndex : -1;
-
-            _playerInputs = new PlayerInputs(data.playerType, gamepadIndex);
+            _playerInputs = new PlayerInputs(data.playerType);
         }
     }
 

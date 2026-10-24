@@ -20,6 +20,5 @@ namespace Game.Player.Brain
             _movement.Move(direction);
         }
     }
-
 }
 
