@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class FollowTarget : MonoBehaviour
+namespace Game.CameraSystem
 {
-    [SerializeField] private Transform _playerOne;
-    [SerializeField] private Transform _playerTwo;
-
-    private void LateUpdate()
+    public class FollowTarget : MonoBehaviour
     {
-        Vector3 midpoint = (_playerOne.position + _playerTwo.position) / 2f;
-        this.transform.position = midpoint;
+        [SerializeField] private Transform _playerOne;
+        [SerializeField] private Transform _playerTwo;
+
+        private void LateUpdate()
+        {
+            Vector3 midpoint = (_playerOne.position + _playerTwo.position) / 2f;
+            this.transform.position = midpoint;
+        }
     }
 }
+

@@ -27,6 +27,7 @@ namespace Game.Player.Brain
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
 
             _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+
         }
 
         private void OnEnable()
