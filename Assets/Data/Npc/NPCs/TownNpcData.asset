@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82567bcabd958b46afa6b1f34b6d682, type: 3}
   m_Name: TownNpcData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.TownNpcDataSo
+  _dialogueData: {fileID: 11400000, guid: 3bee03a6c7586314fb9cb82a8b67a8bf, type: 2}
   _walkingAnimationBool: isWalking
   _movementSpeed: 1.5
   _minIdleTime: 8

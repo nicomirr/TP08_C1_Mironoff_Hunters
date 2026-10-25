@@ -67,6 +67,14 @@ namespace Game.Player.Brain
         {
             _jump.ResetJump();
         }       
+
+        public void StopMovement()
+        {
+            _gravity.SetFallingGravity();
+            _jump.CutJump();
+            _jump.ResetJump();
+            _movement.StopMovement();
+        }
     }
 }
 

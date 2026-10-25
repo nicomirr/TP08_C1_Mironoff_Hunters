@@ -281,7 +281,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 249195373
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: fdd2d98422a831e40bcfe89d8e53a1bd, type: 3}
@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3040680969380104970}
   - component: {fileID: 1569042287358735127}
+  - component: {fileID: 8519008902008644153}
   - component: {fileID: 1207385457262812900}
   - component: {fileID: 9907497484350473}
   m_Layer: 6
@@ -519,6 +520,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Player.Brain.PlayerBrain
   _data: {fileID: 11400000, guid: bdbbf802fb91dbe4ba3688578ff869c4, type: 2}
   _deviceManager: {fileID: 0}
+--- !u!114 &8519008902008644153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524068086057765833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e908a91efff907b458315ba8a8406261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
 --- !u!61 &1207385457262812900
 BoxCollider2D:
   m_ObjectHideFlags: 0

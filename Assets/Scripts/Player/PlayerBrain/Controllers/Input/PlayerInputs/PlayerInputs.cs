@@ -22,6 +22,8 @@ namespace Game.Player
         public bool AttackPressed => _attackAction.WasPressedThisFrame();
         public bool InteractPressed => _interactAction.WasPressedThisFrame();
 
+        public InputAction InteractAction => _interactAction;
+
         public event Action<PlayerType> OnKeyboardValidated;
 
         public PlayerInputs(PlayerType playerType)

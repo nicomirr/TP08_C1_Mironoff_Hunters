@@ -26,5 +26,10 @@ namespace Game.Player
             else
                 _rb.gravityScale = _data.FallingGravity;            
         }
+
+        public void SetFallingGravity()
+        {
+            _rb.gravityScale = _data.FallingGravity;
+        }
     }
 }

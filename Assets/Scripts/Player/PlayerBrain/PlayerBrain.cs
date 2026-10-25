@@ -5,6 +5,7 @@ using Game.Marker;
 namespace Game.Player.Brain
 {    
     [RequireComponent (typeof(Rigidbody2D))]
+    [RequireComponent (typeof(PlayerInteractionController))]
         
     public class PlayerBrain : MonoBehaviour
     {
@@ -15,6 +16,7 @@ namespace Game.Player.Brain
         private PlayerInputController _inputController;
         private PlayerAnimationsController _animationsController;
         private PlayerLocomotionController _locomotionController;
+        private PlayerInteractionController _interactionController;
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
         private PlayerDamageController _damageController;
@@ -23,10 +25,13 @@ namespace Game.Player.Brain
         {
             _inputController = new PlayerInputController(_data.InputData);
 
+            _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+            
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
                 GetComponentInChildren<GroundCheckMarker>().transform);
 
-            _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+            _interactionController = GetComponent<PlayerInteractionController>();
+
         }
 
         private void OnEnable()
@@ -42,16 +47,27 @@ namespace Game.Player.Brain
 
         private void FixedUpdate()
         {
+            if (_interactionController.IsInteracting)
+                return;            
+
             _locomotionController.UpdateMovement(_inputController.PlayerInputs.Direction);
         }
 
         private void Update()
         {
-            _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
-            HandleJumpUpdate();
+            if (_interactionController.IsInteracting)
+            {
+                _locomotionController.StopMovement();
+                _animationsController.SetMoveAnimation(false);
+                _animationsController.SetJumpAnimation(false);
+                return;
+            }
 
-            if (_inputController.PlayerInputs.AttackPressed)
-                _animationsController.TriggerAttack();
+            _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
+            
+            HandleJumpUpdate();
+            HandleAttack();
+            HandleInteractions();           
         }
 
         private void OnDisable()
@@ -84,6 +100,18 @@ namespace Game.Player.Brain
         {
             _locomotionController.HandleLand();
             _animationsController.SetJumpAnimation(false);
+        }
+
+        private void HandleAttack()
+        {
+            if (_inputController.PlayerInputs.AttackPressed)
+                _animationsController.TriggerAttack();
+        }
+
+        private void HandleInteractions()
+        {           
+            if (_inputController.PlayerInputs.InteractPressed)
+                _interactionController.Interact(_inputController.PlayerInputs.InteractAction);
         }
     }
 }

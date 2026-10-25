@@ -5,6 +5,9 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "TownNpcDataSo", menuName = "Scriptable Objects/TownNpcDataSo")]
     public class TownNpcDataSo : ScriptableObject
     {
+        [SerializeField] private DialogueDataSo _dialogueData;
+        public DialogueDataSo DialogueData => _dialogueData;
+
         [SerializeField] private string _walkingAnimationBool;
         public int WalkingAnimationBoolHash => Animator.StringToHash(_walkingAnimationBool);
 

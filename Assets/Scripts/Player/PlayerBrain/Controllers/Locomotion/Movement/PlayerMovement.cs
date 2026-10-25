@@ -19,6 +19,11 @@ namespace Game.Player
         {           
             _rb.linearVelocity = new Vector2(direction * _movementSpeed, _rb.linearVelocityY);
         }
+
+        public void StopMovement()
+        {
+            _rb.linearVelocity = new Vector2(0, _rb.linearVelocityY);
+        }
     }
 
 }

@@ -1,6 +1,11 @@
-using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class IInteractable
+namespace Game.Core
 {
-    
+    public interface IInteractable
+    {
+        public bool CanInteract { get; }
+        public void Interact(InputAction interactAction);
+    }
+
 }
