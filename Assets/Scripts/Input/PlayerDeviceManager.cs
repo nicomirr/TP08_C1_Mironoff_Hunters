@@ -21,14 +21,15 @@ public class PlayerDeviceManager : MonoBehaviour
     private bool _player1Disconnected;
     private bool _player2Disconnected;
 
+    private bool _player2Disabled;
+
     private IDisposable _keyboardSubscription;
 
     private void OnEnable()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
 
-        _keyboardSubscription =
-            InputSystem.onAnyButtonPress.Call(OnButtonPressed);
+        _keyboardSubscription = InputSystem.onAnyButtonPress.Call(OnButtonPressed);
     }
 
     private void Start()
@@ -52,51 +53,6 @@ public class PlayerDeviceManager : MonoBehaviour
         }
     }
 
-    private void OnButtonPressed(InputControl control)
-    {
-        if (control is KeyControl key)
-            HandleKeyboardPressed(key);
-    }
-
-    private void OnDeviceChange(
-        InputDevice device,
-        InputDeviceChange change)
-    {
-        if (device is not Gamepad gamepad)
-            return;
-
-        switch (change)
-        {
-            case InputDeviceChange.Disconnected:
-            case InputDeviceChange.Removed:
-                HandleDisconnection(gamepad);
-                break;
-
-            case InputDeviceChange.Reconnected:
-            case InputDeviceChange.Added:
-                HandleAvailableGamepad(gamepad);
-                break;
-        }
-    }
-
-    private void HandleDisconnection(Gamepad gamepad)
-    {
-        if (_player1Gamepad == gamepad && !_player1Disconnected)
-        {
-            _player1Disconnected = true;
-            _player1Waiting = true;
-
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP1);
-        }
-        else if (_player2Gamepad == gamepad && !_player2Disconnected)
-        {
-            _player2Disconnected = true;
-            _player2Waiting = true;
-
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP2);
-        }
-    }
-
     private void HandleAvailableGamepad(Gamepad gamepad)
     {
         // Primero, comprobar si es un gamepad ya registrado.
@@ -110,7 +66,7 @@ public class PlayerDeviceManager : MonoBehaviour
         }
 
         if (_player2Gamepad == gamepad)
-        {
+        {            
             if (_player2Disconnected)
                 RestoreGamepad(PlayerType.KeyboardP2, gamepad);
 
@@ -130,6 +86,44 @@ public class PlayerDeviceManager : MonoBehaviour
             RestoreGamepad(PlayerType.KeyboardP2, gamepad);
         }
     }
+
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        if (device is not Gamepad gamepad)
+            return;
+
+        switch (change)
+        {
+            case InputDeviceChange.Disconnected:
+            case InputDeviceChange.Removed:
+                HandleDisconnection(gamepad);
+                break;
+
+            case InputDeviceChange.Reconnected:
+            case InputDeviceChange.Added:
+                HandleAvailableGamepad(gamepad);
+                break;
+        }
+    }   
+    
+
+    private void HandleDisconnection(Gamepad gamepad)
+    {
+        if (_player1Gamepad == gamepad && !_player1Disconnected)
+        {
+            _player1Disconnected = true;
+            _player1Waiting = true;
+
+            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP1);
+        }
+        else if (_player2Gamepad == gamepad && !_player2Disconnected)
+        {
+            _player2Disconnected = true;
+            _player2Waiting = true;
+
+            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP2);
+        }
+    }        
 
     private void RestoreGamepad(PlayerType playerType, Gamepad gamepad)
     {
@@ -154,16 +148,7 @@ public class PlayerDeviceManager : MonoBehaviour
 
         if (wasWaiting)
             OnPlayerDeviceConnected?.Invoke(playerType);
-    }
-
-    private void HandleKeyboardPressed(KeyControl key)
-    {
-        if (_player1Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP1, key);
-
-        if (_player2Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP2, key);
-    }
+    }   
 
     public void ConfirmKeyboardConnection(PlayerType playerType)
     {
@@ -178,4 +163,20 @@ public class PlayerDeviceManager : MonoBehaviour
             OnPlayerDeviceConnected?.Invoke(PlayerType.KeyboardP2);
         }
     }
+
+    private void OnButtonPressed(InputControl control)
+    {
+        if (control is KeyControl key)
+            HandleKeyboardPressed(key);
+    }
+
+    private void HandleKeyboardPressed(KeyControl key)
+    {
+        if (_player1Waiting)
+            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP1, key);
+
+        if (_player2Waiting)
+            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP2, key);
+    }
+
 }

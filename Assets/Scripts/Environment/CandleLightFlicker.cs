@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace Game.Lighting
-{
+namespace Game.Environment
+{ 
     public class CandleLightFlicker : MonoBehaviour
     {
         [SerializeField] private Light2D _light;

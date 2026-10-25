@@ -47,5 +47,8 @@ TagManager:
   - name: Collisions
     uniqueID: 2748090433
     locked: 0
+  - name: Rain
+    uniqueID: 1283374965
+    locked: 0
   m_RenderingLayers:
   - Default
