@@ -21,8 +21,6 @@ public class PlayerDeviceManager : MonoBehaviour
     private bool _player1Disconnected;
     private bool _player2Disconnected;
 
-    private bool _player2Disabled;
-
     private IDisposable _keyboardSubscription;
 
     private void OnEnable()
@@ -55,8 +53,6 @@ public class PlayerDeviceManager : MonoBehaviour
 
     private void HandleAvailableGamepad(Gamepad gamepad)
     {
-        // Primero, comprobar si es un gamepad ya registrado.
-
         if (_player1Gamepad == gamepad)
         {
             if (_player1Disconnected)
@@ -72,8 +68,6 @@ public class PlayerDeviceManager : MonoBehaviour
 
             return;
         }
-
-        // Si es nuevo, asignarlo al primer jugador disponible.
 
         if (_player1Gamepad == null || _player1Disconnected)
         {

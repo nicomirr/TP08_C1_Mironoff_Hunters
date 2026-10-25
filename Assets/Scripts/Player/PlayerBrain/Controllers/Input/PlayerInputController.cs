@@ -12,5 +12,4 @@ namespace Game.Player.Brain
             _playerInputs = new PlayerInputs(data.playerType);
         }
     }
-
 }

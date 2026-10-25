@@ -6,6 +6,7 @@ namespace Game.Player
     {
         //Esto se va a usar para la direccion de los objetos lanzados
         //Evaluar si se hace con esto o si se consigue de otra forma la direccion
+        //Podrian agarrar directamente el transform.right
         public bool IsFacingRight => _isFacingRight;
         private bool _isFacingRight;
 

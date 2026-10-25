@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296d302cb8ba35043adb07dcea7dd01c, type: 3}
+  m_Name: CandleFlickerData
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlickerDataSo
+  _minIntensity: 1
+  _maxIntensity: 10
+  _flickerSpeed: 1.5
+  _maxNoiseOffset: 1000

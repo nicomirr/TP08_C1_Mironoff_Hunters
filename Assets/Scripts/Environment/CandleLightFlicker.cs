@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Game.Data;
 
 namespace Game.Environment
 { 
@@ -7,24 +8,20 @@ namespace Game.Environment
     {
         [SerializeField] private Light2D _light;
 
-        [SerializeField] private float _minIntensity = 0.7f;
-        [SerializeField] private float _maxIntensity = 1.2f;
-        [SerializeField] private float _flickerSpeed = 4f;
+        [SerializeField] private LightFlickerDataSo _data;
 
         private float _noiseOffset;
 
         private void Awake()
         {
-            _noiseOffset = Random.Range(0f, 1000f);
+            _noiseOffset = Random.Range(0f, _data.MaxNoiseOffset);
         }
 
         private void Update()
         {
-            float noise = Mathf.PerlinNoise(
-                Time.time * _flickerSpeed + _noiseOffset, 0f);
+            float noise = Mathf.PerlinNoise(Time.time * _data.FlickerSpeed + _noiseOffset, 0f);
 
-            _light.intensity = Mathf.Lerp(
-                _minIntensity, _maxIntensity, noise);
+            _light.intensity = Mathf.Lerp(_data.MinIntensity, _data.MaxIntensity, noise);
         }
     }
 }
