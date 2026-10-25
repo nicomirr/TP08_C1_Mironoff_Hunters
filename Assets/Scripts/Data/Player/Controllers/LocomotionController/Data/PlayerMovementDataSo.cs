@@ -7,9 +7,6 @@ namespace Game.Data
     {
         [SerializeField] private float _movementSpeed;
         public float MovementSpeed => _movementSpeed;
-
-        [SerializeField] private PlayerHorizontalBoundsDataSo _playerBoundsData;
-        public PlayerHorizontalBoundsDataSo PlayerBoundsData => _playerBoundsData;
     }
 }
 

@@ -28,13 +28,13 @@ namespace Game.UI
 
         private void SetSinglePlayerMode()
         {
-            GameMode.SetPlayerCount(1);
+            GameMode.SetGameMode(GameModeType.SinglePlayer);
             _sceneTransitionsManager.ChangeScene(_sceneToLoad);
         }
 
         private void SetCoopMode()
         {
-            GameMode.SetPlayerCount(2);
+            GameMode.SetGameMode(GameModeType.Coop);
             _sceneTransitionsManager.ChangeScene(_sceneToLoad);
         }
     }

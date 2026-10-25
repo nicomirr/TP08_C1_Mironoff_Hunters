@@ -1,9 +1,12 @@
 using UnityEngine;
+using Game.Data;
 
 namespace Game.CameraSystem
 {
     public class TargetFollower : MonoBehaviour
     {
+        [SerializeField] private Camera _camera;
+        
         [Header("Camera Bounds")]
         [SerializeField] private bool _useLeftLimit;
         [SerializeField] private bool _useRightLimit;
@@ -25,13 +28,7 @@ namespace Game.CameraSystem
         private float _velocityX;
         private float _velocityY;
 
-        private Camera _camera;
-
-        private void Awake()
-        {
-            _camera = Camera.main;
-        }
-
+                
         private void Start()
         {
             _camera.transform.position = new Vector3(_target.position.x, _target.position.y,

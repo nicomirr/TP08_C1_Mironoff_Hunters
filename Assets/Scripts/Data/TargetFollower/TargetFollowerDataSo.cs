@@ -1,8 +1,13 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TargetFollowerDataSo", menuName = "Scriptable Objects/TargetFollowerDataSo")]
-public class TargetFollowerDataSo : ScriptableObject
+namespace Game.Data
 {
-    [SerializeField] private float _smoothTime;
-    public float SmoothTime => _smoothTime;
+    [CreateAssetMenu(fileName = "TargetFollowerDataSo", menuName = "Scriptable Objects/TargetFollowerDataSo")]
+    public class TargetFollowerDataSo : ScriptableObject
+    {
+        [SerializeField] private float _smoothTime;
+        public float SmoothTime => _smoothTime;
+    }
+
 }
+
