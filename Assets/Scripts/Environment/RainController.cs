@@ -13,10 +13,12 @@ public class RainController : MonoBehaviour
 
     private void Start()
     {
+        _isRaining = true;
+
+
         _rainParticles.Play();
         StartCoroutine(RainRoutine());
 
-        _isRaining = true;
     }
 
     private IEnumerator RainRoutine()
