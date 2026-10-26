@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RainControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.RainControllerDataSo
   _thunderAnimationTrigger: Thunder
-  _minThunderTime: 40
-  _maxThunderTime: 100
+  _minThunderTime: 45
+  _maxThunderTime: 80
