@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686e50c21080ec344b6b7ecc0d653f7a, type: 3}
   m_Name: ChiefNpcData
   m_EditorClassIdentifier: Assembly-CSharp::TownNpcDataSo
-  _dialogueData: {fileID: 0}
+  _dialogueData: {fileID: 11400000, guid: af16c6fbb2fc2a849b26be30bf041045, type: 2}

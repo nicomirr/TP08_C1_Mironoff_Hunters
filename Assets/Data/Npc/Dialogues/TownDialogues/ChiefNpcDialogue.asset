@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: ChiefNpcDialogue
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
   _dialogue:
-  - Beware of zombies. They always hunt in groups.
-  - Luckily those creatures are weak to <color=red><wave amplitude=4>fire</wave></color>.
+  - 'The  <size=150%><sketchy><color=#8B0000>strix</color></sketchy></size> hath
+    robbed us of the sun. '
+  - 'Thou must vanquish the creature. '
+  - First, seek the <color=#87CEFA><wave amplitude=4>fragments</wave></color> to
+    enter its lair.
+  - One of them rests in the forest.
   _letterDelayTime: 0.06

@@ -5,6 +5,7 @@ public class UIDeviceDisconnectedController : MonoBehaviour
 {
     [SerializeField] private PlayerDeviceManager _deviceManager;
 
+    [SerializeField] private CanvasGroup _singlePlayerTextCanvasGroup;
     [SerializeField] private CanvasGroup _playerOneTextCanvasGroup;
     [SerializeField] private CanvasGroup _playerTwoTextCanvasGroup;
 
@@ -25,7 +26,7 @@ public class UIDeviceDisconnectedController : MonoBehaviour
         switch(playerType)
         {
             case PlayerType.KeyboardP1:
-
+                _singlePlayerTextCanvasGroup.alpha = 1;
                 _playerOneTextCanvasGroup.alpha = 1;
                 break;
 
@@ -40,6 +41,7 @@ public class UIDeviceDisconnectedController : MonoBehaviour
         switch (playerType)
         {           
             case PlayerType.KeyboardP1:
+                _singlePlayerTextCanvasGroup.alpha = 0;
                 _playerOneTextCanvasGroup.alpha = 0;
                 break;
 

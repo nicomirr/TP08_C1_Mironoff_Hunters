@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Npc2Dialogue
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
   _dialogue:
-  - Beware of zombies. They always hunt in groups.
-  - Luckily those creatures are weak to <color=red><wave amplitude=4>fire</wave></color>.
+  - Beware the mortui. The risen dead.
+  - They hunt in packs.
+  - Fortunately, those foul creatures are vulnerable to <color=red><wave amplitude=4>fire</wave></color>.
   _letterDelayTime: 0.06

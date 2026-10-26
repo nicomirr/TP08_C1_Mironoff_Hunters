@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Npc1Dialogue
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
   _dialogue:
-  - The woods became dangerous lately.
-  - You should check the <color=orange><wave amplitude=4>town store</wave></color>
+  - The woods have grown perilous of late.
+  - Ye should visit the <color=orange><wave amplitude=4>village shop</wave></color>
     for supplies.
   _letterDelayTime: 0.06
