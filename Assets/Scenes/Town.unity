@@ -442,6 +442,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3040680969380104970, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
   m_PrefabInstance: {fileID: 3395820968991294292}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &148307238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9090720436943510070, guid: d1c07834352a58344960af395f011fa0, type: 3}
+  m_PrefabInstance: {fileID: 10152660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f93db9d35017d449a4795a3325d7c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIFadeBackground
 --- !u!1 &149071209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,55 +1325,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &557135653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6934292921345390916, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
-  m_PrefabInstance: {fileID: 736696008870816193}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &557135655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557135653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cc8a40f9848a54c94bf232155b0b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TMPEffects::TMPEffects.Components.TMPAnimator
-  database: {fileID: 11400000, guid: f0a33761ff6919d4a9979ee36980a29d, type: 2}
-  context:
-    scaleAnimations: 1
-    scaleUniformly: 1
-    useScaledTime: 1
-    tmpAnimator: {fileID: 557135655}
-  updateFrom: 0
-  animateOnStart: 1
-  animationsOverride: 0
-  defaultAnimationsStrings: []
-  defaultShowAnimationsStrings: []
-  defaultHideAnimationsStrings: []
-  excludedCharacters: 
-  excludedCharactersShow: 
-  excludedCharactersHide: 
-  excludePunctuation: 0
-  excludePunctuationShow: 0
-  excludePunctuationHide: 0
-  sceneKeywordDatabase: {fileID: 0}
-  keywordDatabase: {fileID: 0}
-  sceneAnimations:
-    _serializedList: []
-  sceneShowAnimations:
-    _serializedList: []
-  sceneHideAnimations:
-    _serializedList: []
-  preview: 0
-  useDefaultDatabase: 1
-  useDefaultKeywordDatabase: 0
-  initDatabase: 1
-  previewUpdatesPerSecond: 60
-  previewTimeScale: 1
 --- !u!1 &561357492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,6 +2761,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690883807509044777, guid: 56eeb81cbeeea0e469380bf7cb0c2e0a, type: 3}
+      propertyPath: _fadeBackground
+      value: 
+      objectReference: {fileID: 148307238}
     - target: {fileID: 1344585126215840540, guid: 56eeb81cbeeea0e469380bf7cb0c2e0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 960
@@ -3246,7 +3212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4686545473740462414, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5637578883373121120, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3328,6 +3294,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7750094237988092077, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 50dfa97c7033b1647829f0487072dc2b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3499,7 +3469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48beceac217714c9498f74011a5710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Core.GameModeController
-  _testCoop: 1
+  _testCoop: 0
   _coopCameras: {fileID: 658096812}
   _singlePlayerCamera: {fileID: 879222071}
   _playerTwoObject: {fileID: 318277252}
@@ -5632,10 +5602,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6934292921345390916, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 557135655}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07ad467b9433464a97be8d0ddf39f46, type: 3}
 --- !u!1001 &1076666446516226765
 PrefabInstance:

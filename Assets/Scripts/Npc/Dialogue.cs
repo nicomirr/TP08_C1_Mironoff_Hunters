@@ -1,11 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using Game.Data;
 using Game.Core;
-using UnityEngine.InputSystem;
-using System;
 
 namespace Game.Npc
 {
@@ -22,6 +21,8 @@ namespace Game.Npc
 
         private bool _dialogueDisplaying;
         public bool DialogueDisplaying => _dialogueDisplaying;
+
+        private bool _skipRequested;
 
         public Dialogue(DialogueDataSo data, TMP_Text textBox, AudioSource audioSource, ICoroutineRunner coroutineRunner)
         {
@@ -40,6 +41,9 @@ namespace Game.Npc
         private IEnumerator DialogueRoutine(InputAction interactAction)
         {
             _dialogueDisplaying = true;
+            _skipRequested = false;
+
+            interactAction.performed += OnInteract;
 
             foreach (string dialogue in _data.Dialogue)
             {
@@ -51,6 +55,13 @@ namespace Game.Npc
 
                 for (int i = 0; i < characterCount; i++)
                 {
+                    if (_skipRequested)
+                    {
+                        _skipRequested = false;
+                        _textBox.maxVisibleCharacters = characterCount;
+                        break;
+                    }
+
                     _textBox.maxVisibleCharacters = i + 1;
 
                     if (!_audioSource.isPlaying)
@@ -59,15 +70,27 @@ namespace Game.Npc
                     yield return new WaitForSeconds(_data.LetterDelayTime);
                 }
 
-                yield return new WaitUntil(() => interactAction.WasPressedThisFrame());
+                yield return new WaitUntil(() => !interactAction.IsPressed());
 
+                _skipRequested = false;
+
+                yield return new WaitUntil(() => _skipRequested);
+
+                _skipRequested = false;
                 _textBox.text = string.Empty;
             }
+
+            interactAction.performed -= OnInteract;
 
             _textBox.maxVisibleCharacters = int.MaxValue;
 
             _dialogueDisplaying = false;
             OnDialogueFinished?.Invoke();
+        }
+
+        private void OnInteract(InputAction.CallbackContext context)
+        {
+            _skipRequested = true;
         }
     }
 }
