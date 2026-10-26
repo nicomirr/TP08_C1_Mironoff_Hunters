@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using Game.Data;
 using Game.Marker;
+using Game.Core;
 
 namespace Game.Npc
 {
@@ -77,9 +78,9 @@ namespace Game.Npc
             }
         }
 
-        public override void Interact(InputAction interactAction)
+        public override void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {            
-            base.Interact(interactAction);
+            base.Interact(interactAction, interactor, playerType);
 
             StopCoroutine(_walkRoutine);
             _walkRoutine = null;

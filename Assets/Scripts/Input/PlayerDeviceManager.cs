@@ -56,7 +56,7 @@ public class PlayerDeviceManager : MonoBehaviour
         if (_player1Gamepad == gamepad)
         {
             if (_player1Disconnected)
-                RestoreGamepad(PlayerType.KeyboardP1, gamepad);
+                RestoreGamepad(PlayerType.Player1, gamepad);
 
             return;
         }
@@ -64,7 +64,7 @@ public class PlayerDeviceManager : MonoBehaviour
         if (_player2Gamepad == gamepad)
         {            
             if (_player2Disconnected)
-                RestoreGamepad(PlayerType.KeyboardP2, gamepad);
+                RestoreGamepad(PlayerType.Player2, gamepad);
 
             return;
         }
@@ -72,12 +72,12 @@ public class PlayerDeviceManager : MonoBehaviour
         if (_player1Gamepad == null || _player1Disconnected)
         {
             _player1Gamepad = gamepad;
-            RestoreGamepad(PlayerType.KeyboardP1, gamepad);
+            RestoreGamepad(PlayerType.Player1, gamepad);
         }
         else if (_player2Gamepad == null || _player2Disconnected)
         {
             _player2Gamepad = gamepad;
-            RestoreGamepad(PlayerType.KeyboardP2, gamepad);
+            RestoreGamepad(PlayerType.Player2, gamepad);
         }
     }
 
@@ -108,14 +108,14 @@ public class PlayerDeviceManager : MonoBehaviour
             _player1Disconnected = true;
             _player1Waiting = true;
 
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP1);
+            OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player1);
         }
         else if (_player2Gamepad == gamepad && !_player2Disconnected)
         {
             _player2Disconnected = true;
             _player2Waiting = true;
 
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.KeyboardP2);
+            OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player2);
         }
     }        
 
@@ -123,7 +123,7 @@ public class PlayerDeviceManager : MonoBehaviour
     {
         bool wasWaiting;
 
-        if (playerType == PlayerType.KeyboardP1)
+        if (playerType == PlayerType.Player1)
         {
             wasWaiting = _player1Waiting;
 
@@ -146,15 +146,15 @@ public class PlayerDeviceManager : MonoBehaviour
 
     public void ConfirmKeyboardConnection(PlayerType playerType)
     {
-        if (playerType == PlayerType.KeyboardP1 && _player1Waiting)
+        if (playerType == PlayerType.Player1 && _player1Waiting)
         {
             _player1Waiting = false;
-            OnPlayerDeviceConnected?.Invoke(PlayerType.KeyboardP1);
+            OnPlayerDeviceConnected?.Invoke(PlayerType.Player1);
         }
-        else if (playerType == PlayerType.KeyboardP2 && _player2Waiting)
+        else if (playerType == PlayerType.Player2 && _player2Waiting)
         {
             _player2Waiting = false;
-            OnPlayerDeviceConnected?.Invoke(PlayerType.KeyboardP2);
+            OnPlayerDeviceConnected?.Invoke(PlayerType.Player2);
         }
     }
 
@@ -167,10 +167,10 @@ public class PlayerDeviceManager : MonoBehaviour
     private void HandleKeyboardPressed(KeyControl key)
     {
         if (_player1Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP1, key);
+            OnKeyboardKeyPressed?.Invoke(PlayerType.Player1, key);
 
         if (_player2Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.KeyboardP2, key);
+            OnKeyboardKeyPressed?.Invoke(PlayerType.Player2, key);
     }
 
 }

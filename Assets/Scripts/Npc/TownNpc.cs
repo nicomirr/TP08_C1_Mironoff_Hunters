@@ -19,6 +19,8 @@ namespace Game.Npc
         private bool _canInteract;
         public bool CanInteract => _canInteract;
 
+        public bool HasInteractorInRange { get; set; }
+
         protected virtual void Awake()
         {           
             _dialogue = new Dialogue(_data.DialogueData, _npcTextBox, GetComponentInChildren<AudioSource>(), this);
@@ -44,7 +46,7 @@ namespace Game.Npc
             _dialogue.OnDialogueFinished -= ResetNpc;
         }
 
-        public virtual void Interact(InputAction interactAction)
+        public virtual void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {
             _canInteract = false;
             _textBoxCanvasGroup.alpha = 1;

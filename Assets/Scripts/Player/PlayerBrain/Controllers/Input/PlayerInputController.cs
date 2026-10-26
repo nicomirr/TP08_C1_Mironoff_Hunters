@@ -9,7 +9,7 @@ namespace Game.Player.Brain
                
         public PlayerInputController(PlayerInputDataSo data)
         {
-            _playerInputs = new PlayerInputs(data.playerType);
+            _playerInputs = new PlayerInputs(data.playerType, data.KeyboardBindingGroup, data.GamepadBindingGroup);
         }
     }
 }

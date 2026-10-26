@@ -1,10 +1,13 @@
 using UnityEngine;
 using Game.Data;
+using Game.Core;
 
 namespace Game.CameraSystem
 {
     public class TargetFollower : MonoBehaviour
     {
+        [SerializeField] private PlayerType _playerTypeTarget;
+
         [SerializeField] private Camera _camera;
         
         [Header("Camera Bounds")]
@@ -62,6 +65,11 @@ namespace Game.CameraSystem
 
             _camera.transform.position = new Vector3(xPosition, yPosition, _camera.transform.position.z);
             
+        }
+
+        public void ChangeLeftLimit(float newLimit)
+        {
+            _minX = newLimit;
         }
 
         private void OnDrawGizmos()

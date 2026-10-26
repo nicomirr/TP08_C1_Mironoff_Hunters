@@ -25,12 +25,12 @@ public class UIDeviceDisconnectedController : MonoBehaviour
     {
         switch(playerType)
         {
-            case PlayerType.KeyboardP1:
+            case PlayerType.Player1:
                 _singlePlayerTextCanvasGroup.alpha = 1;
                 _playerOneTextCanvasGroup.alpha = 1;
                 break;
 
-            case PlayerType.KeyboardP2:
+            case PlayerType.Player2:
                 _playerTwoTextCanvasGroup.alpha = 1;
                 break;
         }
@@ -40,12 +40,12 @@ public class UIDeviceDisconnectedController : MonoBehaviour
     {
         switch (playerType)
         {           
-            case PlayerType.KeyboardP1:
+            case PlayerType.Player1:
                 _singlePlayerTextCanvasGroup.alpha = 0;
                 _playerOneTextCanvasGroup.alpha = 0;
                 break;
 
-            case PlayerType.KeyboardP2:
+            case PlayerType.Player2:
                 _playerTwoTextCanvasGroup.alpha = 0;
                 break;
         }

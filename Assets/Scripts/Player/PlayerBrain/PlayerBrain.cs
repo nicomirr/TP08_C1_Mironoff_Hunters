@@ -1,6 +1,8 @@
 using UnityEngine;
 using Game.Data;
 using Game.Marker;
+using System;
+using UnityEngine.InputSystem;
 
 namespace Game.Player.Brain
 {    
@@ -20,6 +22,10 @@ namespace Game.Player.Brain
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
         private PlayerDamageController _damageController;
+
+        public event Action<InputDevice> OnCurrentDeviceChanged;
+        public event Action<InputDevice> OnInteractableInRangeReceived;
+        public event Action OnInteractableOutOfRangeReceived;
 
         private void Awake()
         {
@@ -43,6 +49,11 @@ namespace Game.Player.Brain
             _inputController.PlayerInputs.OnKeyboardValidated += _deviceManager.ConfirmKeyboardConnection;
 
             _locomotionController.OnJustLanded += HandleLand;
+
+            _inputController.PlayerInputs.OnCurrentDeviceChanged += NotifyDeviceChanged;
+
+            _interactionController.OnInteractableInRange += NotifyInteractableInRange;
+            _interactionController.OnInteractableOutOfRange += NotifyInteractableOutOfRange;
         }
 
         private void FixedUpdate()
@@ -78,6 +89,11 @@ namespace Game.Player.Brain
             _inputController.PlayerInputs.OnKeyboardValidated -= _deviceManager.ConfirmKeyboardConnection;
 
             _locomotionController.OnJustLanded -= HandleLand;
+
+            _inputController.PlayerInputs.OnCurrentDeviceChanged -= NotifyDeviceChanged;
+
+            _interactionController.OnInteractableInRange -= NotifyInteractableInRange;
+            _interactionController.OnInteractableOutOfRange -= NotifyInteractableOutOfRange;
         }
 
         private void HandleJumpUpdate()
@@ -113,6 +129,21 @@ namespace Game.Player.Brain
             if (_inputController.PlayerInputs.InteractPressed)
                 _interactionController.Interact(_inputController.PlayerInputs.InteractAction);
         }
+
+        private void NotifyDeviceChanged(InputDevice device)
+        {
+            OnCurrentDeviceChanged?.Invoke(device);
+        }
+
+        private void NotifyInteractableInRange()
+        {
+            OnInteractableInRangeReceived?.Invoke(_inputController.PlayerInputs.CurrentDevice);
+        }
+
+        private void NotifyInteractableOutOfRange()
+        {
+            OnInteractableOutOfRangeReceived?.Invoke();
+        }       
     }
 }
 

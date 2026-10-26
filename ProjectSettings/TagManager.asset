@@ -47,6 +47,9 @@ TagManager:
   - name: Player
     uniqueID: 249195373
     locked: 0
+  - name: IndoorFront
+    uniqueID: 3166620057
+    locked: 0
   - name: Rain
     uniqueID: 1283374965
     locked: 0

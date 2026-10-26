@@ -8,6 +8,12 @@ namespace Game.Data
     {
         [SerializeField] private PlayerType _playerType;
         public PlayerType playerType => _playerType;
+
+        [SerializeField] private string _keyboardBindingGroup;
+        public string KeyboardBindingGroup => _keyboardBindingGroup;
+
+        [SerializeField] private string _gamepadBindingGroup;
+        public string GamepadBindingGroup => _gamepadBindingGroup;
     }
 }
 

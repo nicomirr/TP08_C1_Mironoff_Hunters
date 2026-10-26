@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Core
@@ -5,7 +6,8 @@ namespace Game.Core
     public interface IInteractable
     {
         public bool CanInteract { get; }
-        public void Interact(InputAction interactAction);
+        public bool HasInteractorInRange { get; set; }
+        public void Interact(InputAction interactAction, Transform interactor, PlayerType playerType);
     }
 
 }

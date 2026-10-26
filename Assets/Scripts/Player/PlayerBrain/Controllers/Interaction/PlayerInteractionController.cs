@@ -1,30 +1,40 @@
 using UnityEngine;
-using Game.Core;
 using UnityEngine.InputSystem;
+using Game.Core;
+using System;
 
 public class PlayerInteractionController : MonoBehaviour
 {
+    [SerializeField] private PlayerType _playerType;
+
     private IInteractable _currentInteractable;
 
     private bool _isInteracting;
     public bool IsInteracting => _isInteracting;
+
+    public event Action OnInteractableInRange;
+    public event Action OnInteractableOutOfRange;
 
     private void Update()
     {
         if (_currentInteractable == null) return;
 
         if(_currentInteractable.CanInteract && _isInteracting)
+        {
             _isInteracting = false;
+            OnInteractableInRange?.Invoke();
+        }
     }
 
     public void Interact(InputAction interactAction)
     {        
         if (_currentInteractable == null) return;
+        if (!_currentInteractable.CanInteract) return;
 
-        //esconder icono de interaccion posible       
+        OnInteractableOutOfRange?.Invoke();      
                 
         _isInteracting = true;
-        _currentInteractable.Interact(interactAction);
+        _currentInteractable.Interact(interactAction, this.transform, _playerType);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,10 +42,10 @@ public class PlayerInteractionController : MonoBehaviour
         if (_currentInteractable != null) return;
         
         if (collision.TryGetComponent(out IInteractable interactable))
-        {           
-            if (!interactable.CanInteract) return;
+        {            
+            OnInteractableInRange?.Invoke();
 
-            //mostrar signo de interactable
+            interactable.HasInteractorInRange = true;
             _currentInteractable = interactable;
         }
     }
@@ -44,8 +54,13 @@ public class PlayerInteractionController : MonoBehaviour
     {
         if (collision.TryGetComponent(out IInteractable interactable))
         {
-            if(_currentInteractable == interactable)            
-                _currentInteractable = null;            
+            if(_currentInteractable == interactable)
+            {
+                _currentInteractable = null;
+                _isInteracting = false;
+                interactable.HasInteractorInRange = false;
+                OnInteractableOutOfRange?.Invoke();
+            }
         }
     }
 }

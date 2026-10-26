@@ -11,10 +11,16 @@ namespace Game.Player
         private readonly GameControls _playerControls;
         private readonly PlayerType _playerType;
 
+        private InputDevice _currentDevice;
+        public InputDevice CurrentDevice => _currentDevice;
+
         private InputAction _moveAction;
         private InputAction _jumpAction;
         private InputAction _attackAction;
         private InputAction _interactAction;
+
+        private string _keyboardBindingGroup;
+        private string _gamepadBindingGroup;
 
         public float Direction => _moveAction.ReadValue<Vector2>().x;
         public bool JumpPressed => _jumpAction.WasPressedThisFrame();
@@ -25,13 +31,20 @@ namespace Game.Player
         public InputAction InteractAction => _interactAction;
 
         public event Action<PlayerType> OnKeyboardValidated;
+        public event Action<InputDevice> OnCurrentDeviceChanged;
 
-        public PlayerInputs(PlayerType playerType)
+        public PlayerInputs(PlayerType playerType, string keyboardBindingGroup, string gamepadBindingGroup)
         {
             _playerControls = new GameControls();
             _playerType = playerType;
 
+            _keyboardBindingGroup = keyboardBindingGroup;
+            _gamepadBindingGroup = gamepadBindingGroup;
+            
+            _playerControls.Player.Get().actionTriggered += OnActionTriggered;
+
             EnablePlayerInputs();
+
         }
 
         private void EnablePlayerInputs()
@@ -42,7 +55,7 @@ namespace Game.Player
             _interactAction = _playerControls.Player.Interact;
 
             _playerControls.asset.bindingMask =
-                InputBinding.MaskByGroup($"{_playerType};Gamepad");
+                InputBinding.MaskByGroup($"{_keyboardBindingGroup};{_gamepadBindingGroup}");
 
             _playerControls.asset.devices =
                 new InputDevice[] { Keyboard.current };
@@ -58,7 +71,7 @@ namespace Game.Player
             _playerControls.Player.Disable();
 
             _playerControls.asset.bindingMask =
-                InputBinding.MaskByGroup($"{_playerType};Gamepad");
+                InputBinding.MaskByGroup($"{_keyboardBindingGroup};{_gamepadBindingGroup}");
 
             _playerControls.asset.devices =
                 new InputDevice[] { Keyboard.current, gamepad };
@@ -70,9 +83,7 @@ namespace Game.Player
         {
             if (_playerType != playerType) return;
 
-            var scheme = _playerControls.asset.FindControlScheme(
-                playerType.ToString()
-            );
+            var scheme = _playerControls.asset.FindControlScheme(_keyboardBindingGroup);
 
             if (!scheme.HasValue) return;
 
@@ -92,8 +103,22 @@ namespace Game.Player
             }
         }
 
+        private void OnActionTriggered(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+
+            InputDevice device = context.control.device;
+
+            if (_currentDevice == device) return;
+
+            _currentDevice = device;
+            OnCurrentDeviceChanged?.Invoke(device);
+        }
+
         public void Deinitialize()
         {
+            _playerControls.Player.Get().actionTriggered -= OnActionTriggered;
+
             _playerControls.Player.Disable();
             _playerControls.Dispose();
         }
