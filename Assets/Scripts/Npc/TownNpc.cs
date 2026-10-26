@@ -14,6 +14,8 @@ namespace Game.Npc
 
         [SerializeField] private TMP_Text _npcTextBox;
 
+        [SerializeField] private CanvasGroup _textBoxCanvasGroup;
+
         private Dialogue _dialogue;
 
         private Rigidbody2D _rb;
@@ -105,11 +107,14 @@ namespace Game.Npc
             StopCoroutine(_walkRoutine);
             _walkRoutine = null;
 
+            _textBoxCanvasGroup.alpha = 1;
             _dialogue.BeginDialogue(interactAction);
         }
 
         private void ResetNpc()
         {
+            _textBoxCanvasGroup.alpha = 0;
+
             _canInteract = true;
             _walkRoutine = StartCoroutine(WalkRoutine());
         }

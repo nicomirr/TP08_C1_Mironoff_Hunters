@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
   _dialogue:
   - The woods became dangerous lately.
-  - You should check the town store for supplies.
+  - You should check the <color=orange><wave amplitude=3>town store</wave></color>
+    for supplies.
   _letterDelayTime: 0.06

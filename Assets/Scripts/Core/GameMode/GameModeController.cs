@@ -4,7 +4,6 @@ namespace Game.Core
 {
     public class GameModeController : MonoBehaviour
     {
-        [SerializeField] private bool _testSinglePlayer;
         [SerializeField] private bool _testCoop;
 
         [SerializeField] private GameObject _coopCameras;
@@ -16,9 +15,7 @@ namespace Game.Core
 
         private void Awake()
         {
-            if (_testSinglePlayer)
-                GameMode.SetGameMode(GameModeType.SinglePlayer);
-            else if (_testCoop)
+            if(_testCoop)
                 GameMode.SetGameMode(GameModeType.Coop);
 
             if (GameMode.GameModeType == GameModeType.SinglePlayer)
