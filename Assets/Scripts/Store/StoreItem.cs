@@ -2,17 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Core;
 using System;
-
-//Quizas podria guardarse un currentPlayer, o en lugar de hacer IInteractable hacer otro tipo Como IBuyable, 
-//y manejar colision con evento. O tal vez ver como sacar con colision el playerType (interfaz?)
+using Game.Data;
 
 namespace Game.Store
 {
     public class StoreItem : MonoBehaviour, IInteractable
     {
-        //falta el data de cada item!!!!!!
-
-        //Revisar nombres
+        [SerializeField] private StoreItemDataSo _data;
+            
         public event Action<PlayerType, int, string> OnPlayerNear;
         public event Action<PlayerType> OnPlayerLeft;
 
@@ -20,6 +17,7 @@ namespace Game.Store
         public bool CanInteract => _canInteract;
         public bool HasInteractorInRange { get; set; }
 
+       
         public void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {
 
@@ -27,15 +25,15 @@ namespace Game.Store
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //mandar event OnPlayerNear
-
+            if (collision.TryGetComponent(out IPlayerIdentity playerIdentity))
+                OnPlayerNear?.Invoke(playerIdentity.PlayerType, _data.Value, _data.Description);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            //mandar event OnPlayerLeft
+            if (collision.TryGetComponent(out IPlayerIdentity playerIdentity))
+                OnPlayerLeft?.Invoke(playerIdentity.PlayerType);         
         }
     }
-
 }
 

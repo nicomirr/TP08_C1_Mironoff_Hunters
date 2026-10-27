@@ -3,13 +3,14 @@ using Game.Data;
 using Game.Marker;
 using System;
 using UnityEngine.InputSystem;
+using Game.Core;
 
 namespace Game.Player.Brain
 {    
     [RequireComponent (typeof(Rigidbody2D))]
     [RequireComponent (typeof(PlayerInteractionController))]
         
-    public class PlayerBrain : MonoBehaviour
+    public class PlayerBrain : MonoBehaviour, IPlayerIdentity
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
@@ -26,6 +27,7 @@ namespace Game.Player.Brain
         public event Action<InputDevice> OnCurrentDeviceChanged;
         public event Action<InputDevice> OnInteractableInRangeReceived;
         public event Action OnInteractableOutOfRangeReceived;
+        public PlayerType PlayerType => _data.InputData.playerType;
 
         private void Awake()
         {

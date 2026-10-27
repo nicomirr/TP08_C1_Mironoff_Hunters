@@ -221,6 +221,38 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4529381314065952761, guid: d1c07834352a58344960af395f011fa0, type: 3}
   m_PrefabInstance: {fileID: 10152660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &39705760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39705761}
+  m_Layer: 0
+  m_Name: StoreItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39705761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39705760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 136673988}
+  m_Father: {fileID: 1606797984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43102251
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,13 +768,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136673987}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.167, y: 1.0065, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -142.86081, y: -0.42316198, z: 0}
+  m_LocalScale: {x: 0.68375206, y: 0.47197035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1885965476}
-  m_Father: {fileID: 1128172336}
+  m_Father: {fileID: 39705761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &136673989
 BoxCollider2D:
@@ -802,6 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b12bffebe153043b1fc2265e07fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Store.StoreItem
+  _data: {fileID: 11400000, guid: 31199dbd086493440900400a872c31c4, type: 2}
 --- !u!114 &148307238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9090720436943510070, guid: d1c07834352a58344960af395f011fa0, type: 3}
@@ -1514,6 +1547,59 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &200584979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200584981}
+  - component: {fileID: 200584980}
+  m_Layer: 0
+  m_Name: StoreUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &200584980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200584979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d03e7a3b3f8304782d6bde1a87a08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIStore
+  _singlePlayerCanvasGroup: {fileID: 2099428498}
+  _singlePlayerTextPrice: {fileID: 2131246323}
+  _singlePlayerTextDescription: {fileID: 1169119772}
+  _player1CanvasGroup: {fileID: 1714263053}
+  _player1TextPrice: {fileID: 2112896678}
+  _player1TextDescription: {fileID: 1700472345}
+  _player2CanvasGroup: {fileID: 1573061879}
+  _player2TextPrice: {fileID: 1361760561}
+  _player2TextDescription: {fileID: 1989980367}
+--- !u!4 &200584981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200584979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1318237624}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &208122889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,7 +2952,6 @@ Transform:
   - {fileID: 1141125626}
   - {fileID: 1932296577}
   - {fileID: 729655494}
-  - {fileID: 1606797984}
   - {fileID: 1891174452}
   - {fileID: 654429320}
   - {fileID: 569400185}
@@ -6599,7 +6684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1122128195}
   m_Layer: 0
-  m_Name: Price
+  m_Name: PriceSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6652,12 +6737,11 @@ Transform:
   m_GameObject: {fileID: 1128172335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5925, y: -1.2977498, z: 0}
-  m_LocalScale: {x: 0.7098755, y: 0.4413, z: 1}
+  m_LocalPosition: {x: -2.5125, y: -1.2632, z: 0}
+  m_LocalScale: {x: 0.68375206, y: 0.47197035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 507808574}
-  - {fileID: 136673988}
   m_Father: {fileID: 314412148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1128172337
@@ -6929,7 +7013,7 @@ GameObject:
   - component: {fileID: 1169119773}
   - component: {fileID: 1169119772}
   m_Layer: 0
-  m_Name: Text
+  m_Name: DescriptionTextSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7955,6 +8039,87 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 571131f7614022e4991696e13b0a0f67, type: 2}
   _npcTextBox: {fileID: 1480538194}
   _textBoxCanvasGroup: {fileID: 1816289559}
+--- !u!1 &1317913270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317913271}
+  - component: {fileID: 1317913272}
+  m_Layer: 0
+  m_Name: StoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317913271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317913270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1318237624}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317913272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317913270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4f0f5431276f349ad58b759ee51c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Store.StoreManager
+  _storeItems:
+  - {fileID: 136673990}
+  _storeUI: {fileID: 200584980}
+--- !u!1 &1318237623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318237624}
+  m_Layer: 0
+  m_Name: -----Store-----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1318237624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318237623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 200584981}
+  - {fileID: 1317913271}
+  - {fileID: 1606797984}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321918271
 GameObject:
   m_ObjectHideFlags: 0
@@ -7965,7 +8130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321918272}
   m_Layer: 0
-  m_Name: Price
+  m_Name: PriceP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8161,7 +8326,7 @@ GameObject:
   - component: {fileID: 1361760562}
   - component: {fileID: 1361760561}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: TextPriceP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9765,7 +9930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526360800}
   m_Layer: 0
-  m_Name: Price
+  m_Name: PriceP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9994,7 +10159,7 @@ GameObject:
   - component: {fileID: 1573061878}
   - component: {fileID: 1573061877}
   m_Layer: 0
-  m_Name: ItemDescription
+  m_Name: ItemDescriptionP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10457,7 +10622,8 @@ Transform:
   m_Children:
   - {fileID: 878297437}
   - {fileID: 314412148}
-  m_Father: {fileID: 458521606}
+  - {fileID: 39705761}
+  m_Father: {fileID: 1318237624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1614768185
 PrefabInstance:
@@ -13387,7 +13553,7 @@ GameObject:
   - component: {fileID: 1700472346}
   - component: {fileID: 1700472345}
   m_Layer: 0
-  m_Name: Text
+  m_Name: DescriptionTextP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13650,7 +13816,7 @@ GameObject:
   - component: {fileID: 1714263052}
   - component: {fileID: 1714263051}
   m_Layer: 0
-  m_Name: ItemDescription
+  m_Name: ItemDescriptionP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15243,7 +15409,7 @@ GameObject:
   - component: {fileID: 1989980368}
   - component: {fileID: 1989980367}
   m_Layer: 0
-  m_Name: Text
+  m_Name: DescriptionTextP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15626,7 +15792,7 @@ GameObject:
   - component: {fileID: 2099428497}
   - component: {fileID: 2099428496}
   m_Layer: 0
-  m_Name: ItemDescription
+  m_Name: ItemDescriptionSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15839,7 +16005,7 @@ GameObject:
   - component: {fileID: 2112896679}
   - component: {fileID: 2112896678}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: TextPriceP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15976,7 +16142,7 @@ GameObject:
   - component: {fileID: 2131246324}
   - component: {fileID: 2131246323}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: TextPriceSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17344,5 +17510,6 @@ SceneRoots:
   - {fileID: 99559823}
   - {fileID: 1308452573}
   - {fileID: 458521606}
+  - {fileID: 1318237624}
   - {fileID: 1627671004}
   - {fileID: 711738922}
