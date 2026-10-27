@@ -72,6 +72,12 @@ namespace Game.CameraSystem
             _minX = newLimit;
         }
 
+        public void ResetSmoothVelocity()
+        {
+            _velocityX = 0f;
+            _velocityY = 0f;
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;

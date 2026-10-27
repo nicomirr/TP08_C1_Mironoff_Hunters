@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerOneInputData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerInputDataSo
   _playerType: 1
-  _gamepadIndex: 0
+  _keyboardBindingGroup: KeyboardP1
+  _gamepadBindingGroup: Gamepad

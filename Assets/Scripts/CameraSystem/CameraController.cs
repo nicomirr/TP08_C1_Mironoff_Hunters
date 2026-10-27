@@ -33,12 +33,14 @@ public class CameraController : MonoBehaviour
                 {
                     _singlePlayerCamera.position = new Vector3(transform.position.x, transform.position.y, -10);
                     _singlePlayerTargetFollower.ChangeLeftLimit(newLeftLimit);
+                    _singlePlayerTargetFollower.ResetSmoothVelocity();
 
                     return;
                 }
 
                 _playerOneCamera.position = new Vector3(transform.position.x, transform.position.y, -10);
                 _playerOneTargetFollower.ChangeLeftLimit(newLeftLimit);
+                _playerOneTargetFollower.ResetSmoothVelocity();
 
                 break;
 
@@ -46,6 +48,7 @@ public class CameraController : MonoBehaviour
 
                 _playerTwoCamera.position = new Vector3(transform.position.x, transform.position.y, -10);
                 _playerTwoTargetFollower.ChangeLeftLimit(newLeftLimit);
+                _playerTwoTargetFollower.ResetSmoothVelocity();
 
                 break;
         }
