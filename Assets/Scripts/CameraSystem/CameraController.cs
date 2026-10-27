@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
         {            
             case PlayerType.Player1:
 
-                if(GameMode.GameModeType == GameModeType.SinglePlayer)
+                if(GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
                 {
                     _singlePlayerCamera.position = new Vector3(transform.position.x, transform.position.y, -10);
                     _singlePlayerTargetFollower.ChangeLeftLimit(newLeftLimit);

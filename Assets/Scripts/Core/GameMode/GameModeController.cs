@@ -18,7 +18,7 @@ namespace Game.Core
             if(_testCoop)
                 GameMode.SetGameMode(GameModeType.Coop);
 
-            if (GameMode.GameModeType == GameModeType.SinglePlayer)
+            if (GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
             {
                 _playerTwoObject.SetActive(false);
                 _coopCameras.SetActive(false);
