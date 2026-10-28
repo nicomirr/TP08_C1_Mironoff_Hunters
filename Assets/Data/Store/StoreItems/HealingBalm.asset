@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fb37e36cc81654aa1a9cceb5119892, type: 3}
   m_Name: HealingBalm
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.StoreItemDataSo
+  _inventoryItemData: {fileID: 11400000, guid: 20b50f99977667d48ab5128c497c9166, type: 2}
   _value: 3
   _description: "Healing Balm\n\nA soothing balm for treating wounds. \nRestores
     up to 2 health points."

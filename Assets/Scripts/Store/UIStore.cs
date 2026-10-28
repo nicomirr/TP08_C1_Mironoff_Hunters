@@ -1,8 +1,6 @@
+using UnityEngine;
 using Game.Core;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class UIStore : MonoBehaviour
 {

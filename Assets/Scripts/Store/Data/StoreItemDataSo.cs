@@ -5,6 +5,9 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "StoreItemDataSo", menuName = "Scriptable Objects/StoreItemDataSo")]
     public class StoreItemDataSo : ScriptableObject
     {
+        [SerializeField] private InventoryItemDataSo _inventoryItemData;
+        public InventoryItemDataSo InventoryItemData => _inventoryItemData;
+
         [SerializeField] private int _value;
         public int Value => _value;
 

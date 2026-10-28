@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fb37e36cc81654aa1a9cceb5119892, type: 3}
   m_Name: Embers
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.StoreItemDataSo
+  _inventoryItemData: {fileID: 11400000, guid: 0be41e8954c5d4d4198da07166a0bfe9, type: 2}
   _value: 3
   _description: 'Embers
 

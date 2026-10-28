@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fb37e36cc81654aa1a9cceb5119892, type: 3}
   m_Name: PoisonPowder
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.StoreItemDataSo
+  _inventoryItemData: {fileID: 11400000, guid: 0248e64fc8397a44cbe1522b55bc1338, type: 2}
   _value: 4
   _description: 'Poison Power
 

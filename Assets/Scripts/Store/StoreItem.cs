@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Game.Core;
 using System;
+using Game.Core;
 using Game.Data;
 
 namespace Game.Store
@@ -13,14 +13,20 @@ namespace Game.Store
         public event Action<PlayerType, int, string> OnPlayerNear;
         public event Action<PlayerType> OnPlayerLeft;
 
+        public event Action<PlayerType, InventoryItemDataSo, int> OnPurchaseRequested;
+
         private bool _canInteract;
         public bool CanInteract => _canInteract;
         public bool HasInteractorInRange { get; set; }
 
-       
+        private void Start()
+        {
+            _canInteract = true;
+        }
+
         public void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {
-
+            OnPurchaseRequested?.Invoke(playerType, _data.InventoryItemData, _data.Value);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

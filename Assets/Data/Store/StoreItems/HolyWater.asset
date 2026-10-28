@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fb37e36cc81654aa1a9cceb5119892, type: 3}
   m_Name: HolyWater
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.StoreItemDataSo
+  _inventoryItemData: {fileID: 11400000, guid: e8fd2aacd7a3f564eac08afee83174cc, type: 2}
   _value: 3
   _description: 'Holy Water
 

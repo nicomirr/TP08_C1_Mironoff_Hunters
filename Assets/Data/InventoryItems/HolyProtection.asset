@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e7ee82e2d188047ad9c15075f295b1, type: 3}
   m_Name: HolyProtection
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.InventoryItemDataSo
-  _itemType: 2
-  _itemImage: {fileID: 21300000, guid: 39143b9d56f77b149bba45a3546bbbc1, type: 3}
+  _itemType: 6
+  _itemImage: {fileID: 21300000, guid: 193ffbe5215a01a4c98e6c4fb16e94d1, type: 3}

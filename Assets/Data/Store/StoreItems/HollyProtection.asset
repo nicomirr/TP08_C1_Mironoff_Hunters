@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3fb37e36cc81654aa1a9cceb5119892, type: 3}
   m_Name: HollyProtection
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.StoreItemDataSo
+  _inventoryItemData: {fileID: 11400000, guid: 6accf03c9f7cd0946a0c8ce3b8ed4e43, type: 2}
   _value: 5
   _description: 'Holy Protection
 

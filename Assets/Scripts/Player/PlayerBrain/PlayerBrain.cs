@@ -21,14 +21,20 @@ namespace Game.Player.Brain
         private PlayerLocomotionController _locomotionController;
         private PlayerInteractionController _interactionController;
         private PlayerCurrencyController _currencyController;
+        private PlayerInventoryController _inventoryController;
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
         private PlayerDamageController _damageController;
+
+        public PlayerCurrencyController CurrencyController => _currencyController;
+        public PlayerInventoryController InventoryController => _inventoryController;
 
         public event Action<InputDevice> OnCurrentDeviceChanged;
         public event Action<InputDevice> OnInteractableInRangeReceived;
         public event Action OnInteractableOutOfRangeReceived;
         public event Action<int> OnCoinsValueChanged;
+        public event Action<Sprite> OnSelectedSlotChanged;
+
         public PlayerType PlayerType => _data.InputData.playerType;
 
         private void Awake()
@@ -40,10 +46,11 @@ namespace Game.Player.Brain
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
                 GetComponentInChildren<GroundCheckMarker>().transform);
 
-            _currencyController = new PlayerCurrencyController(_data.CurrencyData);
-
             _interactionController = GetComponent<PlayerInteractionController>();
 
+            _currencyController = new PlayerCurrencyController(_data.CurrencyData);
+
+            _inventoryController = new PlayerInventoryController();
         }
 
         private void OnEnable()
@@ -62,6 +69,8 @@ namespace Game.Player.Brain
             _interactionController.OnInteractableOutOfRange += NotifyInteractableOutOfRange;
 
             _currencyController.OnCoinsValueChanged += NotifyCoinsValueChanged;
+
+            _inventoryController.OnSelectedSlotChanged += NotifySelectedSlotChanged;
            
         }
 
@@ -110,6 +119,8 @@ namespace Game.Player.Brain
             _interactionController.OnInteractableOutOfRange -= NotifyInteractableOutOfRange;
 
             _currencyController.OnCoinsValueChanged -= NotifyCoinsValueChanged;
+
+            _inventoryController.OnSelectedSlotChanged -= NotifySelectedSlotChanged;
         }
 
         private void HandleJumpUpdate()
@@ -164,6 +175,11 @@ namespace Game.Player.Brain
         private void NotifyCoinsValueChanged(int value) 
         {
             OnCoinsValueChanged?.Invoke(value);
+        }
+
+        private void NotifySelectedSlotChanged(Sprite image)
+        {
+            OnSelectedSlotChanged?.Invoke(image);
         }
     }
 }
