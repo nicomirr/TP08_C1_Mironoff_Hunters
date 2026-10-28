@@ -20,6 +20,7 @@ namespace Game.Player.Brain
         private PlayerAnimationsController _animationsController;
         private PlayerLocomotionController _locomotionController;
         private PlayerInteractionController _interactionController;
+        private PlayerCurrencyController _currencyController;
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
         private PlayerDamageController _damageController;
@@ -27,6 +28,7 @@ namespace Game.Player.Brain
         public event Action<InputDevice> OnCurrentDeviceChanged;
         public event Action<InputDevice> OnInteractableInRangeReceived;
         public event Action OnInteractableOutOfRangeReceived;
+        public event Action<int> OnCoinsValueChanged;
         public PlayerType PlayerType => _data.InputData.playerType;
 
         private void Awake()
@@ -37,6 +39,8 @@ namespace Game.Player.Brain
             
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
                 GetComponentInChildren<GroundCheckMarker>().transform);
+
+            _currencyController = new PlayerCurrencyController(_data.CurrencyData);
 
             _interactionController = GetComponent<PlayerInteractionController>();
 
@@ -56,6 +60,14 @@ namespace Game.Player.Brain
 
             _interactionController.OnInteractableInRange += NotifyInteractableInRange;
             _interactionController.OnInteractableOutOfRange += NotifyInteractableOutOfRange;
+
+            _currencyController.OnCoinsValueChanged += NotifyCoinsValueChanged;
+           
+        }
+
+        private void Start()
+        {
+            _currencyController.RaiseCoinsValueChanged();
         }
 
         private void FixedUpdate()
@@ -96,6 +108,8 @@ namespace Game.Player.Brain
 
             _interactionController.OnInteractableInRange -= NotifyInteractableInRange;
             _interactionController.OnInteractableOutOfRange -= NotifyInteractableOutOfRange;
+
+            _currencyController.OnCoinsValueChanged -= NotifyCoinsValueChanged;
         }
 
         private void HandleJumpUpdate()
@@ -146,6 +160,11 @@ namespace Game.Player.Brain
         {
             OnInteractableOutOfRangeReceived?.Invoke();
         }       
+
+        private void NotifyCoinsValueChanged(int value) 
+        {
+            OnCoinsValueChanged?.Invoke(value);
+        }
     }
 }
 
