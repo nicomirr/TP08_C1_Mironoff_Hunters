@@ -33,7 +33,7 @@ namespace Game.Player.Brain
         public event Action<InputDevice> OnInteractableInRangeReceived;
         public event Action OnInteractableOutOfRangeReceived;
         public event Action<int> OnCoinsValueChanged;
-        public event Action<Sprite> OnSelectedSlotChanged;
+        public event Action<Sprite, int> OnSelectedSlotChanged;
 
         public PlayerType PlayerType => _data.InputData.playerType;
 
@@ -101,7 +101,8 @@ namespace Game.Player.Brain
             
             HandleJumpUpdate();
             HandleAttack();
-            HandleInteractions();           
+            HandleInteractions();
+            HandleInventorySlotsChange();
         }
 
         private void OnDisable()
@@ -157,6 +158,15 @@ namespace Game.Player.Brain
                 _interactionController.Interact(_inputController.PlayerInputs.InteractAction);
         }
 
+        private void HandleInventorySlotsChange()
+        {
+            if(_inputController.PlayerInputs.NextItemPressed)
+                _inventoryController.SelectNextInventorySlot(); 
+
+            else if(_inputController.PlayerInputs.PreviousItemPressed)
+                _inventoryController.SelectPreviousInventorySlot();
+        }
+
         private void NotifyDeviceChanged(InputDevice device)
         {
             OnCurrentDeviceChanged?.Invoke(device);
@@ -177,9 +187,9 @@ namespace Game.Player.Brain
             OnCoinsValueChanged?.Invoke(value);
         }
 
-        private void NotifySelectedSlotChanged(Sprite image)
+        private void NotifySelectedSlotChanged(Sprite image, int quantity)
         {
-            OnSelectedSlotChanged?.Invoke(image);
+            OnSelectedSlotChanged?.Invoke(image, quantity);
         }
     }
 }

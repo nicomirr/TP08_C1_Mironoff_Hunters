@@ -18,6 +18,8 @@ namespace Game.Player
         private InputAction _jumpAction;
         private InputAction _attackAction;
         private InputAction _interactAction;
+        private InputAction _nextItemAction;
+        private InputAction _previousItemAction;
 
         private string _keyboardBindingGroup;
         private string _gamepadBindingGroup;
@@ -27,6 +29,8 @@ namespace Game.Player
         public bool JumpReleased => _jumpAction.WasReleasedThisFrame();
         public bool AttackPressed => _attackAction.WasPressedThisFrame();
         public bool InteractPressed => _interactAction.WasPressedThisFrame();
+        public bool NextItemPressed => _nextItemAction.WasPressedThisFrame();
+        public bool PreviousItemPressed => _previousItemAction.WasPressedThisFrame();
 
         public InputAction InteractAction => _interactAction;
 
@@ -53,6 +57,8 @@ namespace Game.Player
             _jumpAction = _playerControls.Player.Jump;
             _attackAction = _playerControls.Player.Attack;
             _interactAction = _playerControls.Player.Interact;
+            _nextItemAction = _playerControls.Player.NextItem;
+            _previousItemAction = _playerControls.Player.PreviousItem;
 
             _playerControls.asset.bindingMask =
                 InputBinding.MaskByGroup($"{_keyboardBindingGroup};{_gamepadBindingGroup}");

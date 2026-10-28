@@ -1,7 +1,8 @@
-using UnityEngine;
+using Game.Data;
 using System;
 using System.Collections.Generic;
-using Game.Data;
+using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Game.Player
 {
@@ -9,7 +10,7 @@ namespace Game.Player
     {
         private readonly List<InventorySlot> _inventorySlots = new();
 
-        public event Action<Sprite> OnSelectedSlotChanged;
+        public event Action<Sprite, int> OnSelectedSlotChanged;
 
         private int _currentSlot;   
 
@@ -23,7 +24,7 @@ namespace Game.Player
 
                     _currentSlot = i;
 
-                    OnSelectedSlotChanged?.Invoke(item.ItemImage);
+                    OnSelectedSlotChanged?.Invoke(item.ItemImage, _inventorySlots[i].Quantity);
                     return;
                 }
             }
@@ -31,23 +32,33 @@ namespace Game.Player
             _inventorySlots.Add(new InventorySlot(item));
             _currentSlot = _inventorySlots.Count - 1;
 
-            OnSelectedSlotChanged?.Invoke(item.ItemImage);          
+            OnSelectedSlotChanged?.Invoke(item.ItemImage, 1);          
         }
 
-        public void SelectNextInventoryItem()
+        public void SelectNextInventorySlot()
         {
-            
-            
+            if (_inventorySlots.Count <= 1) return;
 
+            _currentSlot++;
 
+            if(_currentSlot >= _inventorySlots.Count)
+                _currentSlot = 0;
+
+            OnSelectedSlotChanged?.Invoke(_inventorySlots[_currentSlot].InventoryItem.ItemImage, 
+                _inventorySlots[_currentSlot].Quantity);
         }
 
-        public void SelectPreviousInventoryItem()
+        public void SelectPreviousInventorySlot()
         {
-            
+            if (_inventorySlots.Count <= 1) return;
 
+            _currentSlot--;
+
+            if (_currentSlot < 0)
+                _currentSlot = _inventorySlots.Count - 1;
+
+            OnSelectedSlotChanged?.Invoke(_inventorySlots[_currentSlot].InventoryItem.ItemImage,
+                _inventorySlots[_currentSlot].Quantity);
         }
-
-
     }
 }

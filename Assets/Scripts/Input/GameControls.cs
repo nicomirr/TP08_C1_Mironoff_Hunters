@@ -131,6 +131,26 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": true,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""NextItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce2ea351-0d47-4849-b4c0-6e51c7390afc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""PreviousItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""d72c96f3-fc87-403c-8efa-c01f54263c15"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -309,6 +329,72 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""909ba63f-0195-460a-b7f1-de3d4cb49c1f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""NextItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e55d6f6a-65b0-4843-9580-93f22db64dc4"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardP1"",
+                    ""action"": ""NextItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc4ce7c5-6f52-49a3-888a-5d6cb4500d28"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardP2"",
+                    ""action"": ""NextItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""601157be-0856-4e63-8d13-165ef5ec357d"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PreviousItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b733b1ba-f5b1-4cfa-b982-4ab187acd6f0"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardP1"",
+                    ""action"": ""PreviousItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18300eee-c1ee-49b5-a543-727143c15225"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardP2"",
+                    ""action"": ""PreviousItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -388,6 +474,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_NextItem = m_Player.FindAction("NextItem", throwIfNotFound: true);
+        m_Player_PreviousItem = m_Player.FindAction("PreviousItem", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
@@ -476,6 +564,8 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_NextItem;
+    private readonly InputAction m_Player_PreviousItem;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -503,6 +593,14 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/NextItem".
+        /// </summary>
+        public InputAction @NextItem => m_Wrapper.m_Player_NextItem;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PreviousItem".
+        /// </summary>
+        public InputAction @PreviousItem => m_Wrapper.m_Player_PreviousItem;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -541,6 +639,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @NextItem.started += instance.OnNextItem;
+            @NextItem.performed += instance.OnNextItem;
+            @NextItem.canceled += instance.OnNextItem;
+            @PreviousItem.started += instance.OnPreviousItem;
+            @PreviousItem.performed += instance.OnPreviousItem;
+            @PreviousItem.canceled += instance.OnPreviousItem;
         }
 
         /// <summary>
@@ -564,6 +668,12 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @NextItem.started -= instance.OnNextItem;
+            @NextItem.performed -= instance.OnNextItem;
+            @NextItem.canceled -= instance.OnNextItem;
+            @PreviousItem.started -= instance.OnPreviousItem;
+            @PreviousItem.performed -= instance.OnPreviousItem;
+            @PreviousItem.canceled -= instance.OnPreviousItem;
         }
 
         /// <summary>
@@ -767,6 +877,20 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NextItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextItem(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PreviousItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPreviousItem(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Global" which allows adding and removing callbacks.
