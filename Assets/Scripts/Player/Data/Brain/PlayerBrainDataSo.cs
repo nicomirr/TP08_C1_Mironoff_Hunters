@@ -16,6 +16,9 @@ namespace Game.Data
 
         [SerializeField] private PlayerCurrencyControllerDataSo _currencyData;
         public PlayerCurrencyControllerDataSo CurrencyData => _currencyData;
+
+        [SerializeField] private PlayerCombatControllerDataSo _combatData;
+        public PlayerCombatControllerDataSo CombatData => _combatData;
     }
 }
 

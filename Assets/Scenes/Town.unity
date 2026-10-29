@@ -14059,7 +14059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48beceac217714c9498f74011a5710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Core.GameModeController
-  _testCoop: 1
+  _testCoop: 0
   _coopCameras: {fileID: 658096812}
   _singlePlayerCamera: {fileID: 879222071}
   _playerTwoObject: {fileID: 318277252}
@@ -23890,7 +23890,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractButtonGamepadSingle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3567799840953584194, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

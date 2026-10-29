@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e908a91efff907b458315ba8a8406261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
+  _playerType: 0
 --- !u!61 &6491555292056808756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -684,7 +685,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2953340650750568229}
-  - component: {fileID: 532504826203401109}
   - component: {fileID: 7237506870825988211}
   - component: {fileID: 7332716721142289619}
   m_Layer: 6
@@ -709,19 +709,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5237666396989230439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &532504826203401109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4855017460155231631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90c4778c6fccc14f99907ffe76bb2e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackHitbox
-  _hitbox: {fileID: 3977730699960151659}
 --- !u!212 &7237506870825988211
 SpriteRenderer:
   serializedVersion: 2

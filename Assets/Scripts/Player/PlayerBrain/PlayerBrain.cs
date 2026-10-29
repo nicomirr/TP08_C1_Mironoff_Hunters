@@ -4,13 +4,14 @@ using Game.Marker;
 using System;
 using UnityEngine.InputSystem;
 using Game.Core;
+using System.Collections;
 
 namespace Game.Player.Brain
 {    
     [RequireComponent (typeof(Rigidbody2D))]
     [RequireComponent (typeof(PlayerInteractionController))]
         
-    public class PlayerBrain : MonoBehaviour, IPlayerIdentity
+    public class PlayerBrain : MonoBehaviour, IPlayerIdentity, IDamageProvider
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
@@ -37,6 +38,8 @@ namespace Game.Player.Brain
         public event Action OnInventoryEmptied;
 
         public PlayerType PlayerType => _data.InputData.playerType;
+        public int Damage => _combatController.Damage;
+
 
         private void Awake()
         {
@@ -52,6 +55,8 @@ namespace Game.Player.Brain
             _currencyController = new PlayerCurrencyController(_data.CurrencyData);
 
             _inventoryController = new PlayerInventoryController();
+
+            _combatController = new PlayerCombatController(_data.CombatData, GetComponentInChildren<PlayerAttackAreaMarker>().GetComponent<Collider2D>());
         }
 
         private void OnEnable()
@@ -106,6 +111,7 @@ namespace Game.Player.Brain
             HandleAttack();
             HandleInteractions();
             HandleInventoryInputs();
+
         }
 
         private void OnDisable()
@@ -153,8 +159,15 @@ namespace Game.Player.Brain
 
         private void HandleAttack()
         {
+            _combatController.UpdateAttackCooldown();
+
+            if (!_combatController.CanAttack) return;
+
             if (_inputController.PlayerInputs.AttackPressed)
+            {
+                StartCoroutine(_combatController.AttackRoutine());
                 _animationsController.TriggerAttack();
+            }
         }
 
         private void HandleInteractions()
