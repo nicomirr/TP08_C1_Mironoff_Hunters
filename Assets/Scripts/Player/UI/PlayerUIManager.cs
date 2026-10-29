@@ -14,12 +14,14 @@ namespace Game.UI
         private UIInteractionIndicator _interactionIndicator;
         private UICoins _uiCoins;
         private UIInventory _uiInventory;
+        private UIHealth _uiHealth;
 
         private void Awake()
         {
             _interactionIndicator = GetComponent<UIInteractionIndicator>();
             _uiCoins = GetComponent<UICoins>();
             _uiInventory = GetComponent<UIInventory>();
+            _uiHealth = GetComponent<UIHealth>();
         }
 
         private void OnEnable()
@@ -31,6 +33,7 @@ namespace Game.UI
             _player.OnCoinsValueChanged += _uiCoins.UpdateCoinsText;
             _player.OnSelectedSlotChanged += _uiInventory.ChangeCurrentInventorySprite;
             _player.OnInventoryEmptied += _uiInventory.HideInventory;
+            _player.OnHealthChanged += _uiHealth.UpdateHealth;
         }
 
         private void OnDisable()
@@ -42,6 +45,7 @@ namespace Game.UI
             _player.OnCoinsValueChanged -= _uiCoins.UpdateCoinsText;
             _player.OnSelectedSlotChanged -= _uiInventory.ChangeCurrentInventorySprite;
             _player.OnInventoryEmptied -= _uiInventory.HideInventory;
+            _player.OnHealthChanged -= _uiHealth.UpdateHealth;
         }
     }
 

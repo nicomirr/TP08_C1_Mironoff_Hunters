@@ -1,10 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System;
 using Game.Data;
 using Game.Marker;
-using System;
-using UnityEngine.InputSystem;
 using Game.Core;
-using System.Collections;
 
 namespace Game.Player.Brain
 {    
@@ -36,6 +35,7 @@ namespace Game.Player.Brain
         public event Action<int> OnCoinsValueChanged;
         public event Action<Sprite, int> OnSelectedSlotChanged;
         public event Action OnInventoryEmptied;
+        public event Action<int> OnHealthChanged;
 
         public PlayerType PlayerType => _data.InputData.playerType;
         public int Damage => _combatController.Damage;
@@ -56,7 +56,10 @@ namespace Game.Player.Brain
 
             _inventoryController = new PlayerInventoryController();
 
-            _combatController = new PlayerCombatController(_data.CombatData, GetComponentInChildren<PlayerAttackAreaMarker>().GetComponent<Collider2D>());
+            _combatController = new PlayerCombatController(_data.CombatData, 
+                GetComponentInChildren<PlayerAttackAreaMarker>().GetComponent<Collider2D>());
+
+            _healthController = new PlayerHealthController();
         }
 
         private void OnEnable()
@@ -79,12 +82,15 @@ namespace Game.Player.Brain
             _inventoryController.OnSelectedSlotChanged += NotifySelectedSlotChanged;
 
             _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
+
+            _healthController.OnHealthChanged += NotifyHealthChanged;
            
         }
 
         private void Start()
         {
             _currencyController.RaiseCoinsValueChanged();
+            _healthController.RaiseHealhChanged();
         }
 
         private void FixedUpdate()
@@ -133,6 +139,8 @@ namespace Game.Player.Brain
             _inventoryController.OnSelectedSlotChanged -= NotifySelectedSlotChanged;
 
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
+
+            _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
 
         private void HandleJumpUpdate()
@@ -216,6 +224,11 @@ namespace Game.Player.Brain
         private void NotifyInventoryEmptied()
         {
             OnInventoryEmptied?.Invoke();
+        }
+
+        private void NotifyHealthChanged(int value)
+        {
+            OnHealthChanged?.Invoke(value);
         }
     }
 }
