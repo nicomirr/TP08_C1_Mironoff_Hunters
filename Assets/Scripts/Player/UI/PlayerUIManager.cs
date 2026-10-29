@@ -30,6 +30,7 @@ namespace Game.UI
             _player.OnInteractableOutOfRangeReceived += _interactionIndicator.HideInteractionButtons;
             _player.OnCoinsValueChanged += _uiCoins.UpdateCoinsText;
             _player.OnSelectedSlotChanged += _uiInventory.ChangeCurrentInventorySprite;
+            _player.OnInventoryEmptied += _uiInventory.HideInventory;
         }
 
         private void OnDisable()
@@ -40,6 +41,7 @@ namespace Game.UI
             _player.OnInteractableOutOfRangeReceived -= _interactionIndicator.HideInteractionButtons;
             _player.OnCoinsValueChanged -= _uiCoins.UpdateCoinsText;
             _player.OnSelectedSlotChanged -= _uiInventory.ChangeCurrentInventorySprite;
+            _player.OnInventoryEmptied -= _uiInventory.HideInventory;
         }
     }
 

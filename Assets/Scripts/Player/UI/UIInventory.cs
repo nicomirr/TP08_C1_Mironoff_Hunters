@@ -13,9 +13,7 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private List<TMP_Text> _quantityTextBoxes;
 
     private void Start()
-    {
-        //cambiar a canvas renderer? 
-
+    {        
         foreach(Image image  in _currentInventoryImages)
         {
             if (image.sprite == null)
@@ -59,5 +57,19 @@ public class UIInventory : MonoBehaviour
             group.alpha = 1;
 
         return;
+    }
+
+    public void HideInventory()
+    {
+        foreach (Image image in _currentInventoryImages)
+        {
+            image.sprite = null;
+            image.enabled = false;
+
+            foreach (TMP_Text textBox in _quantityTextBoxes)
+            {
+                textBox.text = "";
+            }
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace Game.Player.Brain
         public event Action OnInteractableOutOfRangeReceived;
         public event Action<int> OnCoinsValueChanged;
         public event Action<Sprite, int> OnSelectedSlotChanged;
+        public event Action OnInventoryEmptied;
 
         public PlayerType PlayerType => _data.InputData.playerType;
 
@@ -71,6 +72,8 @@ namespace Game.Player.Brain
             _currencyController.OnCoinsValueChanged += NotifyCoinsValueChanged;
 
             _inventoryController.OnSelectedSlotChanged += NotifySelectedSlotChanged;
+
+            _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
            
         }
 
@@ -102,7 +105,7 @@ namespace Game.Player.Brain
             HandleJumpUpdate();
             HandleAttack();
             HandleInteractions();
-            HandleInventorySlotsChange();
+            HandleInventoryInputs();
         }
 
         private void OnDisable()
@@ -122,6 +125,8 @@ namespace Game.Player.Brain
             _currencyController.OnCoinsValueChanged -= NotifyCoinsValueChanged;
 
             _inventoryController.OnSelectedSlotChanged -= NotifySelectedSlotChanged;
+
+            _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
         }
 
         private void HandleJumpUpdate()
@@ -158,13 +163,16 @@ namespace Game.Player.Brain
                 _interactionController.Interact(_inputController.PlayerInputs.InteractAction);
         }
 
-        private void HandleInventorySlotsChange()
+        private void HandleInventoryInputs()
         {
             if(_inputController.PlayerInputs.NextItemPressed)
                 _inventoryController.SelectNextInventorySlot(); 
 
             else if(_inputController.PlayerInputs.PreviousItemPressed)
                 _inventoryController.SelectPreviousInventorySlot();
+
+            if (_inputController.PlayerInputs.UseItemPressed)
+                _inventoryController.UseCurrentSlotItem();
         }
 
         private void NotifyDeviceChanged(InputDevice device)
@@ -190,6 +198,11 @@ namespace Game.Player.Brain
         private void NotifySelectedSlotChanged(Sprite image, int quantity)
         {
             OnSelectedSlotChanged?.Invoke(image, quantity);
+        }
+
+        private void NotifyInventoryEmptied()
+        {
+            OnInventoryEmptied?.Invoke();
         }
     }
 }

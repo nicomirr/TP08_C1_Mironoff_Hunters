@@ -23,22 +23,10 @@ namespace Game.Player
             _quantity++;
         }               
 
-        public bool TryRemoveItem(InventoryItemDataSo inventoryItem)
+        //Quizas puede retornar el item? 
+        public void UseItem()
         {
-            if (_inventoryItem != inventoryItem || _inventoryItem == null)
-                return false;
-
             _quantity--;
-
-            if (_quantity <= 0)
-            {
-                _quantity = 0;
-                _inventoryItem = null;
-            }
-
-
-            return true;
-
         }
 
     }

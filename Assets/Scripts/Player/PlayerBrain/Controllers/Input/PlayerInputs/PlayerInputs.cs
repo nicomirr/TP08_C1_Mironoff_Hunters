@@ -18,6 +18,7 @@ namespace Game.Player
         private InputAction _jumpAction;
         private InputAction _attackAction;
         private InputAction _interactAction;
+        private InputAction _useItemAction;
         private InputAction _nextItemAction;
         private InputAction _previousItemAction;
 
@@ -29,6 +30,7 @@ namespace Game.Player
         public bool JumpReleased => _jumpAction.WasReleasedThisFrame();
         public bool AttackPressed => _attackAction.WasPressedThisFrame();
         public bool InteractPressed => _interactAction.WasPressedThisFrame();
+        public bool UseItemPressed => _useItemAction.WasPressedThisFrame();
         public bool NextItemPressed => _nextItemAction.WasPressedThisFrame();
         public bool PreviousItemPressed => _previousItemAction.WasPressedThisFrame();
 
@@ -57,6 +59,7 @@ namespace Game.Player
             _jumpAction = _playerControls.Player.Jump;
             _attackAction = _playerControls.Player.Attack;
             _interactAction = _playerControls.Player.Interact;
+            _useItemAction = _playerControls.Player.UseItem;
             _nextItemAction = _playerControls.Player.NextItem;
             _previousItemAction = _playerControls.Player.PreviousItem;
 

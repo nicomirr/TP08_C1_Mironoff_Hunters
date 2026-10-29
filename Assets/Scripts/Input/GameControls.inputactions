@@ -37,6 +37,16 @@
                     "priority": 0
                 },
                 {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "9fe0fcba-4d7b-40a4-8a63-fad5dd2eae6e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "b8e27caa-3e91-408a-80eb-32e126588e7f",
@@ -307,6 +317,39 @@
                     "processors": "",
                     "groups": ";KeyboardP2",
                     "action": "PreviousItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c863f3c9-15de-4273-9f56-1c1f019fb7f0",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "586daf67-89e6-4190-b406-2ba2dd5e5f15",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardP1",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0710936c-0b7a-40ad-a151-c425c282b19c",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardP2",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

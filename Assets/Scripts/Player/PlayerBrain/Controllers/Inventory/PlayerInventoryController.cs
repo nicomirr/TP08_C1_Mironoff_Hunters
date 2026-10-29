@@ -1,8 +1,7 @@
-using Game.Data;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using static UnityEditor.Progress;
+using Game.Data;
 
 namespace Game.Player
 {
@@ -11,6 +10,8 @@ namespace Game.Player
         private readonly List<InventorySlot> _inventorySlots = new();
 
         public event Action<Sprite, int> OnSelectedSlotChanged;
+
+        public event Action OnInventoryEmptied;
 
         private int _currentSlot;   
                 
@@ -64,6 +65,33 @@ namespace Game.Player
 
             OnSelectedSlotChanged?.Invoke(_inventorySlots[_currentSlot].InventoryItem.ItemImage,
                 _inventorySlots[_currentSlot].Quantity);
+        }
+
+        public void UseCurrentSlotItem()
+        {
+            if (_inventorySlots.Count == 0) return;
+
+            InventorySlot currentSlot = _inventorySlots[_currentSlot];
+
+            currentSlot.UseItem();
+
+            if(_inventorySlots[_currentSlot].Quantity == 0)
+            {
+                _inventorySlots.Remove(currentSlot);
+
+                _currentSlot = 0;
+
+                if(_inventorySlots.Count == 0)
+                {
+                    OnInventoryEmptied?.Invoke();
+                    return;
+                }
+
+                OnSelectedSlotChanged?.Invoke(_inventorySlots[_currentSlot].InventoryItem.ItemImage, _inventorySlots[_currentSlot].Quantity);
+                return;
+            }
+
+            OnSelectedSlotChanged?.Invoke(currentSlot.InventoryItem.ItemImage, currentSlot.Quantity);
         }
     }
 }
