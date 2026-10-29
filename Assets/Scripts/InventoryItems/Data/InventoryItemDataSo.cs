@@ -1,6 +1,5 @@
-using Game.Core;
 using UnityEngine;
-using UnityEngine.UI;
+using Game.Core;
 
 namespace Game.Data
 {
@@ -12,6 +11,9 @@ namespace Game.Data
 
         [SerializeField] private Sprite _itemImage;
         public Sprite ItemImage => _itemImage;
+
+        [SerializeField] private int _maxQuantity;
+        public int MaxQuantity => _maxQuantity;
     }
 }
 

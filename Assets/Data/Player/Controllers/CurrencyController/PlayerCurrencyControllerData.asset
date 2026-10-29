@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161a156fd3a47f541a9ae7a6d7b994ee, type: 3}
   m_Name: PlayerCurrencyControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerCurrencyControllerDataSo
-  _initialCoins: 3
+  _initialCoins: 99

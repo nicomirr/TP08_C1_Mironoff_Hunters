@@ -13,26 +13,31 @@ namespace Game.Player
         public event Action<Sprite, int> OnSelectedSlotChanged;
 
         private int _currentSlot;   
-
-        public void AddInventoryItem(InventoryItemDataSo item)
+                
+        public bool TryAddInventoryItem(InventoryItemDataSo item)
         {          
             for (int i = 0; i < _inventorySlots.Count; i++)
             {
                 if (_inventorySlots[i].InventoryItem == item)
                 {
+                    if (_inventorySlots[i].Quantity == item.MaxQuantity)
+                        return false;
+
                     _inventorySlots[i].StackItem();
 
                     _currentSlot = i;
 
                     OnSelectedSlotChanged?.Invoke(item.ItemImage, _inventorySlots[i].Quantity);
-                    return;
+                    return true;
                 }
             }
 
             _inventorySlots.Add(new InventorySlot(item));
             _currentSlot = _inventorySlots.Count - 1;
 
-            OnSelectedSlotChanged?.Invoke(item.ItemImage, 1);          
+            OnSelectedSlotChanged?.Invoke(item.ItemImage, 1);
+
+            return true;
         }
 
         public void SelectNextInventorySlot()

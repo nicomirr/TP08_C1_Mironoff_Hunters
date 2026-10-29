@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections.Generic;
 
 public class UIInventory : MonoBehaviour
 {
+    [SerializeField] private List<CanvasGroup> _keyboardKeys;
+    [SerializeField] private List<CanvasGroup> _buttons;
+
     [SerializeField] private List<Image> _currentInventoryImages;
     [SerializeField] private List<TMP_Text> _quantityTextBoxes;
 
@@ -33,5 +37,27 @@ public class UIInventory : MonoBehaviour
         {
             textBox.text = quantity.ToString();
         }           
+    }
+
+    public void UpdateUI(InputDevice device)
+    {
+        if(device is Keyboard)
+        {
+            foreach (CanvasGroup group in _keyboardKeys)
+                group.alpha = 1;
+
+            foreach (CanvasGroup group in _buttons)
+                group.alpha = 0;
+
+            return;
+        }
+
+        foreach (CanvasGroup group in _keyboardKeys)
+            group.alpha = 0;
+
+        foreach (CanvasGroup group in _buttons)
+            group.alpha = 1;
+
+        return;
     }
 }

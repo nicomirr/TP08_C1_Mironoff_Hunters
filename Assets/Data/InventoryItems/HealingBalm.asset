@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.InventoryItemDataSo
   _itemType: 1
   _itemImage: {fileID: 21300000, guid: 275e511673f984941b6428c25a5ea848, type: 3}
+  _maxQuantity: 3

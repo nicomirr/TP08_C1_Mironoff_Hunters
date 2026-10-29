@@ -25,6 +25,7 @@ namespace Game.UI
         private void OnEnable()
         {
             _player.OnCurrentDeviceChanged += _interactionIndicator.UpdateInteractionButton;
+            _player.OnCurrentDeviceChanged += _uiInventory.UpdateUI;
             _player.OnInteractableInRangeReceived += _interactionIndicator.DisplayInteractionButton;
             _player.OnInteractableOutOfRangeReceived += _interactionIndicator.HideInteractionButtons;
             _player.OnCoinsValueChanged += _uiCoins.UpdateCoinsText;
@@ -34,6 +35,7 @@ namespace Game.UI
         private void OnDisable()
         {
             _player.OnCurrentDeviceChanged -= _interactionIndicator.UpdateInteractionButton;
+            _player.OnCurrentDeviceChanged -= _uiInventory.UpdateUI;
             _player.OnInteractableInRangeReceived -= _interactionIndicator.DisplayInteractionButton;
             _player.OnInteractableOutOfRangeReceived -= _interactionIndicator.HideInteractionButtons;
             _player.OnCoinsValueChanged -= _uiCoins.UpdateCoinsText;

@@ -15,17 +15,15 @@ namespace Game.Player
             _currentCoins = data.InitialCoins;
         }
 
-        public bool TryChangeCurrency(int value)
+        public bool HasEnoughFunds(int value)
         {
-            if(_currentCoins >= value)
-            {
-                _currentCoins -= value;
-                OnCoinsValueChanged?.Invoke(_currentCoins);
+            return _currentCoins >= value;
+        }
 
-                return true;
-            }
-
-            return false;
+        public void ChangeCurrency(int value)
+        {
+            _currentCoins -= value;
+            OnCoinsValueChanged?.Invoke(_currentCoins);            
         }
 
         public void RaiseCoinsValueChanged()

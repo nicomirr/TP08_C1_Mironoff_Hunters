@@ -36,25 +36,36 @@ namespace Game.Store
 
         private void HandlePurchaseRequest(PlayerType playerType, InventoryItemDataSo item, int value)
         {
-            bool itemBought = false; 
+            bool canBuy = false;           
+            bool hasSpace = false; 
 
             switch (playerType)
             {
                 case PlayerType.Player1:
 
-                    itemBought = _playerOne.CurrencyController.TryChangeCurrency(value);
+                    canBuy = _playerOne.CurrencyController.HasEnoughFunds(value);
 
-                    if(itemBought)
-                        _playerOne.InventoryController.AddInventoryItem(item);
+                    if (!canBuy) return;
+                                        
+                    hasSpace = _playerOne.InventoryController.TryAddInventoryItem(item);
+
+                    if (!hasSpace) return;
+
+                    _playerOne.CurrencyController.ChangeCurrency(value);
 
                     break;
 
                 case PlayerType.Player2:
 
-                    itemBought = _playerTwo.CurrencyController.TryChangeCurrency(value);
+                    canBuy = _playerTwo.CurrencyController.HasEnoughFunds(value);
 
-                    if (itemBought)
-                        _playerTwo.InventoryController.AddInventoryItem(item);
+                    if (!canBuy) return;
+
+                    hasSpace = _playerTwo.InventoryController.TryAddInventoryItem(item);
+
+                    if (!hasSpace) return;
+
+                    _playerTwo.CurrencyController.ChangeCurrency(value);
 
                     break;
             }
