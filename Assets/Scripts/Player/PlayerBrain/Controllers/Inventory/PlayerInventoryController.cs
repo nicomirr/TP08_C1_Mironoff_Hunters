@@ -2,19 +2,30 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Game.Data;
+using Game.Persistence;
 
 namespace Game.Player
 {
     public class PlayerInventoryController
     {
         private readonly List<InventorySlot> _inventorySlots = new();
+        public List<InventorySlot> InventorySlots => _inventorySlots;
 
         public event Action<Sprite, int> OnSelectedSlotChanged;
 
         public event Action OnInventoryEmptied;
 
-        private int _currentSlot;   
-                
+        private int _currentSlot;                  
+        public int CurrentSlot => _currentSlot;
+
+        public PlayerInventoryController() { }
+
+        public PlayerInventoryController(PlayerSessionData data)
+        {
+            _inventorySlots = data.InventorySlots;
+            _currentSlot = data.CurrentSlot;
+        }
+
         public bool TryAddInventoryItem(InventoryItemDataSo item)
         {          
             for (int i = 0; i < _inventorySlots.Count; i++)
@@ -91,6 +102,14 @@ namespace Game.Player
                 return;
             }
 
+            OnSelectedSlotChanged?.Invoke(currentSlot.InventoryItem.ItemImage, currentSlot.Quantity);
+        }
+
+        public void RaiseSelectedSlotChanged()
+        {
+            if (_inventorySlots.Count == 0) return;
+
+            InventorySlot currentSlot = _inventorySlots[_currentSlot];
             OnSelectedSlotChanged?.Invoke(currentSlot.InventoryItem.ItemImage, currentSlot.Quantity);
         }
     }

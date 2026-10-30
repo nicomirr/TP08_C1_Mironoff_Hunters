@@ -4,6 +4,8 @@ using System;
 using Game.Data;
 using Game.Marker;
 using Game.Core;
+using Game.Persistence;
+using Game.SceneTransitions;
 
 namespace Game.Player.Brain
 {    
@@ -50,20 +52,21 @@ namespace Game.Player.Brain
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
                 GetComponentInChildren<GroundCheckMarker>().transform);
 
-            _interactionController = GetComponent<PlayerInteractionController>();
-
-            _currencyController = new PlayerCurrencyController(_data.CurrencyData);
-
-            _inventoryController = new PlayerInventoryController();
-
+            _interactionController = GetComponent<PlayerInteractionController>();            
+            
             _combatController = new PlayerCombatController(_data.CombatData, 
                 GetComponentInChildren<PlayerAttackAreaMarker>().GetComponent<Collider2D>());
 
-            _healthController = new PlayerHealthController();
+            if(GameSessionManager.Instance.HasSavedState)
+                LoadSessionData();
+            else
+                InitializeDefaultData();
         }
 
         private void OnEnable()
         {
+            SceneTransitionManager.OnSceneTransitionStarted += SaveSessionDataAndDisable;
+
             _deviceManager.OnPlayerDeviceReconnected += _inputController.PlayerInputs.ReconnectGamepad;
 
             _deviceManager.OnKeyboardKeyPressed += _inputController.PlayerInputs.IsPlayerKeyboardKey;
@@ -91,6 +94,7 @@ namespace Game.Player.Brain
         {
             _currencyController.RaiseCoinsValueChanged();
             _healthController.RaiseHealhChanged();
+            _inventoryController.RaiseSelectedSlotChanged();
         }
 
         private void FixedUpdate()
@@ -117,11 +121,12 @@ namespace Game.Player.Brain
             HandleAttack();
             HandleInteractions();
             HandleInventoryInputs();
-
         }
 
         private void OnDisable()
         {
+            SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionDataAndDisable;
+
             _deviceManager.OnPlayerDeviceReconnected -= _inputController.PlayerInputs.ReconnectGamepad;
             _deviceManager.OnKeyboardKeyPressed -= _inputController.PlayerInputs.IsPlayerKeyboardKey;
 
@@ -141,6 +146,41 @@ namespace Game.Player.Brain
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
+        }
+
+        private void InitializeDefaultData()
+        {
+            _currencyController = new PlayerCurrencyController(_data.CurrencyData);
+
+            _inventoryController = new PlayerInventoryController();
+
+            _healthController = new PlayerHealthController(_data.HealthData);
+        }
+
+        private void LoadSessionData()
+        {
+            PlayerSessionData data = new();
+
+            if (PlayerType == PlayerType.Player1)
+                data = GameSessionManager.Instance.Player1Data;
+            else
+                data = GameSessionManager.Instance.Player2Data;
+
+            _currencyController = new PlayerCurrencyController(data);
+
+            _inventoryController = new PlayerInventoryController(data);
+
+            _healthController = new PlayerHealthController(data);
+        }
+
+        private void SaveSessionDataAndDisable()
+        {
+            PlayerSessionData data = new PlayerSessionData(_healthController.CurrentHealth, _healthController.MaxHealth, _currencyController.CurrentCoins,
+                _inventoryController.InventorySlots, _inventoryController.CurrentSlot);
+
+            GameSessionManager.Instance.SavePlayerData(data, PlayerType);
+
+            this.gameObject.SetActive(false);
         }
 
         private void HandleJumpUpdate()

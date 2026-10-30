@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Data;
@@ -15,6 +16,8 @@ namespace Game.SceneTransitions
 
         private TransitionObjectsDisabler _transitionObjectsDisabler;
 
+        public static event Action OnSceneTransitionStarted;
+
         private void Awake()
         {
             _transitionObjectsDisabler = new TransitionObjectsDisabler();
@@ -22,6 +25,7 @@ namespace Game.SceneTransitions
 
         public void ChangeScene(SceneToLoadDataSo sceneToLoad)
         {
+            OnSceneTransitionStarted?.Invoke();
             StartCoroutine(ChangeSceneRoutine(sceneToLoad.sceneToLoadName, sceneToLoad.TransitionTime));
         }
 

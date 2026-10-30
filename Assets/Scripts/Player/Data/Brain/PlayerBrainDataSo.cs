@@ -1,3 +1,4 @@
+using Game.Player.Brain;
 using UnityEngine;
 
 namespace Game.Data
@@ -19,6 +20,9 @@ namespace Game.Data
 
         [SerializeField] private PlayerCombatControllerDataSo _combatData;
         public PlayerCombatControllerDataSo CombatData => _combatData;
+
+        [SerializeField] private PlayerHealthControllerDataSo _healthData;
+        public PlayerHealthControllerDataSo HealthData => _healthData;
     }
 }
 

@@ -1,18 +1,29 @@
 using System;
+using Game.Data;
+using Game.Persistence;
 
 namespace Game.Player.Brain
 {
     public class PlayerHealthController 
     {
-        private readonly int _maxHealth;
+        private int _maxHealth;
+        public int MaxHealth => _maxHealth;
 
         private int _currentHealth;
+        public int CurrentHealth => _currentHealth; 
 
         public event Action<int> OnHealthChanged;
 
-        public PlayerHealthController()
+        public PlayerHealthController(PlayerHealthControllerDataSo data)
         {
+            _maxHealth = data.MaxHealth;
             _currentHealth = _maxHealth;
+        }
+
+        public PlayerHealthController(PlayerSessionData data)
+        {
+            _maxHealth = data.MaxHealth;
+            _currentHealth = data.CurrentHealth;
         }
 
         public void TakeDamage()
