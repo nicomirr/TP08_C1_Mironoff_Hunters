@@ -7,11 +7,13 @@ namespace Game.Player.Brain
     public class PlayerCombatController 
     {
         private readonly Collider2D _hitCollider;
+
+        private readonly float _attackTime;
         
         private readonly float _cooldownTime;
 
         private float _cooldownTimer; 
-                
+                        
         private int _damage;
         public int Damage => _damage;
 
@@ -25,6 +27,7 @@ namespace Game.Player.Brain
         {
             _cooldownTime = data.CooldownTime;
             _damage = data.Damage;
+            _attackTime = data.AttackTime;
 
             _hitCollider = hitCollider;
 
@@ -53,7 +56,7 @@ namespace Game.Player.Brain
 
             _isAttacking = true;
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(_attackTime);
 
             _isAttacking = false;
             _hitCollider.enabled = false;

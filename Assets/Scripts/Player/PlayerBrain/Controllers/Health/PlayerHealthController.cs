@@ -30,7 +30,8 @@ namespace Game.Player.Brain
         {
             if (_currentHealth <= 0) return;
 
-            _currentHealth --;            
+            _currentHealth --;
+            RaiseHealhChanged();
         }
 
         public void Heal()

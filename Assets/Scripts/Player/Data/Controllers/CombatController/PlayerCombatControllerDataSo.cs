@@ -10,6 +10,9 @@ namespace Game.Data
 
         [SerializeField] private float _cooldownTime;
         public float CooldownTime => _cooldownTime;
+
+        [SerializeField] private float _attackTime;
+        public float AttackTime => _attackTime; 
     }
 
 }

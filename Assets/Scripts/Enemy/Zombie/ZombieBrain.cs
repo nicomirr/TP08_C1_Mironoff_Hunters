@@ -14,6 +14,7 @@ namespace Game.Enemy
 
         private ZombieLocomotionController _locomotionController;
         private ZombieAwarenessController _awarenessController;
+        private ZombieCombatController _combatController;   
 
         private void Awake()
         {
@@ -21,6 +22,7 @@ namespace Game.Enemy
 
             _locomotionController = new ZombieLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
             _awarenessController = new ZombieAwarenessController(_data.AwarenessData, this.transform);
+            _combatController = new ZombieCombatController(_data.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
         }
 
         private void FixedUpdate()
@@ -31,6 +33,9 @@ namespace Game.Enemy
         private void Update()
         {
             _awarenessController.Update();
+
+            HandleAttack();
+
             HandleAnimations();
         }
 
@@ -42,11 +47,25 @@ namespace Game.Enemy
                 _locomotionController.UpdateMovement();
         }
 
+        private void HandleAttack()
+        {
+            if (!_awarenessController.TargetInAttackRange) return;
+
+            if (!_combatController.CanAttack) return;
+
+            StartCoroutine(_combatController.AttackRoutine());
+
+        }
+
         private void HandleAnimations()
         {
-            if (_awarenessController.TargetInRange)
+            if (_awarenessController.TargetInAttackRange) 
             {
-                _animationsController.ChangeAnimationState(AnimationStateType.Attacking);
+                if (_combatController.IsAttacking)
+                    _animationsController.ChangeAnimationState(AnimationStateType.Attacking);
+                else
+                    _animationsController.ChangeAnimationState(AnimationStateType.Idle);
+                
                 return;
             }
 
@@ -54,8 +73,6 @@ namespace Game.Enemy
                 _animationsController.ChangeAnimationState(AnimationStateType.Moving);
             else
                 _animationsController.ChangeAnimationState(AnimationStateType.Idle);
-
-
         }
 
     }

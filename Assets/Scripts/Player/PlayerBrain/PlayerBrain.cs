@@ -250,7 +250,7 @@ namespace Game.Player.Brain
                 _animationsController.ChangeAnimationState(Core.AnimationStateType.Moving);
             else
                 _animationsController.ChangeAnimationState(Core.AnimationStateType.Idle);                
-        }
+        }       
 
         private void NotifyDeviceChanged(InputDevice device)
         {
@@ -285,6 +285,13 @@ namespace Game.Player.Brain
         private void NotifyHealthChanged(int value)
         {
             OnHealthChanged?.Invoke(value);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
+
+            _healthController.TakeDamage();
         }
     }
 }
