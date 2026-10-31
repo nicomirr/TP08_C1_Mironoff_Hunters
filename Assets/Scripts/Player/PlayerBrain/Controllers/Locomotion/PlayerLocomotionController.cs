@@ -11,6 +11,7 @@ namespace Game.Player.Brain
         private readonly PlayerFacing _facing;
         private readonly PlayerGroundCheck _groundCheck;
         private readonly PlayerGravity _gravity;
+        public bool IsGrounded => _groundCheck.IsGrounded;
 
         public event Action OnJustLanded
         {

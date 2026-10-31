@@ -1,4 +1,3 @@
-using Game.Player.Brain;
 using UnityEngine;
 
 namespace Game.Data
@@ -12,8 +11,8 @@ namespace Game.Data
         [SerializeField] private PlayerLocomotionDataSo _locomotionData;
         public PlayerLocomotionDataSo LocomotionData => _locomotionData;
 
-        [SerializeField] private PlayerAnimationsControllerDataSo _animationsData;
-        public PlayerAnimationsControllerDataSo AnimationsData => _animationsData;
+        [SerializeField] private PlayerAnimationControllerDataSo _animationsData;
+        public PlayerAnimationControllerDataSo AnimationsData => _animationsData;
 
         [SerializeField] private PlayerCurrencyControllerDataSo _currencyData;
         public PlayerCurrencyControllerDataSo CurrencyData => _currencyData;

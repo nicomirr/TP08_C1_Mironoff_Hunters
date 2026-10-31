@@ -110,18 +110,17 @@ namespace Game.Player.Brain
             if (_interactionController.IsInteracting)
             {
                 _locomotionController.StopMovement();
-                _animationsController.SetMoveAnimation(false);
-                _animationsController.SetJumpAnimation(false);
+                _animationsController.ChangeAnimationState(PlayerAnimationState.Idle);
+
                 return;
             }
 
-            _animationsController.SetMoveAnimation(_inputController.PlayerInputs.Direction != 0);
-            
             HandleJumpUpdate();
             HandleAttack();
             HandleInteractions();
             HandleInventoryInputs();
-        }
+            HandleAnimations();
+        }               
 
         private void OnDisable()
         {
@@ -194,15 +193,13 @@ namespace Game.Player.Brain
 
             if (_inputController.PlayerInputs.JumpPressed)
             {
-                bool jumpPerformed = _locomotionController.HandleJump();
-                _animationsController.SetJumpAnimation(jumpPerformed);                
+                bool jumpPerformed = _locomotionController.HandleJump();            
             }
         }
 
         private void HandleLand()
         {
             _locomotionController.HandleLand();
-            _animationsController.SetJumpAnimation(false);
         }
 
         private void HandleAttack()
@@ -211,11 +208,8 @@ namespace Game.Player.Brain
 
             if (!_combatController.CanAttack) return;
 
-            if (_inputController.PlayerInputs.AttackPressed)
-            {
-                StartCoroutine(_combatController.AttackRoutine());
-                _animationsController.TriggerAttack();
-            }
+            if (_inputController.PlayerInputs.AttackPressed)            
+                StartCoroutine(_combatController.AttackRoutine());            
         }
 
         private void HandleInteractions()
@@ -234,6 +228,26 @@ namespace Game.Player.Brain
 
             if (_inputController.PlayerInputs.UseItemPressed)
                 _inventoryController.UseCurrentSlotItem();
+        }
+
+        private void HandleAnimations()
+        {
+            if (_combatController.IsAttacking)
+            {
+                _animationsController.ChangeAnimationState(PlayerAnimationState.Attacking);
+                return;
+            }
+
+            if (!_locomotionController.IsGrounded)
+            {
+                _animationsController.ChangeAnimationState(PlayerAnimationState.Jumping);
+                return;
+            }
+
+            if (_inputController.PlayerInputs.Direction != 0)
+                _animationsController.ChangeAnimationState(PlayerAnimationState.Moving);
+            else
+                _animationsController.ChangeAnimationState(PlayerAnimationState.Idle);                
         }
 
         private void NotifyDeviceChanged(InputDevice device)

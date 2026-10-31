@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.SceneToLoadSo
   _sceneToLoadName: Forest
-  _transitionTime: 4
+  _transitionTime: 3

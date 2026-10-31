@@ -13,11 +13,13 @@ namespace Game.Player.Brain
         private float _cooldownTimer; 
                 
         private int _damage;
-
         public int Damage => _damage;
 
         private bool _canAttack;
         public bool CanAttack => _canAttack;
+
+        private bool _isAttacking;
+        public bool IsAttacking => _isAttacking;       
 
         public PlayerCombatController(PlayerCombatControllerDataSo data, Collider2D hitCollider)
         {
@@ -49,10 +51,12 @@ namespace Game.Player.Brain
 
             _hitCollider.enabled = true;
 
+            _isAttacking = true;
+
             yield return new WaitForSeconds(0.2f);
 
+            _isAttacking = false;
             _hitCollider.enabled = false;
         }
-
     }
 }
