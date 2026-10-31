@@ -6,6 +6,7 @@ using Game.Marker;
 using Game.Core;
 using Game.Persistence;
 using Game.SceneTransitions;
+using Game.Animations;
 
 namespace Game.Player.Brain
 {    
@@ -18,8 +19,9 @@ namespace Game.Player.Brain
 
         [SerializeField] private PlayerDeviceManager _deviceManager;
 
+        private AnimationsController _animationsController;
+
         private PlayerInputController _inputController;
-        private PlayerAnimationsController _animationsController;
         private PlayerLocomotionController _locomotionController;
         private PlayerInteractionController _interactionController;
         private PlayerCurrencyController _currencyController;
@@ -47,7 +49,7 @@ namespace Game.Player.Brain
         {
             _inputController = new PlayerInputController(_data.InputData);
 
-            _animationsController = new PlayerAnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
             
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
                 GetComponentInChildren<GroundCheckMarker>().transform);
@@ -110,7 +112,7 @@ namespace Game.Player.Brain
             if (_interactionController.IsInteracting)
             {
                 _locomotionController.StopMovement();
-                _animationsController.ChangeAnimationState(PlayerAnimationState.Idle);
+                _animationsController.ChangeAnimationState(Core.AnimationStateType.Idle);
 
                 return;
             }
@@ -234,20 +236,20 @@ namespace Game.Player.Brain
         {
             if (_combatController.IsAttacking)
             {
-                _animationsController.ChangeAnimationState(PlayerAnimationState.Attacking);
+                _animationsController.ChangeAnimationState(Core.AnimationStateType.Attacking);
                 return;
             }
 
             if (!_locomotionController.IsGrounded)
             {
-                _animationsController.ChangeAnimationState(PlayerAnimationState.Jumping);
+                _animationsController.ChangeAnimationState(Core.AnimationStateType.Jumping);
                 return;
             }
 
             if (_inputController.PlayerInputs.Direction != 0)
-                _animationsController.ChangeAnimationState(PlayerAnimationState.Moving);
+                _animationsController.ChangeAnimationState(Core.AnimationStateType.Moving);
             else
-                _animationsController.ChangeAnimationState(PlayerAnimationState.Idle);                
+                _animationsController.ChangeAnimationState(Core.AnimationStateType.Idle);                
         }
 
         private void NotifyDeviceChanged(InputDevice device)

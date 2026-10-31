@@ -11,8 +11,8 @@ namespace Game.Data
         [SerializeField] private PlayerLocomotionDataSo _locomotionData;
         public PlayerLocomotionDataSo LocomotionData => _locomotionData;
 
-        [SerializeField] private PlayerAnimationControllerDataSo _animationsData;
-        public PlayerAnimationControllerDataSo AnimationsData => _animationsData;
+        [SerializeField] private AnimationControllerDataSo _animationsData;
+        public AnimationControllerDataSo AnimationsData => _animationsData;
 
         [SerializeField] private PlayerCurrencyControllerDataSo _currencyData;
         public PlayerCurrencyControllerDataSo CurrencyData => _currencyData;
