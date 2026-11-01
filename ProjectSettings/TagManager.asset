@@ -62,11 +62,11 @@ TagManager:
   - name: WorldUI
     uniqueID: 1037292535
     locked: 0
-  - name: UI
-    uniqueID: 1908006813
-    locked: 0
   - name: Front
     uniqueID: 464892555
+    locked: 0
+  - name: UI
+    uniqueID: 1908006813
     locked: 0
   m_RenderingLayers:
   - Default

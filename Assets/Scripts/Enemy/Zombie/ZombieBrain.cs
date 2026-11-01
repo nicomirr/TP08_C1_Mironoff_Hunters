@@ -31,7 +31,7 @@ namespace Game.Enemy
         {
             Rigidbody2D _rb = GetComponent<Rigidbody2D>();
 
-            _animationsController = new AnimationsController(_brainData.AnimationsData, GetComponentInChildren<Animator>());
+            _animationsController = new AnimationsController(_brainData.AnimationsData, GetComponentInChildren<Animator>(), AnimationStateType.Idle);
 
             _locomotionController = new ZombieLocomotionController(_brainData.LocomotionData, _rb, this.transform);
             _awarenessController = new ZombieAwarenessController(_brainData.AwarenessData, this.transform);
@@ -158,7 +158,7 @@ namespace Game.Enemy
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        private void ResetEnemy()
+        private void ResetEnemy(int _)
         {
             _burrowController.Reset();
 

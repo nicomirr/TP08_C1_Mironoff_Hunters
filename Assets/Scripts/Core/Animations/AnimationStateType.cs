@@ -8,6 +8,8 @@ namespace Game.Core
         Jumping,
         Attacking,
         Dead,
-        End = 6,
+        Enabled,
+        Disabled,
+        End = 8,
     }
 }

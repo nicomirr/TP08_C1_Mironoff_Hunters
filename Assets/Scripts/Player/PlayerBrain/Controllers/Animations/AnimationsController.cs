@@ -12,17 +12,21 @@ namespace Game.Animations
 
         private readonly Animator _animator;
 
+        private readonly AnimationStateType _initialState;
+
         private AnimationStateType _currentState;
 
 
-        public AnimationsController(AnimationControllerDataSo data, Animator animator)
+        public AnimationsController(AnimationControllerDataSo data, Animator animator, AnimationStateType initialState)
         {            
             _animator = animator;
 
             foreach (AnimationDataSo animation in data.Animations)
                 _animations.Add(animation.AnimationStateName, animation.AnimationNameHash);
 
-            _currentState = AnimationStateType.Idle;
+            _initialState = initialState;
+
+            _currentState = _initialState;
         }
 
         public void ChangeAnimationState(AnimationStateType animationState)
@@ -36,7 +40,7 @@ namespace Game.Animations
         
         public void Reset()
         {
-            _currentState = AnimationStateType.Idle;
+            _currentState = _initialState;
         }
     }
 }

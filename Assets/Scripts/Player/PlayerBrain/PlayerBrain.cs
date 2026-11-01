@@ -142,7 +142,7 @@ namespace Game.Player.Brain
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();   
 
-            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>(), AnimationStateType.Idle);
 
             _inputController = new PlayerInputController(_data.InputData);
 
