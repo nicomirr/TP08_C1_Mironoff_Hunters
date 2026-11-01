@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: de103f2c6d1664745b272d9997115874
+guid: fa4350d688d075e43b0e6bcf8457331b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6539773152563977607
-    second: SPR_ZombieAttack_0
+      213: -9186439595413666055
+    second: SPR_ZombieAttack-Sheet_0
+  - first:
+      213: 4904024086771755923
+    second: SPR_ZombieAttack-Sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -38,7 +41,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: 1
+    aniso: 0
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -46,11 +49,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.4, y: 0.5}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPR_ZombieAttack_0
+      name: SPR_ZombieAttack-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 9
+      alignment: 9
+      pivot: {x: 0.38, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78d56367801f1ca50800000000000000
-      internalID: 6539773152563977607
+      spriteID: 9f609cc1cd5338080800000000000000
+      internalID: -9186439595413666055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_ZombieAttack-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 9
+        height: 9
+      alignment: 9
+      pivot: {x: 0.38, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b6dfd9ce79e0440800000000000000
+      internalID: 4904024086771755923
       vertices: []
       indices: 
       edges: []
@@ -138,17 +163,20 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: e8d3b21640ebd6c4bb8b57db2b21c935
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":9.0,"y":9.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      SPR_ZombieAttack_0: 6539773152563977607
+      SPR_ZombieAttack-Sheet_0: -9186439595413666055
+      SPR_ZombieAttack-Sheet_1: 4904024086771755923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

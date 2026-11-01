@@ -16,5 +16,8 @@ namespace Game.Data
 
         [SerializeField] private ZombieCombatControllerDataSo _combatData;
         public ZombieCombatControllerDataSo CombatData => _combatData;
+
+        [SerializeField] private EnemyHealthDataSo _enemyHealthData;
+        public EnemyHealthDataSo EnemyHealthData => _enemyHealthData;
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d9304399111be489f6fffa81293fd8, type: 3}
   m_Name: PlayerCombatControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerCombatDataSo
-  _damage: 1
+  _damage: 2
   _cooldownTime: 0.4
+  _attackTime: 0.2

@@ -19,7 +19,7 @@ namespace Game.Player.Brain
             remove => _groundCheck.OnJustLanded -= value;
         }
 
-        public PlayerLocomotionController(PlayerLocomotionDataSo data, Rigidbody2D rb, Transform ownerTransform, Transform groundCheckTransform)
+        public PlayerLocomotionController(PlayerLocomotionControllerDataSo data, Rigidbody2D rb, Transform ownerTransform, Transform groundCheckTransform)
         {
             _movement = new PlayerMovement(data.MovementData, rb);
             _jump = new PlayerJump(data.JumpData, rb);

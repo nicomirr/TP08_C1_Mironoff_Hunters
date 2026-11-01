@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7441954775139943084}
   - component: {fileID: 3773864914940940107}
   m_Layer: 11
-  m_Name: InteractButtonGamepad
+  m_Name: InteractButtonGamepadP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237666396989230439}
+  - component: {fileID: 204945634151821319}
   - component: {fileID: 5315429897909318147}
   - component: {fileID: 6905430475967541373}
   - component: {fileID: 6491555292056808756}
@@ -108,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5237666396989230439
 Transform:
   m_ObjectHideFlags: 0
@@ -129,6 +130,18 @@ Transform:
   - {fileID: 4846241022600318099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204945634151821319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685827165780160743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e04966c9f70c942abe0b27ca39a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.PlayerImageMarker
 --- !u!114 &5315429897909318147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e908a91efff907b458315ba8a8406261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
-  _playerType: 0
+  _playerType: 2
 --- !u!61 &6491555292056808756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -378,7 +391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: E
+  m_text: U
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d77464d614a7a114389aaf07078dca1a, type: 2}
   m_sharedMaterial: {fileID: 7137065287623100161, guid: d77464d614a7a114389aaf07078dca1a, type: 2}
@@ -600,7 +613,7 @@ GameObject:
   - component: {fileID: 6198801858913671068}
   - component: {fileID: 6890732729976545953}
   m_Layer: 11
-  m_Name: InteractButtonKeyboard
+  m_Name: InteractButtonKeyboardP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,7 +716,7 @@ Transform:
   m_GameObject: {fileID: 4855017460155231631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -903,10 +916,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575998693394859471}
-  - component: {fileID: 5346570418351271117}
+  - component: {fileID: 3774285895139021113}
   - component: {fileID: 1910013722304338281}
   - component: {fileID: 3977730699960151659}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +941,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5237666396989230439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5346570418351271117
+--- !u!114 &3774285895139021113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -937,9 +950,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6069754788805970519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ff04e8d38209640a9c0cdff70e8dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c060adf7eb70f44288ff17ca33ece5d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackAreaMarker
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.PlayerAttackArea
 --- !u!212 &1910013722304338281
 SpriteRenderer:
   serializedVersion: 2

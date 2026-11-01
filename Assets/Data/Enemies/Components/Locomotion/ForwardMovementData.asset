@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c30eb13f77334ba2cde2c0d30fd61, type: 3}
   m_Name: ForwardMovementData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ForwardMovementDataSo
-  _movementSpeed: 5
+  _movementSpeed: 2

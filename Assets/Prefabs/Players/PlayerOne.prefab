@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 673249507611722074}
   - component: {fileID: 4956137968631920105}
   m_Layer: 10
-  m_Name: InteractButtonKeyboard
+  m_Name: InteractButtonKeyboardP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowSoftness: 0.3
   m_ShadowSoftnessFalloffIntensity: 0.5
-  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 6023121757414926248}
   - component: {fileID: 4657566619711540815}
   m_Layer: 9
-  m_Name: InteractButtonKeyboard
+  m_Name: InteractButtonKeyboardSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 6015040885773498774}
   - component: {fileID: 5966732210701812107}
   m_Layer: 10
-  m_Name: InteractButtonGamepad
+  m_Name: InteractButtonGamepadP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4125353297150915641}
-  - component: {fileID: 3567799840953584194}
+  - component: {fileID: 6888754125994749979}
   - component: {fileID: 4660187919678904642}
   - component: {fileID: 6586611622076163191}
   m_Layer: 6
@@ -1100,13 +1100,13 @@ Transform:
   m_GameObject: {fileID: 6565215128240089526}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3040680969380104970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3567799840953584194
+--- !u!114 &6888754125994749979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1115,10 +1115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6565215128240089526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90c4778c6fccc14f99907ffe76bb2e7, type: 3}
+  m_Script: {fileID: 11500000, guid: b3e04966c9f70c942abe0b27ca39a082, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackHitbox
-  _hitbox: {fileID: 7509606268338748553}
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.PlayerImageMarker
 --- !u!212 &4660187919678904642
 SpriteRenderer:
   serializedVersion: 2
@@ -1209,10 +1208,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3697367072754867820}
-  - component: {fileID: 7649539001619940926}
+  - component: {fileID: 8239134091264704206}
   - component: {fileID: 1489635600402803120}
   - component: {fileID: 7509606268338748553}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1233,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3040680969380104970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7649539001619940926
+--- !u!114 &8239134091264704206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1243,9 +1242,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7148622945450082952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ff04e8d38209640a9c0cdff70e8dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c060adf7eb70f44288ff17ca33ece5d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackAreaMarker
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.PlayerAttackArea
 --- !u!212 &1489635600402803120
 SpriteRenderer:
   serializedVersion: 2
@@ -1555,6 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e908a91efff907b458315ba8a8406261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
+  _playerType: 1
 --- !u!61 &1207385457262812900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1641,7 +1641,7 @@ GameObject:
   - component: {fileID: 4445046422331923105}
   - component: {fileID: 6722238148110869546}
   m_Layer: 9
-  m_Name: InteractButtonGamepad
+  m_Name: InteractButtonGamepadSingle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

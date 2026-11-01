@@ -8,8 +8,8 @@ namespace Game.Data
         [SerializeField] private PlayerInputDataSo _inputData;
         public PlayerInputDataSo InputData => _inputData;
 
-        [SerializeField] private PlayerLocomotionDataSo _locomotionData;
-        public PlayerLocomotionDataSo LocomotionData => _locomotionData;
+        [SerializeField] private PlayerLocomotionControllerDataSo _locomotionData;
+        public PlayerLocomotionControllerDataSo LocomotionData => _locomotionData;
 
         [SerializeField] private AnimationControllerDataSo _animationsData;
         public AnimationControllerDataSo AnimationsData => _animationsData;
@@ -22,6 +22,9 @@ namespace Game.Data
 
         [SerializeField] private PlayerHealthControllerDataSo _healthData;
         public PlayerHealthControllerDataSo HealthData => _healthData;
+
+        [SerializeField] private PlayerDamageFeedbackControllerDataSo _damageHandlerData;
+        public PlayerDamageFeedbackControllerDataSo DamageHandlerData => _damageHandlerData;
     }
 }
 

@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZombieBrainDataSo
   _animationsData: {fileID: 11400000, guid: eef31644497b5124281ac385514fa4d8, type: 2}
   _locomotionData: {fileID: 11400000, guid: 67c0e4c175941dc45951073562f12f11, type: 2}
+  _awarenessData: {fileID: 11400000, guid: 2fa6a38feb46d1b4f8f6c3c181f910db, type: 2}
+  _combatData: {fileID: 11400000, guid: ebc8f1f0dbea32044b29c339b79a41c8, type: 2}
+  _enemyHealthData: {fileID: 11400000, guid: 981a5358020fd474d82ae6bc5a25ceb7, type: 2}

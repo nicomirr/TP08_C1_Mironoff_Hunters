@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Game.Data
 {
     [CreateAssetMenu(fileName = "PlayerLocomotionDataSo", menuName = "Scriptable Objects/PlayerLocomotionDataSo")]
-    public class PlayerLocomotionDataSo : ScriptableObject
+    public class PlayerLocomotionControllerDataSo : ScriptableObject
     {
         [SerializeField] private PlayerMovementDataSo _movementData;
         public PlayerMovementDataSo MovementData => _movementData;

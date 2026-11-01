@@ -13,7 +13,7 @@ namespace Game.Player.Brain
     [RequireComponent (typeof(Rigidbody2D))]
     [RequireComponent (typeof(PlayerInteractionController))]
         
-    public class PlayerBrain : MonoBehaviour, IPlayerIdentity, IDamageProvider
+    public class PlayerBrain : MonoBehaviour, IPlayerIdentity
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
@@ -28,7 +28,7 @@ namespace Game.Player.Brain
         private PlayerInventoryController _inventoryController;
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
-        private PlayerDamageController _damageController;
+        private PlayerDamageFeedbackController _damageFeedbackController;
 
         public PlayerCurrencyController CurrencyController => _currencyController;
         public PlayerInventoryController InventoryController => _inventoryController;
@@ -42,22 +42,10 @@ namespace Game.Player.Brain
         public event Action<int> OnHealthChanged;
 
         public PlayerType PlayerType => _data.InputData.playerType;
-        public int Damage => _combatController.Damage;
-
 
         private void Awake()
         {
-            _inputController = new PlayerInputController(_data.InputData);
-
-            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
-            
-            _locomotionController = new PlayerLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform,
-                GetComponentInChildren<GroundCheckMarker>().transform);
-
-            _interactionController = GetComponent<PlayerInteractionController>();            
-            
-            _combatController = new PlayerCombatController(_data.CombatData, 
-                GetComponentInChildren<PlayerAttackAreaMarker>().GetComponent<Collider2D>());
+            InitializeNonPersistentData();
 
             if(GameSessionManager.Instance.HasSavedState)
                 LoadSessionData();
@@ -88,8 +76,7 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
 
-            _healthController.OnHealthChanged += NotifyHealthChanged;
-           
+            _healthController.OnHealthChanged += NotifyHealthChanged;           
         }
 
         private void Start()
@@ -101,8 +88,7 @@ namespace Game.Player.Brain
 
         private void FixedUpdate()
         {
-            if (_interactionController.IsInteracting)
-                return;            
+            if (_interactionController.IsInteracting || _damageFeedbackController.IsKnockedback) return;            
 
             _locomotionController.UpdateMovement(_inputController.PlayerInputs.Direction);
         }
@@ -147,6 +133,24 @@ namespace Game.Player.Brain
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
+        }
+
+        private void InitializeNonPersistentData()
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();   
+
+            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+
+            _inputController = new PlayerInputController(_data.InputData);
+
+            _locomotionController = new PlayerLocomotionController(_data.LocomotionData, rb, this.transform,
+                GetComponentInChildren<GroundCheckMarker>().transform);
+
+            _interactionController = GetComponent<PlayerInteractionController>();
+
+            _combatController = new PlayerCombatController(_data.CombatData, GetComponentInChildren<PlayerAttackArea>());
+
+            _damageFeedbackController = new PlayerDamageFeedbackController(_data.DamageHandlerData, rb, GetComponentInChildren<PlayerImageMarker>().GetComponent<SpriteRenderer>());
         }
 
         private void InitializeDefaultData()
@@ -292,6 +296,13 @@ namespace Game.Player.Brain
             if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
 
             _healthController.TakeDamage();
+
+            float damageDirection = this.transform.position.x - collision.transform.position.x;
+
+            StartCoroutine(_damageFeedbackController.ApplyKnockbackRoutine(damageDirection));
+
+            StartCoroutine(_damageFeedbackController.FlickRoutine);
+
         }
     }
 }
