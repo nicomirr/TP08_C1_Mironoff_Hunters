@@ -6,10 +6,8 @@ namespace Game.Enemy
     public class EnemyHealthController
     {
         private float _maxHealth;
-        public float MaxHealth => _maxHealth;
 
         private float _currentHealth;
-        public float CurrentHealth => _currentHealth;
 
         public event Action<float, float> OnHealthChanged;
 

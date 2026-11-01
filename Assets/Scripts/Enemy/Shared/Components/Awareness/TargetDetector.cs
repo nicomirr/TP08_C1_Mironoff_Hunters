@@ -9,29 +9,40 @@ namespace Game.Enemy
 
         private readonly Transform _ownerTransform;
 
+        private Transform _currentTarget;
+        public Transform CurrentTarget => _currentTarget;
+
         public TargetDetector(TargetDetectorDataSo data, Transform ownerTransform)
         {
             _data = data;
             _ownerTransform = ownerTransform;
         }
-              
+
         public bool CheckIfTargetInRange()
         {
-            Collider2D detected = Physics2D.OverlapCircle(_ownerTransform.position, _data.DetectionRadius,
+            Collider2D[] detected = Physics2D.OverlapCircleAll(_ownerTransform.position, _data.DetectionRadius, 
                 _data.TargetLayer);
 
-            if (detected == null) return false;
+            if (detected.Length == 0) return false;
 
-            FaceTarget(detected.transform);
-            
+            Transform closestTarget = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (Collider2D target in detected)
+            {
+                float distance = (target.transform.position - _ownerTransform.position).sqrMagnitude;
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target.transform;
+                }
+            }
+
+            _currentTarget = closestTarget;
+
             return true;
-        }
-
-        private void FaceTarget(Transform target)
-        {
-            _ownerTransform.right = target.position.x < _ownerTransform.position.x ? Vector2.left :
-                Vector2.right;
-        }
+        }        
 
         public bool TargetInAttackRange()
         {

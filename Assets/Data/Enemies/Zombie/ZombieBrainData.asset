@@ -18,3 +18,4 @@ MonoBehaviour:
   _combatData: {fileID: 11400000, guid: ebc8f1f0dbea32044b29c339b79a41c8, type: 2}
   _enemyHealthData: {fileID: 11400000, guid: 981a5358020fd474d82ae6bc5a25ceb7, type: 2}
   _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
+  _burrowData: {fileID: 11400000, guid: 892317105e4a07e4daac15ebf2db93b3, type: 2}

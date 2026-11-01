@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TargetDetectorData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.TargetDetectorDataSo
   _detectionRadius: 15
-  _attackDetectionAreaSize: {x: 1.5, y: 0.8}
+  _attackDetectionAreaSize: {x: 1.9, y: 0.8}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -22,5 +22,8 @@ namespace Game.Data
 
         [SerializeField] private EnemyDamageFeedbackControllerDataSo _damageFeedbackData;
         public EnemyDamageFeedbackControllerDataSo DamageFeedbackData => _damageFeedbackData;
+
+        [SerializeField] private ZombieBurrowControllerDataSo _burrowData;
+        public ZombieBurrowControllerDataSo BurrowData => _burrowData;
     }
 }

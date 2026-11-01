@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Npc2Dialogue
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
   _dialogue:
-  - Beware the mortui. The risen dead.
+  - Beware the underground mortui. The risen dead.
   - They hunt in packs.
   - Fortunately, those foul creatures are vulnerable to <color=red><wave amplitude=4>fire</wave></color>.
   _letterDelayTime: 0.06

@@ -10,7 +10,8 @@ namespace Game.Enemy
     [RequireComponent(typeof(Rigidbody2D))]
     public class ZombieBrain : MonoBehaviour, IHealthChangedNotifier
     {
-        [SerializeField] private ZombieBrainDataSo _data;
+        [SerializeField] private ZombieBrainDataSo _brainData;
+        [SerializeField] private BurrowLimitsDataSo _limitsData;
 
         private AnimationsController _animationsController;
 
@@ -19,18 +20,22 @@ namespace Game.Enemy
         private ZombieCombatController _combatController;
         private EnemyHealthController _healthController;
         private EnemyDamageFeedbackController _damageFeedbackController;
+        private ZombieBurrowController _burrowController;
 
         public event Action<float, float> OnHealthChanged;
 
         private void Awake()
         {
-            _animationsController = new AnimationsController(_data.AnimationsData, GetComponentInChildren<Animator>());
+            Rigidbody2D _rb = GetComponent<Rigidbody2D>();
 
-            _locomotionController = new ZombieLocomotionController(_data.LocomotionData, GetComponent<Rigidbody2D>(), this.transform);
-            _awarenessController = new ZombieAwarenessController(_data.AwarenessData, this.transform);
-            _combatController = new ZombieCombatController(_data.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
-            _healthController = new EnemyHealthController(_data.EnemyHealthData);
-            _damageFeedbackController = new EnemyDamageFeedbackController(_data.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
+            _animationsController = new AnimationsController(_brainData.AnimationsData, GetComponentInChildren<Animator>());
+
+            _locomotionController = new ZombieLocomotionController(_brainData.LocomotionData, _rb, this.transform);
+            _awarenessController = new ZombieAwarenessController(_brainData.AwarenessData, this.transform);
+            _combatController = new ZombieCombatController(_brainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
+            _healthController = new EnemyHealthController(_brainData.EnemyHealthData);
+            _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
+            _burrowController = new ZombieBurrowController(_brainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);
         }
 
         private void OnEnable()
@@ -40,12 +45,24 @@ namespace Game.Enemy
 
         private void FixedUpdate()
         {
+            if (_burrowController.IsBurrowed || _burrowController.IsBurrowing) return;
+
             HandleMovement();
         }
 
         private void Update()
         {
             _awarenessController.Update();
+
+            HandleUnburrow();
+
+            if (_burrowController.IsBurrowed || _burrowController.IsBurrowing) return;
+
+            HandleBurrow();
+
+            if (_burrowController.IsBurrowing) return;
+
+            _locomotionController.FaceTarget(_awarenessController.CurrentTarget);
 
             HandleAttack();
 
@@ -55,6 +72,30 @@ namespace Game.Enemy
         private void OnDisable()
         {
             _healthController.OnHealthChanged -= NotifyHealthChanged;
+        }       
+
+        private void HandleUnburrow()
+        {
+            _burrowController.UpdateUnburrowTimer();
+
+            if (!_awarenessController.TargetInRange) return;
+
+            _burrowController.FollowTarget(_awarenessController.CurrentTarget);
+
+            if (!_burrowController.IsBurrowed || _burrowController.IsUnburrowing) return;
+
+            if (!_burrowController.CanUnburrow) return;
+
+            StartCoroutine(_burrowController.UnburrowRoutine());
+        }
+
+        private void HandleBurrow()
+        {
+            _burrowController.UpdateBurrowTimer();
+
+            if (!_burrowController.CanBurrow) return;
+
+            StartCoroutine(_burrowController.BurrowRoutine());
         }
 
         private void HandleMovement()
@@ -106,7 +147,6 @@ namespace Game.Enemy
         {
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
-
     }
 
 }

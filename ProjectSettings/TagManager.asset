@@ -21,7 +21,7 @@ TagManager:
   - Enemy
   - EnemyAttackArea
   - PlayerAttackArea
-  - 
+  - BodyCollider
   - 
   - 
   - 
@@ -44,11 +44,11 @@ TagManager:
   - name: Npc
     uniqueID: 2306608193
     locked: 0
-  - name: Player
-    uniqueID: 249195373
-    locked: 0
   - name: Enemy
     uniqueID: 3606328879
+    locked: 0
+  - name: Player
+    uniqueID: 249195373
     locked: 0
   - name: IndoorFront
     uniqueID: 3166620057
@@ -64,6 +64,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1908006813
+    locked: 0
+  - name: Front
+    uniqueID: 464892555
     locked: 0
   m_RenderingLayers:
   - Default

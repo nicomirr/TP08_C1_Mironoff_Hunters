@@ -13,6 +13,8 @@ namespace Game.Enemy
         private bool _targetInAttackRange;
         public bool TargetInAttackRange => _targetInAttackRange;
 
+        public Transform CurrentTarget => _targetDetector.CurrentTarget;
+
         public ZombieAwarenessController(ZombieAwarenessControllerDataSo data, Transform ownerTransform)
         {
             _targetDetector = new TargetDetector(data.TargetDetectorData, ownerTransform);
