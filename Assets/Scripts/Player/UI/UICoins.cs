@@ -2,15 +2,19 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-public class UICoins : MonoBehaviour
+namespace Game.UI
 {
-    [SerializeField] private List<TMP_Text> _coinsTextBoxes;
-
-    public void UpdateCoinsText(int value)
+    public class UICoins : MonoBehaviour
     {
-        foreach (TMP_Text textBox in _coinsTextBoxes)
+        [SerializeField] private List<TMP_Text> _coinsTextBoxes;
+
+        public void UpdateCoinsText(int value)
         {
-            textBox.text = value.ToString();
+            foreach (TMP_Text textBox in _coinsTextBoxes)
+            {
+                textBox.text = value.ToString();
+            }
         }
     }
+
 }

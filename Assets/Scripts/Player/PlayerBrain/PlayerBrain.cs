@@ -7,6 +7,7 @@ using Game.Core;
 using Game.Persistence;
 using Game.SceneTransitions;
 using Game.Animations;
+using Game.Inputs;
 
 namespace Game.Player.Brain
 {    
@@ -112,6 +113,8 @@ namespace Game.Player.Brain
 
         private void OnDisable()
         {
+            _inputController.PlayerInputs.Deinitialize();
+
             SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionDataAndDisable;
 
             _deviceManager.OnPlayerDeviceReconnected -= _inputController.PlayerInputs.ReconnectGamepad;

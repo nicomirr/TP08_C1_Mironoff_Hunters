@@ -2,70 +2,75 @@ using UnityEngine;
 using Game.Core;
 using TMPro;
 
-public class UIStore : MonoBehaviour
+namespace Game.UI
 {
-    [SerializeField] private CanvasGroup _singlePlayerCanvasGroup;
-    [SerializeField] private TMP_Text _singlePlayerTextPrice;
-    [SerializeField] private TMP_Text _singlePlayerTextDescription;
-
-    [SerializeField] private CanvasGroup _player1CanvasGroup;
-    [SerializeField] private TMP_Text _player1TextPrice;
-    [SerializeField] private TMP_Text _player1TextDescription;
-
-    [SerializeField] private CanvasGroup _player2CanvasGroup;
-    [SerializeField] private TMP_Text _player2TextPrice;
-    [SerializeField] private TMP_Text _player2TextDescription;
-
-    public void DisplayText(PlayerType playerType, int value, string description)
+    public class UIStore : MonoBehaviour
     {
-        switch(playerType)
+        [SerializeField] private CanvasGroup _singlePlayerCanvasGroup;
+        [SerializeField] private TMP_Text _singlePlayerTextPrice;
+        [SerializeField] private TMP_Text _singlePlayerTextDescription;
+
+        [SerializeField] private CanvasGroup _player1CanvasGroup;
+        [SerializeField] private TMP_Text _player1TextPrice;
+        [SerializeField] private TMP_Text _player1TextDescription;
+
+        [SerializeField] private CanvasGroup _player2CanvasGroup;
+        [SerializeField] private TMP_Text _player2TextPrice;
+        [SerializeField] private TMP_Text _player2TextDescription;
+
+        public void DisplayText(PlayerType playerType, int value, string description)
         {
-            case PlayerType.Player1:
+            switch (playerType)
+            {
+                case PlayerType.Player1:
 
-                if(GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
-                {
-                    _singlePlayerCanvasGroup.alpha = 1;
-                    _singlePlayerTextPrice.text = value.ToString();
-                    _singlePlayerTextDescription.text = description;
+                    if (GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
+                    {
+                        _singlePlayerCanvasGroup.alpha = 1;
+                        _singlePlayerTextPrice.text = value.ToString();
+                        _singlePlayerTextDescription.text = description;
 
-                    return;
-                }
+                        return;
+                    }
 
-                _player1CanvasGroup.alpha = 1;
-                _player1TextPrice.text = value.ToString();
-                _player1TextDescription.text = description;
+                    _player1CanvasGroup.alpha = 1;
+                    _player1TextPrice.text = value.ToString();
+                    _player1TextDescription.text = description;
 
-                break;
+                    break;
 
-            case PlayerType.Player2:
+                case PlayerType.Player2:
 
-                _player2CanvasGroup.alpha = 1;
-                _player2TextPrice.text = value.ToString();
-                _player2TextDescription.text = description;
+                    _player2CanvasGroup.alpha = 1;
+                    _player2TextPrice.text = value.ToString();
+                    _player2TextDescription.text = description;
 
-                break;
+                    break;
+            }
+        }
+
+        public void HideText(PlayerType playerType)
+        {
+            switch (playerType)
+            {
+                case PlayerType.Player1:
+
+                    if (GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
+                    {
+                        _singlePlayerCanvasGroup.alpha = 0;
+                        return;
+                    }
+
+                    _player1CanvasGroup.alpha = 0;
+                    break;
+
+                case PlayerType.Player2:
+
+                    _player2CanvasGroup.alpha = 0;
+                    break;
+            }
         }
     }
-    
-    public void HideText(PlayerType playerType)
-    {
-        switch (playerType)
-        {
-            case PlayerType.Player1:
 
-                if (GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
-                {
-                    _singlePlayerCanvasGroup.alpha = 0;
-                    return;
-                }
-
-                _player1CanvasGroup.alpha = 0;
-                break;
-
-            case PlayerType.Player2:
-
-                _player2CanvasGroup.alpha = 0;
-                break;
-        }
-    }
 }
+

@@ -1,8 +1,9 @@
 using UnityEngine;
+using System;
 using Game.Animations;
 using Game.Data;
 using Game.Core;
-using System;
+using Game.Marker;
 
 namespace Game.Enemy
 {

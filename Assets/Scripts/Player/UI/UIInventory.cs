@@ -4,72 +4,77 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections.Generic;
 
-public class UIInventory : MonoBehaviour
+namespace Game.UI
 {
-    [SerializeField] private List<CanvasGroup> _keyboardKeys;
-    [SerializeField] private List<CanvasGroup> _buttons;
-
-    [SerializeField] private List<Image> _currentInventoryImages;
-    [SerializeField] private List<TMP_Text> _quantityTextBoxes;
-
-    private void Start()
-    {        
-        foreach(Image image  in _currentInventoryImages)
-        {
-            if (image.sprite == null)
-                image.enabled = false;
-        }
-    }
-
-    public void ChangeCurrentInventorySprite(Sprite currentInventorySprite, int quantity)
+    public class UIInventory : MonoBehaviour
     {
-        foreach (Image image in _currentInventoryImages)
-        {
-            image.sprite = currentInventorySprite;
+        [SerializeField] private List<CanvasGroup> _keyboardKeys;
+        [SerializeField] private List<CanvasGroup> _buttons;
 
-            if (image.sprite != null)
-                image.enabled = true;
+        [SerializeField] private List<Image> _currentInventoryImages;
+        [SerializeField] private List<TMP_Text> _quantityTextBoxes;
+
+        private void Start()
+        {
+            foreach (Image image in _currentInventoryImages)
+            {
+                if (image.sprite == null)
+                    image.enabled = false;
+            }
         }
 
-        foreach (TMP_Text textBox in _quantityTextBoxes)
+        public void ChangeCurrentInventorySprite(Sprite currentInventorySprite, int quantity)
         {
-            textBox.text = quantity.ToString();
-        }           
-    }
+            foreach (Image image in _currentInventoryImages)
+            {
+                image.sprite = currentInventorySprite;
 
-    public void UpdateUI(InputDevice device)
-    {
-        if(device is Keyboard)
+                if (image.sprite != null)
+                    image.enabled = true;
+            }
+
+            foreach (TMP_Text textBox in _quantityTextBoxes)
+            {
+                textBox.text = quantity.ToString();
+            }
+        }
+
+        public void UpdateUI(InputDevice device)
         {
+            if (device is Keyboard)
+            {
+                foreach (CanvasGroup group in _keyboardKeys)
+                    group.alpha = 1;
+
+                foreach (CanvasGroup group in _buttons)
+                    group.alpha = 0;
+
+                return;
+            }
+
             foreach (CanvasGroup group in _keyboardKeys)
-                group.alpha = 1;
+                group.alpha = 0;
 
             foreach (CanvasGroup group in _buttons)
-                group.alpha = 0;
+                group.alpha = 1;
 
             return;
         }
 
-        foreach (CanvasGroup group in _keyboardKeys)
-            group.alpha = 0;
-
-        foreach (CanvasGroup group in _buttons)
-            group.alpha = 1;
-
-        return;
-    }
-
-    public void HideInventory()
-    {
-        foreach (Image image in _currentInventoryImages)
+        public void HideInventory()
         {
-            image.sprite = null;
-            image.enabled = false;
-
-            foreach (TMP_Text textBox in _quantityTextBoxes)
+            foreach (Image image in _currentInventoryImages)
             {
-                textBox.text = "";
+                image.sprite = null;
+                image.enabled = false;
+
+                foreach (TMP_Text textBox in _quantityTextBoxes)
+                {
+                    textBox.text = "";
+                }
             }
         }
     }
+
 }
+

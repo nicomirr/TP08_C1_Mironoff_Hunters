@@ -1,7 +1,7 @@
 using UnityEngine;
+using System.Collections;
 using Game.Data;
 using Game.VisualEffects;
-using System.Collections;
 
 namespace Game.Player.Brain
 {

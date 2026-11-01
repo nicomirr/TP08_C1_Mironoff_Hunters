@@ -1,5 +1,5 @@
-using Game.Data;
 using UnityEngine;
+using Game.Data;
 
 namespace Game.Enemy
 {

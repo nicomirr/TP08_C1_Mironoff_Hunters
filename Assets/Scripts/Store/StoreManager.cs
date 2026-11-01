@@ -1,8 +1,9 @@
+using UnityEngine;
+using System.Collections.Generic;
 using Game.Core;
 using Game.Data;
 using Game.Player.Brain;
-using System.Collections.Generic;
-using UnityEngine;
+using Game.UI;
 
 namespace Game.Store
 {

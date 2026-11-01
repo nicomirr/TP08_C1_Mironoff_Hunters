@@ -2,26 +2,30 @@ using UnityEngine;
 using System.Collections.Generic;
 using Game.Core;
 
-public class UIHealth : MonoBehaviour
+namespace Game.UI
 {
-    [SerializeField] private List<HealthPointsGroup> _healtPoints;
-
-    public void UpdateHealth(int value)
+    public class UIHealth : MonoBehaviour
     {
-        foreach (HealthPointsGroup healthPointGroup in _healtPoints)
-        {
-            List<GameObject> objs = healthPointGroup.HealthPoints;    
-            
-            foreach(GameObject obj in objs) 
-                obj.SetActive(false);            
-        }
+        [SerializeField] private List<HealthPointsGroup> _healtPoints;
 
-        foreach (HealthPointsGroup healthPointGroup in _healtPoints)
+        public void UpdateHealth(int value)
         {
-            List<GameObject> objs = healthPointGroup.HealthPoints;
+            foreach (HealthPointsGroup healthPointGroup in _healtPoints)
+            {
+                List<GameObject> objs = healthPointGroup.HealthPoints;
 
-            for(int i = 0; i < value; i++)
-                objs[i].SetActive(true);
+                foreach (GameObject obj in objs)
+                    obj.SetActive(false);
+            }
+
+            foreach (HealthPointsGroup healthPointGroup in _healtPoints)
+            {
+                List<GameObject> objs = healthPointGroup.HealthPoints;
+
+                for (int i = 0; i < value; i++)
+                    objs[i].SetActive(true);
+            }
         }
-    }        
+    }
+
 }

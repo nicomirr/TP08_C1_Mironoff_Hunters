@@ -1,9 +1,8 @@
 using System;
 using Game.Data;
 using Game.Persistence;
-using UnityEngine;
 
-namespace Game.Player
+namespace Game.Player.Brain
 {
     public class PlayerCurrencyController
     {        

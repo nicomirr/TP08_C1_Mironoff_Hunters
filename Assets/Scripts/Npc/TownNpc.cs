@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 using System.Collections;
 using Game.Core;
-using TMPro;
+using Game.Data;
 
 namespace Game.Npc
 {

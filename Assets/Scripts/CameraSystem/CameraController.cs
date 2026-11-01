@@ -1,6 +1,7 @@
 using UnityEngine;
 using Game.CameraSystem;
 using Game.Core;
+using Game.Environment;
 
 public class CameraController : MonoBehaviour
 {

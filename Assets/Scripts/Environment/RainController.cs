@@ -2,36 +2,38 @@ using UnityEngine;
 using System.Collections;
 using Game.Data;
 
-public class RainController : MonoBehaviour
+namespace Game.Environment
 {
-    [SerializeField] private RainControllerDataSo _data;
-
-    [SerializeField] private ParticleSystem _rainParticles;
-    [SerializeField] private Animator _thunderAnimator;
-
-    private bool _isRaining;
-
-    private void Start()
+    public class RainController : MonoBehaviour
     {
-        _isRaining = true;
+        [SerializeField] private RainControllerDataSo _data;
 
+        [SerializeField] private ParticleSystem _rainParticles;
+        [SerializeField] private Animator _thunderAnimator;
 
-        _rainParticles.Play();
-        StartCoroutine(RainRoutine());
+        private bool _isRaining;
 
-    }
-
-    private IEnumerator RainRoutine()
-    {
-        while (_isRaining)
+        private void Start()
         {
-            int randomTime = Random.Range(_data.MinThunderTime, _data.MaxThunderTime);
-            
-            yield return new WaitForSeconds(randomTime);
+            _isRaining = true;
 
-            _thunderAnimator.SetTrigger(_data.ThunderAnimationTriggerHash);
+            _rainParticles.Play();
+            StartCoroutine(RainRoutine());
         }
 
-        _rainParticles.Stop();
+        private IEnumerator RainRoutine()
+        {
+            while (_isRaining)
+            {
+                int randomTime = Random.Range(_data.MinThunderTime, _data.MaxThunderTime);
+
+                yield return new WaitForSeconds(randomTime);
+
+                _thunderAnimator.SetTrigger(_data.ThunderAnimationTriggerHash);
+            }
+
+            _rainParticles.Stop();
+        }
     }
+
 }

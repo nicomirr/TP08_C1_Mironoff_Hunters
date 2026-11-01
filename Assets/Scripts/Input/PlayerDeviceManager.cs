@@ -5,172 +5,177 @@ using UnityEngine.InputSystem.Utilities;
 using System;
 using Game.Core;
 
-public class PlayerDeviceManager : MonoBehaviour
+
+namespace Game.Inputs
 {
-    public event Action<PlayerType> OnPlayerDeviceDisconnected;
-    public event Action<PlayerType, Gamepad> OnPlayerDeviceReconnected;
-    public event Action<PlayerType> OnPlayerDeviceConnected;
-    public event Action<PlayerType, KeyControl> OnKeyboardKeyPressed;
-
-    private Gamepad _player1Gamepad;
-    private Gamepad _player2Gamepad;
-
-    private bool _player1Waiting;
-    private bool _player2Waiting;
-
-    private bool _player1Disconnected;
-    private bool _player2Disconnected;
-
-    private IDisposable _keyboardSubscription;
-
-    private void OnEnable()
+    public class PlayerDeviceManager : MonoBehaviour
     {
-        InputSystem.onDeviceChange += OnDeviceChange;
+        public event Action<PlayerType> OnPlayerDeviceDisconnected;
+        public event Action<PlayerType, Gamepad> OnPlayerDeviceReconnected;
+        public event Action<PlayerType> OnPlayerDeviceConnected;
+        public event Action<PlayerType, KeyControl> OnKeyboardKeyPressed;
 
-        _keyboardSubscription = InputSystem.onAnyButtonPress.Call(OnButtonPressed);
-    }
+        private Gamepad _player1Gamepad;
+        private Gamepad _player2Gamepad;
 
-    private void Start()
-    {
-        AssignConnectedGamepads();
-    }
+        private bool _player1Waiting;
+        private bool _player2Waiting;
 
-    private void OnDisable()
-    {
-        InputSystem.onDeviceChange -= OnDeviceChange;
+        private bool _player1Disconnected;
+        private bool _player2Disconnected;
 
-        _keyboardSubscription?.Dispose();
-        _keyboardSubscription = null;
-    }
+        private IDisposable _keyboardSubscription;
 
-    public void AssignConnectedGamepads()
-    {
-        foreach (Gamepad gamepad in Gamepad.all)
+        private void OnEnable()
         {
-            HandleAvailableGamepad(gamepad);
-        }
-    }
+            InputSystem.onDeviceChange += OnDeviceChange;
 
-    private void HandleAvailableGamepad(Gamepad gamepad)
-    {
-        if (_player1Gamepad == gamepad)
-        {
-            if (_player1Disconnected)
-                RestoreGamepad(PlayerType.Player1, gamepad);
-
-            return;
+            _keyboardSubscription = InputSystem.onAnyButtonPress.Call(OnButtonPressed);
         }
 
-        if (_player2Gamepad == gamepad)
-        {            
-            if (_player2Disconnected)
-                RestoreGamepad(PlayerType.Player2, gamepad);
-
-            return;
+        private void Start()
+        {
+            AssignConnectedGamepads();
         }
 
-        if (_player1Gamepad == null || _player1Disconnected)
+        private void OnDisable()
         {
-            _player1Gamepad = gamepad;
-            RestoreGamepad(PlayerType.Player1, gamepad);
+            InputSystem.onDeviceChange -= OnDeviceChange;
+
+            _keyboardSubscription?.Dispose();
+            _keyboardSubscription = null;
         }
-        else if (_player2Gamepad == null || _player2Disconnected)
+
+        public void AssignConnectedGamepads()
         {
-            _player2Gamepad = gamepad;
-            RestoreGamepad(PlayerType.Player2, gamepad);
-        }
-    }
-
-    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
-    {
-        if (device is not Gamepad gamepad)
-            return;
-
-        switch (change)
-        {
-            case InputDeviceChange.Disconnected:
-            case InputDeviceChange.Removed:
-                HandleDisconnection(gamepad);
-                break;
-
-            case InputDeviceChange.Reconnected:
-            case InputDeviceChange.Added:
+            foreach (Gamepad gamepad in Gamepad.all)
+            {
                 HandleAvailableGamepad(gamepad);
-                break;
+            }
         }
-    }   
-    
 
-    private void HandleDisconnection(Gamepad gamepad)
-    {
-        if (_player1Gamepad == gamepad && !_player1Disconnected)
+        private void HandleAvailableGamepad(Gamepad gamepad)
         {
-            _player1Disconnected = true;
-            _player1Waiting = true;
+            if (_player1Gamepad == gamepad)
+            {
+                if (_player1Disconnected)
+                    RestoreGamepad(PlayerType.Player1, gamepad);
 
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player1);
+                return;
+            }
+
+            if (_player2Gamepad == gamepad)
+            {
+                if (_player2Disconnected)
+                    RestoreGamepad(PlayerType.Player2, gamepad);
+
+                return;
+            }
+
+            if (_player1Gamepad == null || _player1Disconnected)
+            {
+                _player1Gamepad = gamepad;
+                RestoreGamepad(PlayerType.Player1, gamepad);
+            }
+            else if (_player2Gamepad == null || _player2Disconnected)
+            {
+                _player2Gamepad = gamepad;
+                RestoreGamepad(PlayerType.Player2, gamepad);
+            }
         }
-        else if (_player2Gamepad == gamepad && !_player2Disconnected)
+
+        private void OnDeviceChange(InputDevice device, InputDeviceChange change)
         {
-            _player2Disconnected = true;
-            _player2Waiting = true;
+            if (device is not Gamepad gamepad)
+                return;
 
-            OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player2);
+            switch (change)
+            {
+                case InputDeviceChange.Disconnected:
+                case InputDeviceChange.Removed:
+                    HandleDisconnection(gamepad);
+                    break;
+
+                case InputDeviceChange.Reconnected:
+                case InputDeviceChange.Added:
+                    HandleAvailableGamepad(gamepad);
+                    break;
+            }
         }
-    }        
 
-    private void RestoreGamepad(PlayerType playerType, Gamepad gamepad)
-    {
-        bool wasWaiting;
 
-        if (playerType == PlayerType.Player1)
+        private void HandleDisconnection(Gamepad gamepad)
         {
-            wasWaiting = _player1Waiting;
+            if (_player1Gamepad == gamepad && !_player1Disconnected)
+            {
+                _player1Disconnected = true;
+                _player1Waiting = true;
 
-            _player1Disconnected = false;
-            _player1Waiting = false;
+                OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player1);
+            }
+            else if (_player2Gamepad == gamepad && !_player2Disconnected)
+            {
+                _player2Disconnected = true;
+                _player2Waiting = true;
+
+                OnPlayerDeviceDisconnected?.Invoke(PlayerType.Player2);
+            }
         }
-        else
+
+        private void RestoreGamepad(PlayerType playerType, Gamepad gamepad)
         {
-            wasWaiting = _player2Waiting;
+            bool wasWaiting;
 
-            _player2Disconnected = false;
-            _player2Waiting = false;
+            if (playerType == PlayerType.Player1)
+            {
+                wasWaiting = _player1Waiting;
+
+                _player1Disconnected = false;
+                _player1Waiting = false;
+            }
+            else
+            {
+                wasWaiting = _player2Waiting;
+
+                _player2Disconnected = false;
+                _player2Waiting = false;
+            }
+
+            OnPlayerDeviceReconnected?.Invoke(playerType, gamepad);
+
+            if (wasWaiting)
+                OnPlayerDeviceConnected?.Invoke(playerType);
         }
 
-        OnPlayerDeviceReconnected?.Invoke(playerType, gamepad);
-
-        if (wasWaiting)
-            OnPlayerDeviceConnected?.Invoke(playerType);
-    }   
-
-    public void ConfirmKeyboardConnection(PlayerType playerType)
-    {
-        if (playerType == PlayerType.Player1 && _player1Waiting)
+        public void ConfirmKeyboardConnection(PlayerType playerType)
         {
-            _player1Waiting = false;
-            OnPlayerDeviceConnected?.Invoke(PlayerType.Player1);
+            if (playerType == PlayerType.Player1 && _player1Waiting)
+            {
+                _player1Waiting = false;
+                OnPlayerDeviceConnected?.Invoke(PlayerType.Player1);
+            }
+            else if (playerType == PlayerType.Player2 && _player2Waiting)
+            {
+                _player2Waiting = false;
+                OnPlayerDeviceConnected?.Invoke(PlayerType.Player2);
+            }
         }
-        else if (playerType == PlayerType.Player2 && _player2Waiting)
+
+        private void OnButtonPressed(InputControl control)
         {
-            _player2Waiting = false;
-            OnPlayerDeviceConnected?.Invoke(PlayerType.Player2);
+            if (control is KeyControl key)
+                HandleKeyboardPressed(key);
         }
+
+        private void HandleKeyboardPressed(KeyControl key)
+        {
+            if (_player1Waiting)
+                OnKeyboardKeyPressed?.Invoke(PlayerType.Player1, key);
+
+            if (_player2Waiting)
+                OnKeyboardKeyPressed?.Invoke(PlayerType.Player2, key);
+        }
+
     }
-
-    private void OnButtonPressed(InputControl control)
-    {
-        if (control is KeyControl key)
-            HandleKeyboardPressed(key);
-    }
-
-    private void HandleKeyboardPressed(KeyControl key)
-    {
-        if (_player1Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.Player1, key);
-
-        if (_player2Waiting)
-            OnKeyboardKeyPressed?.Invoke(PlayerType.Player2, key);
-    }
-
 }
+

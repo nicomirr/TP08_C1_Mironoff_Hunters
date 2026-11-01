@@ -1,3 +1,6 @@
 using UnityEngine;
 
-public class EnemyAttackAreaMarker : MonoBehaviour { }
+namespace Game.Marker
+{
+    public class EnemyAttackAreaMarker : MonoBehaviour { }
+}
