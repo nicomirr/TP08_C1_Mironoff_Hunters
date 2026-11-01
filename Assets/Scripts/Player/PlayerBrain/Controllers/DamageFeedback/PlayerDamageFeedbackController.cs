@@ -12,6 +12,7 @@ namespace Game.Player.Brain
 
         private bool _isKnockedback;
         public bool IsKnockedback => _isKnockedback;
+        public bool IsFlickering => _spriteFlicker.IsFlickering;
 
         public IEnumerator FlickRoutine => _spriteFlicker.FlickerRoutine();
 
@@ -29,9 +30,7 @@ namespace Game.Player.Brain
             yield return new WaitForSeconds(_knockback.KnockbackTime);
 
             _isKnockedback = false;
-
         }
     }
-
 }
 

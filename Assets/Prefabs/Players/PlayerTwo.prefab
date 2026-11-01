@@ -98,7 +98,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237666396989230439}
-  - component: {fileID: 204945634151821319}
   - component: {fileID: 5315429897909318147}
   - component: {fileID: 6905430475967541373}
   - component: {fileID: 6491555292056808756}
@@ -130,18 +129,6 @@ Transform:
   - {fileID: 4846241022600318099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &204945634151821319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685827165780160743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e04966c9f70c942abe0b27ca39a082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.PlayerImageMarker
 --- !u!114 &5315429897909318147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,6 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2953340650750568229}
+  - component: {fileID: 5412490254607215150}
   - component: {fileID: 7237506870825988211}
   - component: {fileID: 7332716721142289619}
   m_Layer: 6
@@ -722,6 +710,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5237666396989230439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5412490254607215150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4855017460155231631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e04966c9f70c942abe0b27ca39a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.PlayerImageMarker
 --- !u!212 &7237506870825988211
 SpriteRenderer:
   serializedVersion: 2

@@ -15844,7 +15844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693734736477490436, guid: 3f7cce7863aeb53428c3486bd9ee1e39, type: 3}
       propertyPath: m_LightVolumeEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16531,25 +16531,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1308452573}
     m_Modifications:
-    - target: {fileID: 246586682986728806, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonGamepadP2
-      objectReference: {fileID: 0}
     - target: {fileID: 1685827165780160743, guid: 938c64b055190154ca5699877584882f, type: 3}
       propertyPath: m_Name
       value: PlayerTwo
-      objectReference: {fileID: 0}
-    - target: {fileID: 1685827165780160743, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953340650750568229, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4802721529283546507, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonKeyboardP2
       objectReference: {fileID: 0}
     - target: {fileID: 5237666396989230439, guid: 938c64b055190154ca5699877584882f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16595,14 +16579,6 @@ PrefabInstance:
       propertyPath: _deviceManager
       value: 
       objectReference: {fileID: 1671953908}
-    - target: {fileID: 6894839034872880053, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: m_text
-      value: U
-      objectReference: {fileID: 0}
-    - target: {fileID: 6905430475967541373, guid: 938c64b055190154ca5699877584882f, type: 3}
-      propertyPath: _playerType
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -342,6 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 81947877}
+  - component: {fileID: 81947880}
   - component: {fileID: 81947878}
   - component: {fileID: 81947879}
   m_Layer: 0
@@ -447,6 +448,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &81947880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81947876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0352bde4ae3d644aa88201ad6f2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.EnemyImageMarker
 --- !u!1 &84377882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,9 +1151,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7759682218996278390}
   - {fileID: 81947877}
   - {fileID: 1351743537}
+  - {fileID: 7759682218996278390}
   m_Father: {fileID: 2113761930}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!50 &1087277967
@@ -5488,7 +5501,7 @@ PrefabInstance:
       objectReference: {fileID: 1671953908}
     - target: {fileID: 3040680969380104970, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.21
+      value: -3.86
       objectReference: {fileID: 0}
     - target: {fileID: 3040680969380104970, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5643,7 +5656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237666396989230439, guid: 938c64b055190154ca5699877584882f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.37854
+      value: -1.6914597
       objectReference: {fileID: 0}
     - target: {fileID: 5237666396989230439, guid: 938c64b055190154ca5699877584882f, type: 3}
       propertyPath: m_LocalPosition.y

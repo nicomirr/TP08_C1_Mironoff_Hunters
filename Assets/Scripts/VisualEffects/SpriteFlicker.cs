@@ -11,6 +11,9 @@ namespace Game.VisualEffects
         private readonly SpriteRenderer _spriteRenderer;
         private readonly Color32 _playerOriginalColor;
 
+        private bool _isFlickering;
+        public bool IsFlickering => _isFlickering;
+
         public SpriteFlicker(SpriteFlickerDataSo data, SpriteRenderer spriteRenderer)
         {
             _data = data;
@@ -21,6 +24,8 @@ namespace Game.VisualEffects
 
         public IEnumerator FlickerRoutine()
         {
+            _isFlickering = true;
+
             int totalChanges = _data.TotalBlinks * 2;
             float flickInterval = _data.FlickerTime / totalChanges;
 
@@ -33,6 +38,8 @@ namespace Game.VisualEffects
 
                 yield return new WaitForSeconds(flickInterval);
             }
+
+            _isFlickering = false;
 
             _spriteRenderer.color = _playerOriginalColor;
 

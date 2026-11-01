@@ -17,3 +17,4 @@ MonoBehaviour:
   _awarenessData: {fileID: 11400000, guid: 2fa6a38feb46d1b4f8f6c3c181f910db, type: 2}
   _combatData: {fileID: 11400000, guid: ebc8f1f0dbea32044b29c339b79a41c8, type: 2}
   _enemyHealthData: {fileID: 11400000, guid: 981a5358020fd474d82ae6bc5a25ceb7, type: 2}
+  _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}

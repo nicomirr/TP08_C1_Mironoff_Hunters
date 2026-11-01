@@ -302,9 +302,11 @@ namespace Game.Player.Brain
 
             float damageDirection = this.transform.position.x - collision.transform.position.x;
 
-            StartCoroutine(_damageFeedbackController.ApplyKnockbackRoutine(damageDirection));
+            if(!_damageFeedbackController.IsKnockedback)
+                StartCoroutine(_damageFeedbackController.ApplyKnockbackRoutine(damageDirection));
 
-            StartCoroutine(_damageFeedbackController.FlickRoutine);
+            if(!_damageFeedbackController.IsFlickering)
+                StartCoroutine(_damageFeedbackController.FlickRoutine);
 
         }
     }

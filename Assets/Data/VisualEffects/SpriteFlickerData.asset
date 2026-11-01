@@ -16,4 +16,4 @@ MonoBehaviour:
   _totalBlinks: 3
   _flickerColor:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215

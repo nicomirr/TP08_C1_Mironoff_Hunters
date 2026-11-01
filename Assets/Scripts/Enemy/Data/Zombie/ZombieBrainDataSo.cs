@@ -19,5 +19,8 @@ namespace Game.Data
 
         [SerializeField] private EnemyHealthDataSo _enemyHealthData;
         public EnemyHealthDataSo EnemyHealthData => _enemyHealthData;
+
+        [SerializeField] private EnemyDamageFeedbackControllerDataSo _damageFeedbackData;
+        public EnemyDamageFeedbackControllerDataSo DamageFeedbackData => _damageFeedbackData;
     }
 }

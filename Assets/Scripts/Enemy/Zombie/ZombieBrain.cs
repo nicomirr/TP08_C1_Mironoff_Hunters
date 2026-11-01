@@ -18,6 +18,7 @@ namespace Game.Enemy
         private ZombieAwarenessController _awarenessController;
         private ZombieCombatController _combatController;
         private EnemyHealthController _healthController;
+        private EnemyDamageFeedbackController _damageFeedbackController;
 
         public event Action<float, float> OnHealthChanged;
 
@@ -29,6 +30,7 @@ namespace Game.Enemy
             _awarenessController = new ZombieAwarenessController(_data.AwarenessData, this.transform);
             _combatController = new ZombieCombatController(_data.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
             _healthController = new EnemyHealthController(_data.EnemyHealthData);
+            _damageFeedbackController = new EnemyDamageFeedbackController(_data.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
         }
 
         private void OnEnable()
@@ -95,6 +97,9 @@ namespace Game.Enemy
             if (!collision.TryGetComponent(out IDamageProvider damageProvider)) return;
 
             _healthController.TakeDamage(damageProvider.Damage);
+
+            if (!_damageFeedbackController.IsFlickering)
+                StartCoroutine(_damageFeedbackController.FlickRoutine);
         }
 
         private void NotifyHealthChanged(float currentHealth, float maxHealth)
