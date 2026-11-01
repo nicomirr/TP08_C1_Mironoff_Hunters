@@ -179,6 +179,26 @@ namespace Game.Enemy
             _isBurrowed = true;
         }
 
-    }
+        public void Reset()
+        {
+            _rb.linearVelocity = Vector2.zero;
 
+            _rb.simulated = false;
+            _bodyCollider.enabled = false;
+
+            _canBurrow = false;
+            _isBurrowing = false;
+            _isUnburrowing = false;
+
+            _hasOffset = false;
+            _burrowCooldownCalculated = false;
+            _unburrowCooldownCalculated = false;
+
+            _burrowTimer = 0;
+            _reenableUnburrowTimer = 0;
+
+            _isBurrowed = true;
+            _canUnburrow = true;
+        }
+    }
 }

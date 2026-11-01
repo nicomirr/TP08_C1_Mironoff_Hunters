@@ -4,6 +4,7 @@ using Game.Animations;
 using Game.Data;
 using Game.Core;
 using Game.Marker;
+using Game.Checkpoints;
 
 namespace Game.Enemy
 {
@@ -24,6 +25,8 @@ namespace Game.Enemy
 
         public event Action<float, float> OnHealthChanged;
 
+        private Vector2 _initialPos;
+
         private void Awake()
         {
             Rigidbody2D _rb = GetComponent<Rigidbody2D>();
@@ -40,11 +43,20 @@ namespace Game.Enemy
 
         private void OnEnable()
         {
+            Checkpoint.OnCheckpointUsed += ResetEnemy;
+
             _healthController.OnHealthChanged += NotifyHealthChanged;
+        }
+
+        private void Start()
+        {
+            _initialPos = this.transform.position;
         }
 
         private void FixedUpdate()
         {
+            if (!_healthController.IsAlive) return;
+
             if (_burrowController.IsBurrowed || _burrowController.IsBurrowing) return;
 
             HandleMovement();
@@ -52,6 +64,12 @@ namespace Game.Enemy
 
         private void Update()
         {
+            if (!_healthController.IsAlive)
+            {
+                _animationsController.ChangeAnimationState(AnimationStateType.Dead);
+                return;
+            }
+
             _awarenessController.Update();
 
             HandleUnburrow();
@@ -71,6 +89,8 @@ namespace Game.Enemy
 
         private void OnDisable()
         {
+            Checkpoint.OnCheckpointUsed += ResetEnemy;
+
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }       
 
@@ -132,9 +152,27 @@ namespace Game.Enemy
             else
                 _animationsController.ChangeAnimationState(AnimationStateType.Idle);
         }
+       
+        private void NotifyHealthChanged(float currentHealth, float maxHealth)
+        {
+            OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        }
+
+        private void ResetEnemy()
+        {
+            _burrowController.Reset();
+
+            this.transform.position = _initialPos;
+
+            _animationsController.Reset();
+            _combatController.Reset();
+            _healthController.Reset();
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!_healthController.IsAlive) return;
+
             if (!collision.TryGetComponent(out IDamageProvider damageProvider)) return;
 
             _healthController.TakeDamage(damageProvider.Damage);
@@ -143,10 +181,6 @@ namespace Game.Enemy
                 StartCoroutine(_damageFeedbackController.FlickRoutine);
         }
 
-        private void NotifyHealthChanged(float currentHealth, float maxHealth)
-        {
-            OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        }
     }
 
 }

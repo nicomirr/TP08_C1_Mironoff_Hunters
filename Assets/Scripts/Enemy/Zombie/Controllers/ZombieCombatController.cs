@@ -41,7 +41,10 @@ namespace Game.Enemy
             _canAttack = true;
         }      
 
+        public void Reset()
+        {
+            _canAttack = true;
+        }
     }
-
 }
 

@@ -27,7 +27,7 @@ namespace Game.Enemy
 
             _ownerTransform.right = target.position.x < _ownerTransform.position.x ? Vector2.left :
                 Vector2.right;
-        }
+        }                
     }
 
 }

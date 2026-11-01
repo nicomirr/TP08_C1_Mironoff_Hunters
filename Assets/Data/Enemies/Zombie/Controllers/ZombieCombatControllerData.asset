@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e409e5b16c47390428949c6693a9c29d, type: 3}
   m_Name: ZombieCombatControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZombieCombatControllerDataSo
-  _attackDelay: 0.08
+  _attackDelay: 0.2
   _attackTime: 0.2

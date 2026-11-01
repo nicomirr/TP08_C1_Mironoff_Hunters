@@ -32,6 +32,11 @@ namespace Game.Animations
             _currentState = animationState;
 
             _animator.Play(_animations[animationState]);
-        }       
+        }      
+        
+        public void Reset()
+        {
+            _currentState = AnimationStateType.Idle;
+        }
     }
 }

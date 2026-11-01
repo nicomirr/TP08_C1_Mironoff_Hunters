@@ -334,7 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9562c193cf84c34b9d3a64e285f4f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Enemy.ZombieBrain
-  _data: {fileID: 11400000, guid: 3d3906f6181c4b4469119aa57f128f43, type: 2}
+  _brainData: {fileID: 11400000, guid: 3d3906f6181c4b4469119aa57f128f43, type: 2}
+  _limitsData: {fileID: 11400000, guid: 0a55b5cdacf73f8469d58574f7d6bd47, type: 2}
 --- !u!61 &3871421471902295829
 BoxCollider2D:
   m_ObjectHideFlags: 0

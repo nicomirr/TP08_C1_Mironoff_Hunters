@@ -7,6 +7,7 @@ namespace Game.Core
         Moving,
         Jumping,
         Attacking,
-        End = 5,
+        Dead,
+        End = 6,
     }
 }
