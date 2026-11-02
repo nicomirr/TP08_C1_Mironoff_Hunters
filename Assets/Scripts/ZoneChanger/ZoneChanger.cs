@@ -12,6 +12,8 @@ namespace Game.SceneTransitions
 
         [SerializeField] private SceneTransitionManager _sceneTransitionManager;
 
+        [SerializeField] private PlayerPositioner _playerPositioner;
+
         private TMP_Text _textbox;
 
         private bool _canInteract;
@@ -62,6 +64,7 @@ namespace Game.SceneTransitions
 
             _canInteract = false;
 
+            _playerPositioner.SetNextSpawnId(_data.NewSpawnId);
             _sceneTransitionManager.ChangeScene(_data.SceneToLoad);
         }
 

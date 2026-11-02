@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2affbad4c688648ad88ab5b482b6a8, type: 3}
   m_Name: ToTheWoodsZone
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZoneChangerDataSo
+  _newSpawnId: 3
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
   _sceneToLoad: {fileID: 11400000, guid: 9a3d8dcdc1a9fcb4aa5725c857f552d9, type: 2}
   _availableTransitionText: TO THE WOODS
   _unavailableTransitionText: PLAYERS SHOULD BE CLOSE TO EACH OTHER
-  _interactionRadius: 1
+  _interactionRadius: 0.6378
   _closeEnoughRadius: 3

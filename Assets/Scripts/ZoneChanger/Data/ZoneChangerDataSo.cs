@@ -1,10 +1,14 @@
 using UnityEngine;
+using Game.Core;
 
 namespace Game.Data
 {
     [CreateAssetMenu(fileName = "ZoneChangerDataSo", menuName = "Scriptable Objects/ZoneChangerDataSo")]
     public class ZoneChangerDataSo : ScriptableObject
     {
+        [SerializeField] private SpawnId _newSpawnId;
+        public SpawnId NewSpawnId => _newSpawnId;
+
         [SerializeField] private LayerMask _playerLayer;
         public LayerMask PlayerLayer => _playerLayer;
 

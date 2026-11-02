@@ -14,6 +14,9 @@ namespace Game.Persistence
         private PlayerSessionData _player2Data = new();
         public PlayerSessionData Player2Data => _player2Data;
 
+        private PlayerPositionerData _playerPositionerData = new();
+        public PlayerPositionerData PlayerPositionerData => _playerPositionerData;
+
         private bool _hasSavedState;
         public bool HasSavedState => _hasSavedState;
 
@@ -42,5 +45,13 @@ namespace Game.Persistence
 
             _player2Data = data;
         }                
+
+        public void SavePlayerPositionerData(PlayerPositionerData data)
+        {
+            if(!_hasSavedState)
+                _hasSavedState = true;
+
+            _playerPositionerData = data;
+        }
     }
 }
