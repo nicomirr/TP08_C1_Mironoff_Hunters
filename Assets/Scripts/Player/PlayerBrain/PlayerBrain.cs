@@ -8,6 +8,7 @@ using Game.Persistence;
 using Game.SceneTransitions;
 using Game.Animations;
 using Game.Inputs;
+using Game.Checkpoints;
 
 namespace Game.Player.Brain
 {    
@@ -60,6 +61,7 @@ namespace Game.Player.Brain
         private void OnEnable()
         {
             SceneTransitionManager.OnSceneTransitionStarted += SaveSessionDataAndDisable;
+            Checkpoint.OnCheckpointUsed += _healthController.RestoreFullHealth;
 
             _deviceManager.OnPlayerDeviceReconnected += _inputController.PlayerInputs.ReconnectGamepad;
 
@@ -127,9 +129,10 @@ namespace Game.Player.Brain
 
         private void OnDisable()
         {
-            _inputController.PlayerInputs.Deinitialize();
-
             SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionDataAndDisable;
+            Checkpoint.OnCheckpointUsed -= _healthController.RestoreFullHealth;
+
+            _inputController.PlayerInputs.Deinitialize();
 
             _deviceManager.OnPlayerDeviceReconnected -= _inputController.PlayerInputs.ReconnectGamepad;
             _deviceManager.OnKeyboardKeyPressed -= _inputController.PlayerInputs.IsPlayerKeyboardKey;

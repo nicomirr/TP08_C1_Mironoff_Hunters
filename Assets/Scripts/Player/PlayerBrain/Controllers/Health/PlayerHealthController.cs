@@ -41,25 +41,31 @@ namespace Game.Player.Brain
             _isAlive = _currentHealth > 0;
         }
 
+        public void RestoreFullHealth(int _)
+        {
+            _currentHealth = _maxHealth;
+            RaiseHealhChanged();
+        }
+
         public void Heal()
         {
             if (_currentHealth == _maxHealth) return;   
             
-            _currentHealth++;    
-            OnHealthChanged?.Invoke(_currentHealth);
+            _currentHealth++;
+            RaiseHealhChanged();
+        }        
+
+        public void Reset()
+        {
+            _currentHealth = 1;
+            RaiseHealhChanged();
+
+            _isAlive = true;
         }
 
         public void RaiseHealhChanged()
         {
             OnHealthChanged?.Invoke(_currentHealth);
-        }
-
-        public void Reset()
-        {
-            _currentHealth = 1;
-            OnHealthChanged?.Invoke(_currentHealth);
-
-            _isAlive = true;
         }
     }
 
