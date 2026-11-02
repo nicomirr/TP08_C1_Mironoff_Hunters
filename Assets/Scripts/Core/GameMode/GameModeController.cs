@@ -9,6 +9,7 @@ namespace Game.Core
         [SerializeField] private GameObject _coopCameras;
         [SerializeField] private GameObject _singlePlayerCamera;
 
+        [SerializeField] private GameObject _playerTwoRespawner;
         [SerializeField] private GameObject _playerTwoObject;
 
         [SerializeField] private CanvasGroup _splitScreenBar;
@@ -20,6 +21,7 @@ namespace Game.Core
 
             if (GameMode.CurrentGameModeType == GameModeType.SinglePlayer)
             {
+                _playerTwoRespawner.SetActive(false);
                 _playerTwoObject.SetActive(false);
                 _coopCameras.SetActive(false);
                 _singlePlayerCamera.SetActive(true);
@@ -28,6 +30,7 @@ namespace Game.Core
             }
             else
             {
+                _playerTwoRespawner.SetActive(true);
                 _playerTwoObject.SetActive(true);
                 _coopCameras.SetActive(true);
                 _singlePlayerCamera.SetActive(false);

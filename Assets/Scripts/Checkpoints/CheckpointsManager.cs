@@ -1,21 +1,30 @@
-using Game.Animations;
-using Game.Core;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Game.Data;
 
 namespace Game.Checkpoints
 {
     public class CheckpointsManager : MonoBehaviour
     {
-        [SerializeField] List<Checkpoint> _checkpoints;
+        [SerializeField] private CheckpointManagerDataSo _data;
+
+        [SerializeField] private List<Checkpoint> _checkpoints;
+        public List<Checkpoint> Checkpoints => _checkpoints;
+
         [SerializeField] private List<GameObject> _checkpointFlashes;
         
-        private int _currentCheckpoint;
+        private int _currentCheckpointNumber;
+        public int CurrentCheckpointNumber => _currentCheckpointNumber;
 
         private void OnEnable()
         {
             Checkpoint.OnCheckpointUsed += UpdateCurrentCheckpoint;            
+        }
+
+        private void Start()
+        {
+            _currentCheckpointNumber = 0;
         }
 
         private void OnDisable()
@@ -25,7 +34,7 @@ namespace Game.Checkpoints
 
         private void UpdateCurrentCheckpoint(int checkpointNumber)
         {
-            _currentCheckpoint = checkpointNumber;
+            _currentCheckpointNumber = checkpointNumber;
 
             foreach (Checkpoint checkpoint in _checkpoints)
             {
@@ -41,7 +50,7 @@ namespace Game.Checkpoints
             foreach (GameObject checkPointFlash in _checkpointFlashes)
                 checkPointFlash.SetActive(true);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_data.DisplayFlashTime);
 
             foreach (GameObject checkPointFlash in _checkpointFlashes)
                 checkPointFlash.SetActive(false);

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd793813541b54045ad36b278331ed8c, type: 3}
   m_Name: Enabled
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerAnimationDataSo
-  _animationStateName: 2
-  _animationName: Move
+  _animationStateName: 6
+  _animationName: Enabled

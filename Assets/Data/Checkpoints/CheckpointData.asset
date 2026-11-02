@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee026e237825e14f91a2b4aad8d36d8, type: 3}
   m_Name: CheckpointData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.CheckpointDataSo
-  _checkpointUsedDelayTime: 0
-  _animationData: {fileID: 0}
+  _availableCheckpointText: REST
+  _unavailableCheckpointText: PLAYERS SHOULD BE CLOSE TO EACH OTHER
+  _closeEnoughRadius: 3
+  _interactionRadius: 1.1
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _animationData: {fileID: 11400000, guid: d8c27e066fb22c34f9133056f8063941, type: 2}

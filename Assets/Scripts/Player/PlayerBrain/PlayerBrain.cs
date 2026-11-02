@@ -41,8 +41,11 @@ namespace Game.Player.Brain
         public event Action<Sprite, int> OnSelectedSlotChanged;
         public event Action OnInventoryEmptied;
         public event Action<int> OnHealthChanged;
-
+        
         public PlayerType PlayerType => _data.InputData.playerType;
+        public bool IsAlive => _healthController.IsAlive;
+
+        private Vector2 _initialPos;
 
         private void Awake()
         {
@@ -82,6 +85,8 @@ namespace Game.Player.Brain
 
         private void Start()
         {
+            _initialPos = this.transform.position;
+
             _currencyController.RaiseCoinsValueChanged();
             _healthController.RaiseHealhChanged();
             _inventoryController.RaiseSelectedSlotChanged();
@@ -89,6 +94,8 @@ namespace Game.Player.Brain
 
         private void FixedUpdate()
         {
+            if (!_healthController.IsAlive) return;
+
             if (_interactionController.IsInteracting || _damageFeedbackController.IsKnockedback) return;            
 
             _locomotionController.UpdateMovement(_inputController.PlayerInputs.Direction);
@@ -96,6 +103,13 @@ namespace Game.Player.Brain
 
         private void Update()
         {
+            if (!_healthController.IsAlive)
+            {
+                _locomotionController.StopMovement();
+                _animationsController.ChangeAnimationState(AnimationStateType.Dead);
+                return;
+            }
+
             if (_interactionController.IsInteracting)
             {
                 _locomotionController.StopMovement();
@@ -294,8 +308,18 @@ namespace Game.Player.Brain
             OnHealthChanged?.Invoke(value);
         }
 
+        public void ResetPlayer(bool movedToCheckpoint)
+        {
+            if (!movedToCheckpoint)
+                this.transform.position = _initialPos;
+
+            _healthController.Reset();
+        }    
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!_healthController.IsAlive) return;
+
             if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
 
             _healthController.TakeDamage();

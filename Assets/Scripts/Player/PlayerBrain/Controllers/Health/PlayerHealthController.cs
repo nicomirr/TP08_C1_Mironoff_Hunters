@@ -14,10 +14,15 @@ namespace Game.Player.Brain
 
         public event Action<int> OnHealthChanged;
 
+        private bool _isAlive;
+        public bool IsAlive => _isAlive;    
+
         public PlayerHealthController(PlayerHealthControllerDataSo data)
         {
             _maxHealth = data.MaxHealth;
             _currentHealth = _maxHealth;
+
+            _isAlive = true;
         }
 
         public PlayerHealthController(PlayerSessionData data)
@@ -28,22 +33,33 @@ namespace Game.Player.Brain
 
         public void TakeDamage()
         {
-            if (_currentHealth <= 0) return;
+            if (!_isAlive) return;
 
             _currentHealth --;
             RaiseHealhChanged();
+
+            _isAlive = _currentHealth > 0;
         }
 
         public void Heal()
         {
             if (_currentHealth == _maxHealth) return;   
             
-            _currentHealth++;            
+            _currentHealth++;    
+            OnHealthChanged?.Invoke(_currentHealth);
         }
 
         public void RaiseHealhChanged()
         {
             OnHealthChanged?.Invoke(_currentHealth);
+        }
+
+        public void Reset()
+        {
+            _currentHealth = 1;
+            OnHealthChanged?.Invoke(_currentHealth);
+
+            _isAlive = true;
         }
     }
 
