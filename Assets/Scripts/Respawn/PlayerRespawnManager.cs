@@ -26,11 +26,20 @@ namespace Game.Respawn
 
         private IEnumerator RespawnPlayerRoutine()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1f);
+
+            foreach (GameObject fadeScreen in _fadeScreens)
+                fadeScreen.SetActive(true);
+
+            yield return new WaitForSeconds(0.7f);
 
             if (_checkpointsManager.CurrentCheckpointNumber == 0)
             {
                 _player.ResetPlayer(false);
+
+                foreach (GameObject fadeScreen in _fadeScreens)
+                    fadeScreen.SetActive(false);
+
                 _respawnRoutine = null;
 
                 yield break;
@@ -48,6 +57,11 @@ namespace Game.Respawn
             }
 
             _player.ResetPlayer(true);
+
+            yield return new WaitForSeconds(0.5f);
+
+            foreach (GameObject fadeScreen in _fadeScreens)
+                fadeScreen.SetActive(false);
 
             _respawnRoutine = null;
         }
