@@ -29,6 +29,8 @@ namespace Game.Player.Brain
         {
             _maxHealth = data.MaxHealth;
             _currentHealth = data.CurrentHealth;
+
+            _isAlive = true;
         }
 
         public void TakeDamage()
