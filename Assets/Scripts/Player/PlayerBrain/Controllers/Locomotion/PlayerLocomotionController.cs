@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Game.Data;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerLocomotionController 
     {

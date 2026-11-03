@@ -3,7 +3,7 @@ using System.Collections;
 using Game.Data;
 using Game.VisualEffects;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerDamageFeedbackController 
     {

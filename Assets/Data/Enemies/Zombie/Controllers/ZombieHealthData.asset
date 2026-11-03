@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: ZombieHealthData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDataSo
   _maxHealth: 10
+  _weakness: 1
+  _resistance: 2
+  _weaknessMultiplier: 1.5
+  _resistanceMultiplier: 0.5

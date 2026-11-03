@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 using Game.Data;
 using Game.Marker;
 using Game.Core;
@@ -9,14 +10,13 @@ using Game.SceneTransitions;
 using Game.Animations;
 using Game.Inputs;
 using Game.Checkpoints;
-using Game.ObjectPooling;
 
 namespace Game.Player.Brain
 {    
     [RequireComponent (typeof(Rigidbody2D))]
     [RequireComponent (typeof(PlayerInteractionController))]
         
-    public class PlayerBrain : MonoBehaviour, IPlayerIdentity
+    public class PlayerBrain : MonoBehaviour, IPlayerIdentity, ICoroutineRunner
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
@@ -32,6 +32,7 @@ namespace Game.Player.Brain
         private PlayerCombatController _combatController;
         private PlayerHealthController _healthController;
         private PlayerDamageFeedbackController _damageFeedbackController;
+        private PlayerEffectsController _effectsController;
 
         public PlayerCurrencyController CurrencyController => _currencyController;
         public PlayerInventoryController InventoryController => _inventoryController;
@@ -57,6 +58,8 @@ namespace Game.Player.Brain
                 LoadSessionData();
             else
                 InitializeDefaultData();
+
+            _effectsController = new PlayerEffectsController(this, _healthController, _combatController, this.transform);
         }
 
         private void OnEnable()
@@ -83,7 +86,7 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
 
-            _inventoryController.OnItemUsed += HandleItemUsed;
+            _inventoryController.OnItemUsed += _effectsController.HandleItemUsed;
 
             _healthController.OnHealthChanged += NotifyHealthChanged;           
         }
@@ -155,7 +158,7 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
 
-            _inventoryController.OnItemUsed -= HandleItemUsed;
+            _inventoryController.OnItemUsed -= _effectsController.HandleItemUsed;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
@@ -260,25 +263,7 @@ namespace Game.Player.Brain
             if (_inputController.PlayerInputs.UseItemPressed)
                 _inventoryController.UseCurrentSlotItem();
         }
-
-        private void HandleItemUsed(ItemType type)
-        {
-            switch (type)
-            {
-                case ItemType.HealingBalmItem:
-
-                    _healthController.Heal();
-                    GameObject healEffect = ObjectPool.Instance.GetPoolObject(PoolObjectType.HealEffect);
-                    
-                    healEffect.transform.position = this.transform.position;
-                    healEffect.SetActive(true);
-
-                    healEffect.GetComponent<ParticleSystem>().Play();
-
-                    break;
-            }
-        }
-
+                   
         private void HandleAnimations()
         {
             if (_combatController.IsAttacking)
@@ -347,19 +332,25 @@ namespace Game.Player.Brain
             if (!_healthController.IsAlive) return;
 
             if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
-
+            
             _healthController.TakeDamage();
 
-            float damageDirection = this.transform.position.x - collision.transform.position.x;
+            float hitDirection = this.transform.position.x - collision.transform.position.x;
 
             if(!_damageFeedbackController.IsKnockedback)
-                StartCoroutine(_damageFeedbackController.ApplyKnockbackRoutine(damageDirection));
+                StartCoroutine(_damageFeedbackController.ApplyKnockbackRoutine(hitDirection));
+
+            if (_healthController.IsInvulnerable) return;
 
             if(!_damageFeedbackController.IsFlickering)
                 StartCoroutine(_damageFeedbackController.FlickRoutine);
 
         }
 
+        public Coroutine RunRoutine(IEnumerator routine)
+        {
+            return StartCoroutine(routine);
+        }
     }
 }
 

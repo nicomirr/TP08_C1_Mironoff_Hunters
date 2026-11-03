@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.ObjectPooling.ObjectPool
   _poolObjects:
   - {fileID: 11400000, guid: 1845c46bafa22e54bb41f927d51ef3a2, type: 2}
+  - {fileID: 11400000, guid: 9bd933fcb78965f4594667dcd59602b6, type: 2}
+  - {fileID: 11400000, guid: 05eb2e46412dd64419bbb8758666f85b, type: 2}
+  - {fileID: 11400000, guid: ad69a2b63509d34469ff990469761ed2, type: 2}

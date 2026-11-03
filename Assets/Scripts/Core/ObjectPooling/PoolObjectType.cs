@@ -4,6 +4,9 @@ namespace Game.Core
     {
         None = 0,
         HealEffect,
-        End = 2
+        InvulnerabilityEffect,
+        FireDamageEffect,
+        PoisonDamageEffect,
+        End = 5
     }
 }

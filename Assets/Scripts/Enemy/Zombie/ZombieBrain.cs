@@ -176,7 +176,7 @@ namespace Game.Enemy
 
             if (!collision.TryGetComponent(out IDamageProvider damageProvider)) return;
 
-            _healthController.TakeDamage(damageProvider.Damage);
+            _healthController.TakeDamage(damageProvider.Damage, damageProvider.CurrentDamageType);
 
             if (!_damageFeedbackController.IsFlickering)
                 StartCoroutine(_damageFeedbackController.FlickRoutine);

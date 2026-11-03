@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System;
 using Game.Core;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerInteractionController : MonoBehaviour
     {

@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using Game.Data;
+using Game.Core;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerCombatController 
     {
@@ -28,6 +29,7 @@ namespace Game.Player.Brain
 
             _attackArea = attackArea;
             _attackArea.SetDamage(data.Damage);
+            _attackArea.SetDamageType(DamageType.Normal);
 
             _canAttack = true;
             _cooldownTimer = 0;
@@ -44,6 +46,11 @@ namespace Game.Player.Brain
                 _canAttack = true;
                 _cooldownTimer = 0;
             }
+        }
+
+        public void ChangeDamageType(DamageType damageType)
+        {
+            _attackArea.SetDamageType(damageType);
         }
 
         public IEnumerator AttackRoutine()

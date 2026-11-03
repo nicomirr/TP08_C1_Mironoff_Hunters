@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5f3113b425c0a43a81c9f6a910e654, type: 3}
   m_Name: HealEffectPoolData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ObjectPoolDataSo
-  _amount: 4
+  _amount: 8
   _poolObjectType: 1
   _prefab: {fileID: 7558116648673124168, guid: 03a595092ec7173479f834863ccf7f08, type: 3}

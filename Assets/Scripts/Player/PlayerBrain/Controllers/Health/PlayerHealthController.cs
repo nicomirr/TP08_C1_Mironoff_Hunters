@@ -2,7 +2,7 @@ using System;
 using Game.Data;
 using Game.Persistence;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerHealthController 
     {
@@ -15,7 +15,10 @@ namespace Game.Player.Brain
         public event Action<int> OnHealthChanged;
 
         private bool _isAlive;
-        public bool IsAlive => _isAlive;    
+        public bool IsAlive => _isAlive;
+
+        private bool _isInvulnerable;
+        public bool IsInvulnerable => _isInvulnerable;
 
         public PlayerHealthController(PlayerHealthControllerDataSo data)
         {
@@ -36,6 +39,7 @@ namespace Game.Player.Brain
         public void TakeDamage()
         {
             if (!_isAlive) return;
+            if (_isInvulnerable) return;
 
             _currentHealth --;
             RaiseHealhChanged();
@@ -55,7 +59,17 @@ namespace Game.Player.Brain
             
             _currentHealth++;
             RaiseHealhChanged();
-        }        
+        }       
+        
+        public void EnableInvulnerability()
+        {
+            _isInvulnerable = true;
+        }
+
+        public void DisableInvulnerability()
+        {
+            _isInvulnerable = false;
+        }
 
         public void Reset()
         {

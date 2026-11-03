@@ -2,7 +2,7 @@ using System;
 using Game.Data;
 using Game.Persistence;
 
-namespace Game.Player.Brain
+namespace Game.Player
 {
     public class PlayerCurrencyController
     {        

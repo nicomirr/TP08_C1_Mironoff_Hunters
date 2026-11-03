@@ -20,10 +20,10 @@ namespace Game.ObjectPooling
         {
             Dictionary<PoolObjectType, List<GameObject>> pool = new();
 
-            List<GameObject> objs = new();
-
             foreach (ObjectPoolDataSo poolObjectData in _poolObjects)
             {
+                List<GameObject> objs = new();
+
                 for(int i = 0; i < poolObjectData.Amount; i++)
                 {
                     GameObject prefab = GameObject.Instantiate(poolObjectData.Prefab, _parent);
