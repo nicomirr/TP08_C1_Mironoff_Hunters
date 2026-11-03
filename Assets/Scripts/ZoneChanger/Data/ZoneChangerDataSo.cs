@@ -9,6 +9,9 @@ namespace Game.Data
         [SerializeField] private SpawnId _newSpawnId;
         public SpawnId NewSpawnId => _newSpawnId;
 
+        [SerializeField] private Vector2 _newOrientation;
+        public Vector2 NewOrientation => _newOrientation;
+
         [SerializeField] private LayerMask _playerLayer;
         public LayerMask PlayerLayer => _playerLayer;
 

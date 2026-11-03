@@ -64,7 +64,8 @@ namespace Game.SceneTransitions
 
             _canInteract = false;
 
-            _playerPositioner.SetNextSpawnId(_data.NewSpawnId);
+            //esos 2 pueden ser un unico So
+            _playerPositioner.SetNextSpawnInfo(_data.NewSpawnId, _data.NewOrientation);
             _sceneTransitionManager.ChangeScene(_data.SceneToLoad);
         }
 

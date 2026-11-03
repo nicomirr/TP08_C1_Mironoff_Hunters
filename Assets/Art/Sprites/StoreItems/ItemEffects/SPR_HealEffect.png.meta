@@ -1,0 +1,649 @@
+fileFormatVersion: 2
+guid: 96ee7c6ba308c0744bc77447c82f5d25
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6023728580822312188
+    second: SPR_HealEffect_0
+  - first:
+      213: 1880901115029669346
+    second: SPR_HealEffect_1
+  - first:
+      213: 5979927281492072847
+    second: SPR_HealEffect_2
+  - first:
+      213: -1336976812769497461
+    second: SPR_HealEffect_3
+  - first:
+      213: -5770588241129914479
+    second: SPR_HealEffect_4
+  - first:
+      213: -5744727717867889365
+    second: SPR_HealEffect_5
+  - first:
+      213: 5716463184715282984
+    second: SPR_HealEffect_6
+  - first:
+      213: 4439776427693987113
+    second: SPR_HealEffect_7
+  - first:
+      213: -8289163669269124414
+    second: SPR_HealEffect_8
+  - first:
+      213: 8335000603173064257
+    second: SPR_HealEffect_9
+  - first:
+      213: -3483821075580609046
+    second: SPR_HealEffect_10
+  - first:
+      213: -949610815997414689
+    second: SPR_HealEffect_11
+  - first:
+      213: -3755591844848418612
+    second: SPR_HealEffect_12
+  - first:
+      213: 6818476309036588152
+    second: SPR_HealEffect_13
+  - first:
+      213: 4343819941805594099
+    second: SPR_HealEffect_14
+  - first:
+      213: 4400554599880977718
+    second: SPR_HealEffect_15
+  - first:
+      213: 3915735552095912719
+    second: SPR_HealEffect_16
+  - first:
+      213: 7292779765157175672
+    second: SPR_HealEffect_17
+  - first:
+      213: 3626537701085363099
+    second: SPR_HealEffect_18
+  - first:
+      213: 6011648053978501189
+    second: SPR_HealEffect_19
+  - first:
+      213: -4856403276831725927
+    second: SPR_HealEffect_20
+  - first:
+      213: -2557948681950357605
+    second: SPR_HealEffect_21
+  - first:
+      213: -72664204091580667
+    second: SPR_HealEffect_22
+  - first:
+      213: 2201835523032921449
+    second: SPR_HealEffect_23
+  - first:
+      213: -7361890647922588393
+    second: SPR_HealEffect_24
+  - first:
+      213: 535665483453326323
+    second: SPR_HealEffect_25
+  - first:
+      213: 4933231492053989448
+    second: SPR_HealEffect_26
+  - first:
+      213: -5650401106678114451
+    second: SPR_HealEffect_27
+  - first:
+      213: -6568523569562205143
+    second: SPR_HealEffect_28
+  - first:
+      213: -1959692313568643930
+    second: SPR_HealEffect_29
+  - first:
+      213: -8453974337712814279
+    second: SPR_HealEffect_30
+  - first:
+      213: -6146657970015946611
+    second: SPR_HealEffect_31
+  - first:
+      213: -396650753063727930
+    second: SPR_HealEffect_32
+  - first:
+      213: 8263866851327687151
+    second: SPR_HealEffect_33
+  - first:
+      213: -5624158728743277623
+    second: SPR_HealEffect_34
+  - first:
+      213: 6922725798391104540
+    second: SPR_HealEffect_35
+  - first:
+      213: 2685497572592843071
+    second: SPR_HealEffect_36
+  - first:
+      213: -780454849840584996
+    second: SPR_HealEffect_37
+  - first:
+      213: 5074776729796987202
+    second: SPR_HealEffect_38
+  - first:
+      213: -3813516890172603468
+    second: SPR_HealEffect_39
+  - first:
+      213: -2368107524945366246
+    second: SPR_HealEffect_40
+  - first:
+      213: -1289687918075320658
+    second: SPR_HealEffect_41
+  - first:
+      213: 175801756841551755
+    second: SPR_HealEffect_42
+  - first:
+      213: 3023874343138940641
+    second: SPR_HealEffect_43
+  - first:
+      213: -7809644759026235396
+    second: SPR_HealEffect_44
+  - first:
+      213: -1269440599335079014
+    second: SPR_HealEffect_45
+  - first:
+      213: -8648191345232287589
+    second: SPR_HealEffect_46
+  - first:
+      213: -6529569725638949980
+    second: SPR_HealEffect_47
+  - first:
+      213: 8881216435746735859
+    second: SPR_HealEffect_48
+  - first:
+      213: -1348709668591419250
+    second: SPR_HealEffect_49
+  - first:
+      213: -6902047818064081070
+    second: SPR_HealEffect_50
+  - first:
+      213: 340646309047901485
+    second: SPR_HealEffect_51
+  - first:
+      213: 4845988478472528217
+    second: SPR_HealEffect_52
+  - first:
+      213: -4383075182625002894
+    second: SPR_HealEffect_53
+  - first:
+      213: -6169762238872441312
+    second: SPR_HealEffect_54
+  - first:
+      213: -1767811773678787913
+    second: SPR_HealEffect_55
+  - first:
+      213: -1407433732062115069
+    second: SPR_HealEffect_56
+  - first:
+      213: -3587399032840909257
+    second: SPR_HealEffect_57
+  - first:
+      213: 6358555220314643412
+    second: SPR_HealEffect_58
+  - first:
+      213: 274633495526094889
+    second: SPR_HealEffect_59
+  - first:
+      213: -3277441330905089708
+    second: SPR_HealEffect_60
+  - first:
+      213: -5192761758413832293
+    second: SPR_HealEffect_61
+  - first:
+      213: 5352725352806984434
+    second: SPR_HealEffect_62
+  - first:
+      213: -1447224192975113097
+    second: SPR_HealEffect_63
+  - first:
+      213: 1926422352827127245
+    second: SPR_HealEffect_64
+  - first:
+      213: -8696616264451135673
+    second: SPR_HealEffect_65
+  - first:
+      213: 8233399135311417261
+    second: SPR_HealEffect_66
+  - first:
+      213: -8590360935718502999
+    second: SPR_HealEffect_67
+  - first:
+      213: 2053016972003818225
+    second: SPR_HealEffect_68
+  - first:
+      213: 4127991886901643061
+    second: SPR_HealEffect_69
+  - first:
+      213: -5830496550616437765
+    second: SPR_HealEffect_70
+  - first:
+      213: 2274901387863900555
+    second: SPR_HealEffect_71
+  - first:
+      213: 8857994867208848638
+    second: SPR_HealEffect_72
+  - first:
+      213: 4958638162155410908
+    second: SPR_HealEffect_73
+  - first:
+      213: -2953360890673933763
+    second: SPR_HealEffect_74
+  - first:
+      213: -3793269351129707185
+    second: SPR_HealEffect_75
+  - first:
+      213: 4219116928065018029
+    second: SPR_HealEffect_76
+  - first:
+      213: 7279463347684055325
+    second: SPR_HealEffect_77
+  - first:
+      213: -7720132370684253978
+    second: SPR_HealEffect_78
+  - first:
+      213: 679033114331753117
+    second: SPR_HealEffect_79
+  - first:
+      213: 837266342932866345
+    second: SPR_HealEffect_80
+  - first:
+      213: 3377087584036945086
+    second: SPR_HealEffect_81
+  - first:
+      213: -6067900326453398313
+    second: SPR_HealEffect_82
+  - first:
+      213: 1975531257033531857
+    second: SPR_HealEffect_83
+  - first:
+      213: -5651767687443738272
+    second: SPR_HealEffect_84
+  - first:
+      213: 3363781843793127789
+    second: SPR_HealEffect_85
+  - first:
+      213: -3301446526790811087
+    second: SPR_HealEffect_86
+  - first:
+      213: -8807367900479949039
+    second: SPR_HealEffect_87
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SPR_HealEffect_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40bd7b455ca676ca0800000000000000
+      internalID: -6023728580822312188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e5caf2499d4a1a10800000000000000
+      internalID: 1880901115029669346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f899004fd28fcf250800000000000000
+      internalID: 5979927281492072847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ea0f12caa127de0800000000000000
+      internalID: -1336976812769497461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19fb76e8190caefa0800000000000000
+      internalID: -5770588241129914479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_5
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2dd425d390a640b0800000000000000
+      internalID: -5744727717867889365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_6
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a7d88baf4f45f40800000000000000
+      internalID: 5716463184715282984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_7
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9255ad653214d9d30800000000000000
+      internalID: 4439776427693987113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_8
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cae3288f89f6fc80800000000000000
+      internalID: -8289163669269124414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_9
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e0cca43eedba370800000000000000
+      internalID: 8335000603173064257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HealEffect_10
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed9ff8903bf6afc0800000000000000
+      internalID: -3483821075580609046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b66c5e31a01d90544a5138e35e454845
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":192.0,"y":192.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      SPR_HealEffect_0: -6023728580822312188
+      SPR_HealEffect_1: 1880901115029669346
+      SPR_HealEffect_10: -3483821075580609046
+      SPR_HealEffect_2: 5979927281492072847
+      SPR_HealEffect_3: -1336976812769497461
+      SPR_HealEffect_4: -5770588241129914479
+      SPR_HealEffect_5: -5744727717867889365
+      SPR_HealEffect_6: 5716463184715282984
+      SPR_HealEffect_7: 4439776427693987113
+      SPR_HealEffect_8: -8289163669269124414
+      SPR_HealEffect_9: 8335000603173064257
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

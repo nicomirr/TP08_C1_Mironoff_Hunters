@@ -31,11 +31,13 @@ namespace Game.Enemy
             yield return new WaitForSeconds(_data.AttackDelay);
 
             _hitCollider.enabled = true;
+
             _isAttacking = true;
 
             yield return new WaitForSeconds(_data.AttackTime);
 
             _hitCollider.enabled = false;
+
             _isAttacking = false;
 
             _canAttack = true;

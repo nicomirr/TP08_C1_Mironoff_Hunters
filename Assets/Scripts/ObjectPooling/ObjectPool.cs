@@ -41,11 +41,8 @@ namespace Game.ObjectPooling
 
             foreach (GameObject obj in pool)
             {
-                if(!obj.activeSelf)
-                {
-                    obj.SetActive(false);
-                    return obj;
-                }
+                if(!obj.activeSelf)                
+                    return obj;                
             }
 
             Debug.LogError("Error. El pool deberia devolver siempre un objeto", this);

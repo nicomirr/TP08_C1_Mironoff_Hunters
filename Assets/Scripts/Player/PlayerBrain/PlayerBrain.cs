@@ -9,6 +9,7 @@ using Game.SceneTransitions;
 using Game.Animations;
 using Game.Inputs;
 using Game.Checkpoints;
+using Game.ObjectPooling;
 
 namespace Game.Player.Brain
 {    
@@ -82,6 +83,8 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
 
+            _inventoryController.OnItemUsed += HandleItemUsed;
+
             _healthController.OnHealthChanged += NotifyHealthChanged;           
         }
 
@@ -151,6 +154,8 @@ namespace Game.Player.Brain
             _inventoryController.OnSelectedSlotChanged -= NotifySelectedSlotChanged;
 
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
+
+            _inventoryController.OnItemUsed -= HandleItemUsed;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
@@ -256,6 +261,24 @@ namespace Game.Player.Brain
                 _inventoryController.UseCurrentSlotItem();
         }
 
+        private void HandleItemUsed(ItemType type)
+        {
+            switch (type)
+            {
+                case ItemType.HealingBalmItem:
+
+                    _healthController.Heal();
+                    GameObject healEffect = ObjectPool.Instance.GetPoolObject(PoolObjectType.HealEffect);
+                    
+                    healEffect.transform.position = this.transform.position;
+                    healEffect.SetActive(true);
+
+                    healEffect.GetComponent<ParticleSystem>().Play();
+
+                    break;
+            }
+        }
+
         private void HandleAnimations()
         {
             if (_combatController.IsAttacking)
@@ -336,6 +359,7 @@ namespace Game.Player.Brain
                 StartCoroutine(_damageFeedbackController.FlickRoutine);
 
         }
+
     }
 }
 

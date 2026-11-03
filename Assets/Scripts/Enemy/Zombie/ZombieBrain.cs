@@ -80,7 +80,8 @@ namespace Game.Enemy
 
             if (_burrowController.IsBurrowing) return;
 
-            _locomotionController.FaceTarget(_awarenessController.CurrentTarget);
+            if (!_combatController.IsAttacking)
+                _locomotionController.FaceTarget(_awarenessController.CurrentTarget);
 
             HandleAttack();
 
@@ -89,7 +90,7 @@ namespace Game.Enemy
 
         private void OnDisable()
         {
-            Checkpoint.OnCheckpointUsed += ResetEnemy;
+            Checkpoint.OnCheckpointUsed -= ResetEnemy;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }       

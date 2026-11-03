@@ -7,12 +7,17 @@ namespace Game.SceneTransitions
 {
     public class PlayerPositioner : MonoBehaviour
     {
-        [SerializeField] private List<SpawnPositionId> _spawnSpots;
+        [SerializeField] private List<SpawnPositionInfo> _spawnSpots;
+
+        [SerializeField] private Transform _singlePlayerCamera;
+        [SerializeField] private Transform _playerOneCamera;
+        [SerializeField] private Transform _playerTwoCamera;
 
         [SerializeField] private Transform _playerOne;
         [SerializeField] private Transform _playerTwo;
 
         private SpawnId _currentSpawnId;
+        private Vector2 _currentOrientation;
                        
         private void OnEnable()
         {
@@ -28,7 +33,7 @@ namespace Game.SceneTransitions
 
             Transform spawnTransform = null;
 
-            foreach(SpawnPositionId spawnId in _spawnSpots)
+            foreach(SpawnPositionInfo spawnId in _spawnSpots)
             {
                 if(spawnId.Id == _currentSpawnId)
                 {
@@ -39,8 +44,15 @@ namespace Game.SceneTransitions
             if (spawnTransform == null)
                 return; 
 
+            _singlePlayerCamera.transform.position = new Vector3(spawnTransform.position.x, spawnTransform.position.y, -10);
+            _playerOneCamera.transform.position = new Vector3(spawnTransform.position.x, spawnTransform.position.y, -10);
+            _playerTwoCamera.transform.position = new Vector3(spawnTransform.position.x + 2, spawnTransform.position.y, -10);
+
             _playerOne.transform.position = spawnTransform.position;
+            _playerOne.transform.right = _currentOrientation;
+
             _playerTwo.transform.position = new Vector2(spawnTransform.position.x + 2, spawnTransform.position.y);
+            _playerTwo.transform.right = _currentOrientation;
         }
 
         private void OnDisable()
@@ -48,24 +60,27 @@ namespace Game.SceneTransitions
             SceneTransitionManager.OnSceneTransitionStarted -= SaveData;
         }
 
-        public void SetNextSpawnId(SpawnId spawnId)
+        public void SetNextSpawnInfo(SpawnId spawnId, Vector2 orientation)
         {
             _currentSpawnId = spawnId;
+            _currentOrientation = orientation;
         }
 
         private void InitializeDefaultData()
         {
             _currentSpawnId = SpawnId.Initial;
+            _currentOrientation = Vector2.right;
         }
 
         private void LoadSesionData()
         {
             _currentSpawnId = GameSessionManager.Instance.PlayerPositionerData.SpawnId;
+            _currentOrientation = GameSessionManager.Instance.PlayerPositionerData.Orientation;
         }
 
         private void SaveData()
         {
-            GameSessionManager.Instance.SavePlayerPositionerData(new PlayerPositionerData(_currentSpawnId));
+            GameSessionManager.Instance.SavePlayerPositionerData(new PlayerPositionerData(_currentSpawnId, _currentOrientation));
         }
 
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ToTheWoodsZone
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZoneChangerDataSo
   _newSpawnId: 3
+  _newOrientation: {x: 1, y: 0}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64

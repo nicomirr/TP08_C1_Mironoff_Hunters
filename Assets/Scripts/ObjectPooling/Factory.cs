@@ -13,6 +13,7 @@ namespace Game.ObjectPooling
         public Factory(List<ObjectPoolDataSo> poolObjects, Transform parent)
         {
             _poolObjects = poolObjects;
+            _parent = parent;
         }
 
         public Dictionary<PoolObjectType, List<GameObject>> GetPoolObjects()

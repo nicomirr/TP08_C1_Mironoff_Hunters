@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ToTownZone
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZoneChangerDataSo
   _newSpawnId: 2
+  _newOrientation: {x: -1, y: 0}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64

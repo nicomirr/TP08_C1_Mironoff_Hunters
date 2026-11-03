@@ -1,4 +1,5 @@
 using Game.Data;
+using Game.Core;
 
 namespace Game.Player
 {
@@ -24,9 +25,11 @@ namespace Game.Player
         }               
 
         //Quizas puede retornar el item? 
-        public void UseItem()
-        {
+        public ItemType UseItem()
+        {           
             _quantity--;
+
+            return _inventoryItem.ItemType;
         }
 
     }

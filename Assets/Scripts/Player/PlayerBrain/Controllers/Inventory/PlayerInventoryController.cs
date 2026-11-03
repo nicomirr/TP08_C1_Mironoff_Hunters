@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using Game.Data;
 using Game.Persistence;
+using Game.Core;
+
 
 namespace Game.Player
 {
@@ -14,6 +16,8 @@ namespace Game.Player
         public event Action<Sprite, int> OnSelectedSlotChanged;
 
         public event Action OnInventoryEmptied;
+
+        public event Action<ItemType> OnItemUsed;
 
         private int _currentSlot;                  
         public int CurrentSlot => _currentSlot;
@@ -84,7 +88,9 @@ namespace Game.Player
 
             InventorySlot currentSlot = _inventorySlots[_currentSlot];
 
-            currentSlot.UseItem();
+            ItemType usedItem = currentSlot.UseItem();
+
+            OnItemUsed?.Invoke(usedItem);
 
             if(_inventorySlots[_currentSlot].Quantity == 0)
             {
