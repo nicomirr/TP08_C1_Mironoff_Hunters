@@ -17,5 +17,5 @@ MonoBehaviour:
   _description: 'Poison Power
 
 
-    Imbues weapon with poison for 4 strikes, dealing
-    extra damage and potentially inflicting poisoning.'
+    Imbues the user''s weapon with poison, dealing
+    additional poison damage.'

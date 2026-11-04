@@ -172,8 +172,6 @@ namespace Game.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("entra");
-
             if (!_healthController.IsAlive) return;
 
             if (!collision.TryGetComponent(out IDamageProvider damageProvider)) return;

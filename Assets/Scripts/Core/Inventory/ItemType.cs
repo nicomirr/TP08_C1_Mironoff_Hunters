@@ -8,8 +8,7 @@ namespace Game.Core
         Embers,
         PosionPowder,
         HollyWater,
-        HolyProtection,
-        End = 7
+        End = 6
     }
 }
 
