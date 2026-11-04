@@ -446,8 +446,8 @@ TextureImporter:
       name: SPR_WorldTiles_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 24
+        y: 8
         width: 8
         height: 8
       alignment: 0
@@ -468,7 +468,7 @@ TextureImporter:
       name: SPR_WorldTiles_16
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
         width: 8
         height: 8
@@ -490,7 +490,7 @@ TextureImporter:
       name: SPR_WorldTiles_17
       rect:
         serializedVersion: 2
-        x: 16
+        x: 8
         y: 0
         width: 8
         height: 8
@@ -504,6 +504,28 @@ TextureImporter:
       bones: []
       spriteID: 0519a37a50c6d134492234b15d2f0c74
       internalID: 562146324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_WorldTiles_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1d0738fa238d048b8ab73422f82b8c
+      internalID: 188113176
       vertices: []
       indices: 
       edges: []
@@ -534,6 +556,7 @@ TextureImporter:
       SPR_WorldTiles_15: 881697309
       SPR_WorldTiles_16: 1825412196
       SPR_WorldTiles_17: 562146324
+      SPR_WorldTiles_18: 188113176
       SPR_WorldTiles_2: -1506089233
       SPR_WorldTiles_3: -1086730728
       SPR_WorldTiles_4: 1441062441

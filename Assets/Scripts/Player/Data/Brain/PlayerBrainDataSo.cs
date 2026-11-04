@@ -25,6 +25,9 @@ namespace Game.Data
 
         [SerializeField] private PlayerDamageFeedbackControllerDataSo _damageHandlerData;
         public PlayerDamageFeedbackControllerDataSo DamageHandlerData => _damageHandlerData;
+
+        [SerializeField] private PlayerEffectsControllerDataSo _effectsData;
+        public PlayerEffectsControllerDataSo EffectsData => _effectsData;
     }
 }
 

@@ -19,3 +19,4 @@ MonoBehaviour:
   _combatData: {fileID: 11400000, guid: 3c96462004b1fd24694656c029757da2, type: 2}
   _healthData: {fileID: 11400000, guid: 27e16f5095bba584f9859fb1fcd7a5e0, type: 2}
   _damageHandlerData: {fileID: 11400000, guid: 77630d0591abdb4479d3507feea08feb, type: 2}
+  _effectsData: {fileID: 11400000, guid: 8b5de2864ff11cc4e932e45b8ec81415, type: 2}

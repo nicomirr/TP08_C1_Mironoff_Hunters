@@ -7,6 +7,8 @@ namespace Game.Core
         InvulnerabilityEffect,
         FireDamageEffect,
         PoisonDamageEffect,
-        End = 5
+        HollyWaterThrowable,
+        HollyWaterExplosion,
+        End = 7
     }
 }

@@ -7,7 +7,7 @@ namespace Game.Core
         WardingCharm,
         Embers,
         PosionPowder,
-        HolyWater,
+        HollyWater,
         HolyProtection,
         End = 7
     }

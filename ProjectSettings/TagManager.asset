@@ -22,7 +22,7 @@ TagManager:
   - EnemyAttackArea
   - PlayerAttackArea
   - BodyCollider
-  - 
+  - Throwable
   - 
   - 
   - 

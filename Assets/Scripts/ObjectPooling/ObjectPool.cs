@@ -1,7 +1,9 @@
-using UnityEngine;
-using System.Collections.Generic;
-using Game.Data;
 using Game.Core;
+using Game.Data;
+using Game.Player;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game.ObjectPooling
 {
@@ -30,9 +32,28 @@ namespace Game.ObjectPooling
             _factory = new Factory(_poolObjects, this.transform);
         }
 
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        
         private void Start()
         {
             _objectsPool = _factory.GetPoolObjects();
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            foreach(KeyValuePair<PoolObjectType, List<GameObject>> pair in _objectsPool)
+            {
+                foreach(GameObject obj in pair.Value)
+                    obj.SetActive(false);
+            }
         }
 
         public GameObject GetPoolObject(PoolObjectType type)
@@ -48,6 +69,26 @@ namespace Game.ObjectPooling
             Debug.LogError("Error. El pool deberia devolver siempre un objeto", this);
 
             return null;
+        }
+
+        public void DisableDamageEffects()
+        {
+            List<GameObject> fireDamageEffects = _objectsPool[PoolObjectType.FireDamageEffect];
+            List<GameObject> poisonEffects = _objectsPool[PoolObjectType.PoisonDamageEffect];
+
+            foreach(GameObject obj in fireDamageEffects)
+                obj.SetActive(false);
+
+            foreach(GameObject obj in poisonEffects)
+                obj.SetActive(false);
+        }
+
+        public void DisableInvulnerabilityEffects()
+        {
+            List<GameObject> invulnerabilityEffects = _objectsPool[PoolObjectType.InvulnerabilityEffect];
+
+            foreach (GameObject obj in invulnerabilityEffects)
+                obj.SetActive(false);
         }
     }
 

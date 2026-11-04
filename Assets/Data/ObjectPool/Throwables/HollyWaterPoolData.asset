@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5f3113b425c0a43a81c9f6a910e654, type: 3}
+  m_Name: HollyWaterPoolData
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ObjectPoolDataSo
+  _amount: 10
+  _poolObjectType: 5
+  _prefab: {fileID: 6067911939768104072, guid: 09dac16d85df3034a8ba3761f61108fe, type: 3}

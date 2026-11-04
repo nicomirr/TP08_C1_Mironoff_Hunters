@@ -11,7 +11,7 @@ namespace Game.Player
         private float _damageMod;
 
         private DamageType _currentDamageType;
-        public DamageType CurrentDamageType => _currentDamageType;
+        public DamageType DamageType => _currentDamageType;
 
         private float _currentDamage;
         public float Damage => _currentDamage;

@@ -59,7 +59,8 @@ namespace Game.Player.Brain
             else
                 InitializeDefaultData();
 
-            _effectsController = new PlayerEffectsController(this, _healthController, _combatController, this.transform);
+            _effectsController = new PlayerEffectsController(_data.EffectsData, this, _healthController, _combatController, this.transform, 
+                GetComponent<Rigidbody2D>());
         }
 
         private void OnEnable()
