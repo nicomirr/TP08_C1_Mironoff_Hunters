@@ -10,6 +10,7 @@ namespace Game.Core
         Dead,
         Enabled,
         Disabled,
-        End = 8,
+        Shooting,
+        End = 9,
     }
 }

@@ -1,9 +1,9 @@
-using Game.Core;
-using Game.Data;
-using Game.Player;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using Game.Core;
+using Game.Data;
+using Game.Checkpoints;
 
 namespace Game.ObjectPooling
 {
@@ -35,6 +35,7 @@ namespace Game.ObjectPooling
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            Checkpoint.OnCheckpointUsed += DisableBullets;
         }
         
         private void Start()
@@ -45,6 +46,7 @@ namespace Game.ObjectPooling
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            Checkpoint.OnCheckpointUsed -= DisableBullets;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -88,6 +90,14 @@ namespace Game.ObjectPooling
             List<GameObject> invulnerabilityEffects = _objectsPool[PoolObjectType.InvulnerabilityEffect];
 
             foreach (GameObject obj in invulnerabilityEffects)
+                obj.SetActive(false);
+        }
+
+        private void DisableBullets(int _)
+        {
+            List<GameObject> plantBullets = _objectsPool[PoolObjectType.PlantBullet];
+
+            foreach(GameObject obj in plantBullets)
                 obj.SetActive(false);
         }
     }

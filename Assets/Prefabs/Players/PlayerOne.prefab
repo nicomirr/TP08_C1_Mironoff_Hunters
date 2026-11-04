@@ -1164,7 +1164,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 249195373
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: fdd2d98422a831e40bcfe89d8e53a1bd, type: 3}
@@ -1498,6 +1498,7 @@ GameObject:
   - component: {fileID: 3040680969380104970}
   - component: {fileID: 1569042287358735127}
   - component: {fileID: 8519008902008644153}
+  - component: {fileID: 4624460390617588965}
   - component: {fileID: 1207385457262812900}
   - component: {fileID: 9907497484350473}
   m_Layer: 6
@@ -1555,6 +1556,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionController
   _playerType: 1
+--- !u!114 &4624460390617588965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524068086057765833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92dc3b8160b1d740a270c0545d0ae3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Marker.PlayerMarker
 --- !u!61 &1207385457262812900
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120ef5fc3bac1fa4e99db55c87c3c39d, type: 3}
+  m_Name: PlantBrainData
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlantBrainDataSo
+  _animationsData: {fileID: 11400000, guid: 195d24e076c53cf4ca31e149a2ae66fe, type: 2}
+  _awarenessData: {fileID: 11400000, guid: df6389a27cb3efa4aba86003fb18a91c, type: 2}
+  _enemyHealthData: {fileID: 11400000, guid: 981a5358020fd474d82ae6bc5a25ceb7, type: 2}
+  _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
+  _combatData: {fileID: 11400000, guid: 03e609b41df207348b5fbc4a3cfa8dcb, type: 2}

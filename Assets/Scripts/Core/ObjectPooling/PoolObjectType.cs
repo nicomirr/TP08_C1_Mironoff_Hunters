@@ -9,6 +9,7 @@ namespace Game.Core
         PoisonDamageEffect,
         HollyWaterThrowable,
         HollyWaterExplosion,
-        End = 7
+        PlantBullet,
+        End = 8
     }
 }

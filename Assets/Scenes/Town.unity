@@ -9024,7 +9024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd48beceac217714c9498f74011a5710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Core.GameModeController
-  _testCoop: 1
+  _testCoop: 0
   _coopCameras: {fileID: 658096812}
   _singlePlayerCamera: {fileID: 879222071}
   _playerTwoRespawner: {fileID: 964560324}

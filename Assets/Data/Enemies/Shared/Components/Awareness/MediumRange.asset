@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155aa8849e214034eb5269a3c13dbcfe, type: 3}
-  m_Name: TargetDetectorData
+  m_Name: MediumRange
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.TargetDetectorDataSo
   _detectionRadius: 15
   _attackDetectionAreaSize: {x: 1.9, y: 0.8}

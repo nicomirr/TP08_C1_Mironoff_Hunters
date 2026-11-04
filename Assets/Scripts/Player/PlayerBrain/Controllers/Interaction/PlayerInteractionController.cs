@@ -39,6 +39,8 @@ namespace Game.Player
             _currentInteractable.Interact(interactAction, this.transform, _playerType);
         }
 
+        //REVISAR. PUEDE IR AL BRAIN?
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (_currentInteractable != null) return;

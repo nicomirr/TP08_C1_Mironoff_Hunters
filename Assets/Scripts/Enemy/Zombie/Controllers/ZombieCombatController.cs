@@ -8,7 +8,7 @@ namespace Game.Enemy
     {
         private readonly ZombieCombatControllerDataSo _data;
 
-        private Collider2D _hitCollider;
+        private readonly Collider2D _hitCollider;
 
         private bool _isAttacking;
         public bool IsAttacking => _isAttacking;
