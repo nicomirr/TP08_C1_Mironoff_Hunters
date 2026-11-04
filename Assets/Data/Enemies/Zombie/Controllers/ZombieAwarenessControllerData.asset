@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480055a66c21ef04791b6bb91a2a59c6, type: 3}
+  m_Script: {fileID: 11500000, guid: b753b6ee73851f1488ab4c3cbf99d39a, type: 3}
   m_Name: ZombieAwarenessControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZombieAwarenessControllerDataSo
   _targetDetectorData: {fileID: 11400000, guid: 9de1990873b65074986fa25b480734e3, type: 2}

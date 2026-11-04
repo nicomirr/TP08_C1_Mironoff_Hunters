@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Game.Data
 {
-    [CreateAssetMenu(fileName = "ZombieAwarenessControllerDataSo", menuName = "Scriptable Objects/ZombieAwarenessControllerDataSo")]
-    public class ZombieAwarenessControllerDataSo : ScriptableObject
+    [CreateAssetMenu(fileName = "EnemyAwarenessControllerDataSo", menuName = "Scriptable Objects/EnemyAwarenessControllerDataSo")]
+    public class EnemyAwarenessControllerDataSo : ScriptableObject
     {
         [SerializeField] private TargetDetectorDataSo _targetDetectorData;
         public TargetDetectorDataSo TargetDetectorData => _targetDetectorData;

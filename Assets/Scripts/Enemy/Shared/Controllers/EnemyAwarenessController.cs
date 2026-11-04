@@ -3,7 +3,7 @@ using Game.Data;
 
 namespace Game.Enemy
 {
-    public class ZombieAwarenessController
+    public class EnemyAwarenessController
     {
         private readonly TargetDetector _targetDetector;
 
@@ -15,7 +15,7 @@ namespace Game.Enemy
 
         public Transform CurrentTarget => _targetDetector.CurrentTarget;
 
-        public ZombieAwarenessController(ZombieAwarenessControllerDataSo data, Transform ownerTransform)
+        public EnemyAwarenessController(EnemyAwarenessControllerDataSo data, Transform ownerTransform)
         {
             _targetDetector = new TargetDetector(data.TargetDetectorData, ownerTransform);
         }
