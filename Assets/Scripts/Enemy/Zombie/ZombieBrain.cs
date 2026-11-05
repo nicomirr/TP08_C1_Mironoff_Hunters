@@ -45,6 +45,7 @@ namespace Game.Enemy
         {
             if (!_healthController.IsAlive)
             {
+                _combatController.DisableAttackCollider();
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
                 return;
             }

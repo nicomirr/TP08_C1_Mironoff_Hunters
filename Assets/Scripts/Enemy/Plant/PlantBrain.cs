@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using Game.Data;
 using Game.Core;
@@ -8,7 +9,6 @@ namespace Game.Enemy
     public class PlantBrain : EnemyBrain
     {
         private PlantBrainDataSo _plantBrainData;
-
         private PlantCombatController _combatController;
 
         protected override void Awake()
@@ -17,13 +17,15 @@ namespace Game.Enemy
 
             _plantBrainData = _brainData as PlantBrainDataSo;
 
-            _combatController = new PlantCombatController(_plantBrainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform);
+            _combatController = new PlantCombatController(_plantBrainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform,
+                GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
         }
 
         private void Update()
         {
             if (!_healthController.IsAlive)
             {
+                _combatController.DisableAttackCollider();
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
                 return;
             }
@@ -38,53 +40,45 @@ namespace Game.Enemy
         {
             _combatController.UpdateCooldownTimer();
 
-            if (!_combatController.CanAttack) return;
-
-            if (_awarenessController.TargetInAttackRange)
+            if (!_combatController.CanAttack)
                 return;
 
-            if (_awarenessController.TargetInRange)            
-                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget.position));                    
+            if (_awarenessController.TargetInAttackRange)
+            {
+                StartCoroutine(_combatController.AttackRoutine());
+                return;
+            }
+
+            if (_awarenessController.TargetInRange)
+            {
+                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget.position));
+            }
         }
 
         private void HandleAnimations()
         {
-
-            if (_awarenessController.TargetInRange)
+            if (_combatController.IsAttacking)
             {
-
-                if (_combatController.IsShooting)                
-                    _animationsController.ChangeAnimationState(AnimationStateType.Shooting);                
-                else
-                    _animationsController.ChangeAnimationState(AnimationStateType.Idle);
-
+                _animationsController.ChangeAnimationState(AnimationStateType.Attacking);
                 return;
             }
+
+            if (_combatController.IsShooting)
+            {
+                _animationsController.ChangeAnimationState(AnimationStateType.Shooting);
+                return;
+            }
+
+            _animationsController.ChangeAnimationState(AnimationStateType.Idle);
         }
 
-        //private void HandleAnimations()
-        //{
-        //    if (_awarenessController.TargetInAttackRange)
-        //    {
-        //        if (_combatController.IsAttacking)
-        //            _animationsController.ChangeAnimationState(AnimationStateType.Attacking);
-        //        else
-        //            _animationsController.ChangeAnimationState(AnimationStateType.Idle);
-
-        //        return;
-        //    }
-
-        //    if (_awarenessController.TargetInRange)
-        //        _animationsController.ChangeAnimationState(AnimationStateType.Moving);
-        //    else
-        //        _animationsController.ChangeAnimationState(AnimationStateType.Idle);
-        //}
-
-        protected override void ResetEnemy(int _)
+        protected override void ResetEnemy(int checkpointNumber)
         {
-            base.ResetEnemy(_);
+            StopAllCoroutines();
+
+            base.ResetEnemy(checkpointNumber);
+
+            _combatController.Reset();
         }
     }
-
 }
-

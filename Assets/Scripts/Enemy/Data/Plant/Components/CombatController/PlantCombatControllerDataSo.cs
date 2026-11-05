@@ -5,6 +5,15 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "PlantCombatControllerDataSo", menuName = "Scriptable Objects/PlantCombatControllerDataSo")]
     public class PlantCombatControllerDataSo : ScriptableObject
     {
+        [SerializeField] private float _attackDelay;
+        public float AttackDelay => _attackDelay;
+
+        [SerializeField] private float _windupTime;
+        public float WindupTime => _windupTime; 
+
+        [SerializeField] private float _attackTime;
+        public float AttackTime => _attackTime;
+
         [SerializeField] private float _shootTime;
         public float ShootTime => _shootTime;
 

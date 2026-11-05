@@ -43,6 +43,13 @@ namespace Game.Enemy
             _canAttack = true;
         }      
 
+        public void DisableAttackCollider()
+        {
+            if (!_hitCollider.enabled) return;
+
+            _hitCollider.enabled = false;
+        }
+
         public void Reset()
         {
             _canAttack = true;
