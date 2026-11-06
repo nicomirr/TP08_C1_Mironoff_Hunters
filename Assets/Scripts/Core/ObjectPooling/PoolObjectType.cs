@@ -10,6 +10,7 @@ namespace Game.Core
         HollyWaterThrowable,
         HollyWaterExplosion,
         PlantBullet,
-        End = 8
+        Coin,
+        End = 9
     }
 }

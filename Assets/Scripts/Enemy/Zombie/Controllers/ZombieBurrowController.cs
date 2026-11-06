@@ -179,6 +179,17 @@ namespace Game.Enemy
             _isBurrowed = true;
         }
 
+        public void ForceBurrow()
+        {
+            if (_isBurrowed || _isBurrowing || _isUnburrowing) return;
+
+            _burrowTimer = 0f;
+            _burrowCooldown = 0f;
+            _burrowCooldownCalculated = false;
+
+            _canBurrow = true;
+        }
+
         public void Reset()
         {
             _rb.linearVelocity = Vector2.zero;

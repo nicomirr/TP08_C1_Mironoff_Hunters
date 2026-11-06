@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00223c99333c4d048be76c110d12b200, type: 3}
   m_Name: PlantCombatControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlantCombatControllerDataSo
+  _attackDelay: 0.7
+  _windupTime: 0.15
+  _attackTime: 0.4
   _shootTime: 0.35
   _minCooldownTime: 0.65
   _maxCooldownTime: 1

@@ -1,10 +1,7 @@
 using UnityEngine;
-using System;
-using Game.Animations;
 using Game.Data;
 using Game.Core;
 using Game.Marker;
-using Game.Checkpoints;
 
 namespace Game.Enemy
 {
@@ -47,6 +44,8 @@ namespace Game.Enemy
             {
                 _combatController.DisableAttackCollider();
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
+                _pickablesSpawner.SpawnPickables();
+
                 return;
             }
 
@@ -135,7 +134,18 @@ namespace Game.Enemy
 
             _combatController.Reset();
         }
-        
+
+        protected override void OnTriggerEnter2D(Collider2D collision)
+        {
+            base.OnTriggerEnter2D(collision);
+
+            if (collision.TryGetComponent(out ZombieLimitMarker _))
+                _burrowController.ForceBurrow();        
+
+            
+            
+        }
+
     }
 
 }

@@ -52,7 +52,7 @@ namespace Game.Store
 
                     if (!hasSpace) return;
 
-                    _playerOne.CurrencyController.ChangeCurrency(value);
+                    _playerOne.CurrencyController.SubstractCurrency(value);
 
                     break;
 
@@ -66,7 +66,7 @@ namespace Game.Store
 
                     if (!hasSpace) return;
 
-                    _playerTwo.CurrencyController.ChangeCurrency(value);
+                    _playerTwo.CurrencyController.SubstractCurrency(value);
 
                     break;
             }

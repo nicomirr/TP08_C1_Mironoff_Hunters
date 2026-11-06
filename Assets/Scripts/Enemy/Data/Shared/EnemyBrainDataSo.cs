@@ -16,6 +16,9 @@ namespace Game.Data
 
         [SerializeField] private EnemyDamageFeedbackControllerDataSo _damageFeedbackData;
         public EnemyDamageFeedbackControllerDataSo DamageFeedbackData => _damageFeedbackData;
+
+        [SerializeField] private PickableSpawnerDataSo _spawnerData;
+        public PickableSpawnerDataSo SpawnerData => _spawnerData;
     }
 
 }

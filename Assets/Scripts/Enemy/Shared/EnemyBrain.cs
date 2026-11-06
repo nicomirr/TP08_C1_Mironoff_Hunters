@@ -18,6 +18,8 @@ namespace Game.Enemy
         protected EnemyHealthController _healthController;
         protected EnemyDamageFeedbackController _damageFeedbackController;
 
+        protected PickableSpawner _pickablesSpawner;
+
         public event Action<float, float> OnHealthChanged;
 
         protected Vector2 _initialPos;
@@ -29,6 +31,8 @@ namespace Game.Enemy
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
             _healthController = new EnemyHealthController(_brainData.EnemyHealthData);
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
+
+            _pickablesSpawner = new PickableSpawner(_brainData.SpawnerData, this.transform);
         }
 
         private void OnEnable()
@@ -61,18 +65,21 @@ namespace Game.Enemy
 
             _animationsController.Reset();
             _healthController.Reset();
+            _pickablesSpawner.Reset();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (!_healthController.IsAlive) return;
 
-            if (!collision.TryGetComponent(out IDamageProvider damageProvider)) return;
+            if (collision.TryGetComponent(out IDamageProvider damageProvider))
+            {
+                _healthController.TakeDamage(damageProvider.Damage, damageProvider.DamageType);
 
-            _healthController.TakeDamage(damageProvider.Damage, damageProvider.DamageType);
-
-            if (!_damageFeedbackController.IsFlickering)
-                StartCoroutine(_damageFeedbackController.FlickRoutine);
+                if (!_damageFeedbackController.IsFlickering)
+                    StartCoroutine(_damageFeedbackController.FlickRoutine);
+            }
+            
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db9ea34b9fd59b43b5635951b8dd6d7, type: 3}
   m_Name: PlantHealthData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthDataSo
-  _maxHealth: 7
+  _maxHealth: 8
   _weakness: 1
   _resistance: 2
   _weaknessMultiplier: 1.5

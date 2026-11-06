@@ -10,6 +10,7 @@ using Game.SceneTransitions;
 using Game.Animations;
 using Game.Inputs;
 using Game.Checkpoints;
+using Game.Pickables;
 
 namespace Game.Player.Brain
 {    
@@ -33,6 +34,8 @@ namespace Game.Player.Brain
         private PlayerHealthController _healthController;
         private PlayerDamageFeedbackController _damageFeedbackController;
         private PlayerEffectsController _effectsController;
+
+        private PlayerPickablesHandler _pickablesHandler;
 
         public PlayerCurrencyController CurrencyController => _currencyController;
         public PlayerInventoryController InventoryController => _inventoryController;
@@ -61,6 +64,8 @@ namespace Game.Player.Brain
 
             _effectsController = new PlayerEffectsController(_data.EffectsData, this, _healthController, _combatController, this.transform, 
                 GetComponent<Rigidbody2D>());
+
+            _pickablesHandler = new PlayerPickablesHandler(_currencyController);
         }
 
         private void OnEnable()
@@ -331,6 +336,12 @@ namespace Game.Player.Brain
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!_healthController.IsAlive) return;
+
+            if (collision.TryGetComponent(out Pickable pickable))
+            {
+                _pickablesHandler.HandleCollectedPickable(pickable.PickableType, pickable.Amount);
+                pickable.gameObject.SetActive(false);
+            }
 
             if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
             

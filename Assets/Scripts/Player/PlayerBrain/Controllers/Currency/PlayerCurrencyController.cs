@@ -26,7 +26,13 @@ namespace Game.Player
             return _currentCoins >= value;
         }
 
-        public void ChangeCurrency(int value)
+        public void AddCurrency(int value)
+        {
+            _currentCoins += value;
+            OnCoinsValueChanged?.Invoke(_currentCoins);
+        }
+
+        public void SubstractCurrency(int value)
         {
             _currentCoins -= value;
             OnCoinsValueChanged?.Invoke(_currentCoins);            

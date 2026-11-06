@@ -34,7 +34,7 @@ namespace Game.Player
             RaycastHit2D hit = Physics2D.BoxCast(_groundCheckTransform.position, _groundCheckSize, 0, Vector3.down,
                 _groundCheckDistance, _groundLayer);
 
-            _isGrounded = hit;
+            _isGrounded = hit.collider != null && hit.normal.y > 0.1f;
 
             if (_isGrounded != _isGroundedPreviousState)
             {

@@ -38,7 +38,10 @@ namespace Game.Enemy
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out PlayerMarker _))
+            {
+                _lifeTimer = 0;
                 this.gameObject.SetActive(false);
+            }
         }
     }
 

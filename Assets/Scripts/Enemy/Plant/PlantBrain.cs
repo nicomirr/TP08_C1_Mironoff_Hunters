@@ -27,6 +27,8 @@ namespace Game.Enemy
             {
                 _combatController.DisableAttackCollider();
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
+                _pickablesSpawner.SpawnPickables();
+
                 return;
             }
 
