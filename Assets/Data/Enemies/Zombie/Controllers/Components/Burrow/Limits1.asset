@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Limits1
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BurrowLimitsDataSo
   _minX: 14
-  _maxX: 32
+  _maxX: 67

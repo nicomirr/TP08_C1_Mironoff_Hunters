@@ -9,6 +9,8 @@ namespace Game.Enemy
     public class PlantBrain : EnemyBrain
     {
         private PlantBrainDataSo _plantBrainData;
+
+        private PlantLocomotionController _locomotionController;
         private PlantCombatController _combatController;
 
         protected override void Awake()
@@ -17,6 +19,7 @@ namespace Game.Enemy
 
             _plantBrainData = _brainData as PlantBrainDataSo;
 
+            _locomotionController = new PlantLocomotionController(this.transform);
             _combatController = new PlantCombatController(_plantBrainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform,
                 GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
         }
@@ -33,6 +36,9 @@ namespace Game.Enemy
             }
 
             _awarenessController.Update();
+
+            if (!_combatController.IsAttacking && !_combatController.IsShooting)
+                _locomotionController.FaceTarget(_awarenessController.CurrentTarget);
 
             HandleAnimations();
             HandleAttack();

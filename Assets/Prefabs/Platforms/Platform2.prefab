@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916698497222289405}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 159.72, y: 1.65, z: 0}
   m_LocalScale: {x: 1.3085836, y: 0.98045015, z: 1}
   m_ConstrainProportionsScale: 0
@@ -155,7 +155,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 100
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
