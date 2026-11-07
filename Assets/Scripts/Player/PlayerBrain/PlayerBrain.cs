@@ -11,6 +11,7 @@ using Game.Animations;
 using Game.Inputs;
 using Game.Checkpoints;
 using Game.Pickables;
+using Game.Environment;
 
 namespace Game.Player.Brain
 {    
@@ -337,7 +338,19 @@ namespace Game.Player.Brain
                 this.transform.position = _initialPos;
 
             _healthController.Reset();
-        }    
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.gameObject.TryGetComponent(out IMovementProvider movementProvider))
+                _locomotionController.HandleOutsideMovement(movementProvider);
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out IMovementProvider _))
+                _locomotionController.StopOutsideMovement();
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

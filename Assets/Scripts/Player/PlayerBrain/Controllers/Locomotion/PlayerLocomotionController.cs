@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Game.Data;
+using Game.Core;
 
 namespace Game.Player
 {
@@ -31,7 +32,18 @@ namespace Game.Player
         public void UpdateMovement(float direction)
         {
             _facing.Flip(direction);
-            _movement.Move(direction);
+            _movement.ChangeDirection(direction);
+            _movement.UpdateMovement();
+        }
+
+        public void HandleOutsideMovement(IMovementProvider movementProvider)
+        {
+            _movement.HandleOutsideMovement(movementProvider);
+        }
+
+        public void StopOutsideMovement()
+        {
+            _movement.StopOutsideMovement();
         }
 
         public void UpdateCoyoteTime()
