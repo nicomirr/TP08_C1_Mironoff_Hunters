@@ -9,8 +9,9 @@ namespace Game.Core
         PoisonDamageEffect,
         HollyWaterThrowable,
         HollyWaterExplosion,
-        PlantBullet,
+        PlantBulletFast,
         Coin,
-        End = 9
+        PlantBulletNormal,
+        End = 10
     }
 }

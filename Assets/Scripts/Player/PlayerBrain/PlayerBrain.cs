@@ -132,12 +132,13 @@ namespace Game.Player.Brain
                 return;
             }
 
+            HandleGroundedState();
             HandleJumpUpdate();
             HandleAttack();
             HandleInteractions();
             HandleInventoryInputs();
             HandleAnimations();
-        }               
+        }       
 
         private void OnDisable()
         {
@@ -222,11 +223,16 @@ namespace Game.Player.Brain
             this.gameObject.SetActive(false);
         }
 
+        private void HandleGroundedState()
+        {
+            _locomotionController.UpdateGroundState();
+            _locomotionController.UpdateLocomotionBySurfaceType();
+        }
+
         private void HandleJumpUpdate()
         {
             _locomotionController.UpdateCoyoteTime();
             _locomotionController.UpdateGravity();
-            _locomotionController.UpdateGroundState();
 
             if (_inputController.PlayerInputs.JumpReleased)
                 _locomotionController.CutJump();

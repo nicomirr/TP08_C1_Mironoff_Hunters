@@ -11,6 +11,8 @@ namespace Game.Thorns
 
         [SerializeField] private List<ThornMaskController> _thornControllers = new();
 
+        [SerializeField] private float _initialDelayTime;
+
         private bool _isAlive;
 
         private void Start()
@@ -22,9 +24,8 @@ namespace Game.Thorns
 
         private IEnumerator RevealRoutine()
         {
-            float initialDelayTime = Random.Range(_data.MinInitialDelayTime, _data.MaxInitialDelayTime);
 
-            yield return new WaitForSeconds(initialDelayTime);            
+            yield return new WaitForSeconds(_initialDelayTime);            
 
             while (_isAlive)
             {                

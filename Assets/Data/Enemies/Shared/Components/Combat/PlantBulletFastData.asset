@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a269a2817e119348bea711c90c24485, type: 3}
-  m_Name: Limits1
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BurrowLimitsDataSo
-  _minX: 14
-  _maxX: 67
+  m_Script: {fileID: 11500000, guid: bbe2f82b364a02142a874cb2f5a303ed, type: 3}
+  m_Name: PlantBulletFastData
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BulletDataSo
+  _speed: 13
+  _lifeTime: 10

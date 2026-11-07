@@ -49,6 +49,13 @@ namespace Game.Player
             _groundCheck.UpdateGroundedState();
         }
 
+        public void UpdateLocomotionBySurfaceType()
+        {
+            _movement.ChangeMovementSpeedType(_groundCheck.IsOnMud);
+            _jump.ChangeJumpState(_groundCheck.IsOnMud);
+
+        }
+
         public bool HandleJump()
         {
             if (!_jump.CanJump) return false;

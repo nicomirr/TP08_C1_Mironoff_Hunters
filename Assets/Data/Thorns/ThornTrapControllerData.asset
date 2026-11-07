@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: ThornTrapControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ThornTrapControllerDataSo
   _thornSpawnTime: 0.03
-  _minInitialDelayTime: 0
-  _maxInitialDelayTime: 2
-  _activeTime: 5
-  _inactiveTime: 8
+  _activeTime: 3
+  _inactiveTime: 6

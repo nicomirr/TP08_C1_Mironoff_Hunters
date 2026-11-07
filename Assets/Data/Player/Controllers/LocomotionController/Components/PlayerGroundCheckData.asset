@@ -15,5 +15,8 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  _mudLayer:
+    serializedVersion: 2
+    m_Bits: 262144
   _groundCheckSize: {x: 0.55, y: 0.04}
   _groundCheckDistance: 0.04

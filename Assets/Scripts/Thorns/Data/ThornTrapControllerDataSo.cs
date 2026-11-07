@@ -8,12 +8,6 @@ namespace Game.Data
         [SerializeField] private float _thornSpawnTime;
         public float ThornSpawnTime => _thornSpawnTime;
 
-        [SerializeField] private float _minInitialDelayTime;
-        public float MinInitialDelayTime => _minInitialDelayTime;
-
-        [SerializeField] private float _maxInitialDelayTime;
-        public float MaxInitialDelayTime => _maxInitialDelayTime;
-
         [SerializeField] private float _activeTime;
         public float ActiveTime => _activeTime;
 

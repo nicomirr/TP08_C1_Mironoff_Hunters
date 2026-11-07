@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerJumpData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerJumpDataSo
   _coyoteTime: 0.13
-  _jumpForce: 13
+  _regularJumpForce: 13
   _jumpCutMultiplier: 0.3

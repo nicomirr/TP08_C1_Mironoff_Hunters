@@ -13,6 +13,10 @@ namespace Game.Player
 
         private bool _jumpUsed;
         private bool _doubleJumpUsed;
+      
+        private float _jumpForce;
+
+        private bool _isOnMud;
 
         public bool AllJumpsUsed => _jumpUsed && _doubleJumpUsed;
 
@@ -22,6 +26,8 @@ namespace Game.Player
         {
             _data = data;
             _rb = rb;
+
+            _jumpForce = _data.RegularJumpForce;
         }
 
         public void UpdateCoyoteTime(bool isGrounded)
@@ -33,11 +39,13 @@ namespace Game.Player
         }
 
         public void Jump()
-        {            
+        {
+            if (_isOnMud) return;
+
             _coyoteTimer = 0;
 
             _rb.linearVelocityY = 0f;
-            _rb.AddForce(Vector2.up * _data.JumpForce, ForceMode2D.Impulse);
+            _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 
             if (!_jumpUsed)
             {
@@ -46,6 +54,11 @@ namespace Game.Player
             }
 
             _doubleJumpUsed = true;
+        }
+
+        public void ChangeJumpState(bool isOnMud)
+        {
+            _isOnMud = isOnMud;
         }
 
         public void CutJump()

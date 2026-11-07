@@ -380,7 +380,7 @@ TextureImporter:
       name: SPR_WorldTiles_12
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 16
         width: 8
         height: 8
@@ -402,8 +402,8 @@ TextureImporter:
       name: SPR_WorldTiles_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
+        x: 40
+        y: 16
         width: 8
         height: 8
       alignment: 0
@@ -424,7 +424,7 @@ TextureImporter:
       name: SPR_WorldTiles_14
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 8
         width: 8
         height: 8
@@ -446,7 +446,7 @@ TextureImporter:
       name: SPR_WorldTiles_15
       rect:
         serializedVersion: 2
-        x: 16
+        x: 8
         y: 8
         width: 8
         height: 8
@@ -468,7 +468,7 @@ TextureImporter:
       name: SPR_WorldTiles_16
       rect:
         serializedVersion: 2
-        x: 24
+        x: 16
         y: 8
         width: 8
         height: 8
@@ -490,7 +490,7 @@ TextureImporter:
       name: SPR_WorldTiles_17
       rect:
         serializedVersion: 2
-        x: 32
+        x: 24
         y: 8
         width: 8
         height: 8
