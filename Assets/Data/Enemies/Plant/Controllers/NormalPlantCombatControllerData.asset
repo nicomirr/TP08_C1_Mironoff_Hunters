@@ -18,4 +18,4 @@ MonoBehaviour:
   _shootTime: 0.35
   _minCooldownTime: 0.65
   _maxCooldownTime: 1
-  _rangeAttackData: {fileID: 11400000, guid: f0a62ec8ef786d14eb2e113f7be412a2, type: 2}
+  _rangeAttackData: {fileID: 11400000, guid: 680b47573eac154428aa93f15d8248c7, type: 2}
