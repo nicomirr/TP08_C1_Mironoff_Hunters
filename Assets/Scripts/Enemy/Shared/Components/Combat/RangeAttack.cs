@@ -1,6 +1,7 @@
 using UnityEngine;
 using Game.Data;
 using Game.ObjectPooling;
+using Game.Core;
 
 namespace Game.Enemy
 {
@@ -15,14 +16,38 @@ namespace Game.Enemy
             _shootPoint = shootPoint;
         }
 
-        public void Shoot(Vector2 targetPosition)
+        public void Shoot(Transform target)
         {
-            GameObject bullet = ObjectPool.Instance.GetPoolObject(_data.BulletType);
-            
-            bullet.transform.position = _shootPoint.position;
-            bullet.SetActive(true);
+            GameObject bulletObject = ObjectPool.Instance.GetPoolObject(_data.BulletType);
+            Bullet bullet = bulletObject.GetComponent<Bullet>();
 
-            bullet.GetComponent<Bullet>().Move(targetPosition);
+            Vector2 targetPosition = target.position;
+
+            if (target.GetComponent<IMovementProviderHolder>().MovementProvider != null)
+            {
+                Debug.Log("Entra");
+                targetPosition = AnticipateMovement(target, bullet.Speed);        
+            }
+
+            bulletObject.transform.position = _shootPoint.position;
+            bulletObject.SetActive(true);
+
+            bullet.Move(targetPosition);
+        }
+
+        private Vector2 AnticipateMovement(Transform target, float bulletSpeed)
+        {
+            Vector2 targetPosition = target.position;
+
+            Vector2 shootPosition = _shootPoint.position;
+
+            Rigidbody2D targetRb = target.GetComponent<Rigidbody2D>();
+
+            float travelTime = Vector2.Distance(shootPosition, targetPosition) / bulletSpeed;
+
+            targetPosition.x += targetRb.linearVelocityX * travelTime;
+
+            return targetPosition;
         }
     }
 }

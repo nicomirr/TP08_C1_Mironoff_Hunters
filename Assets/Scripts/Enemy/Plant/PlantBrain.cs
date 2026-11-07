@@ -59,7 +59,7 @@ namespace Game.Enemy
 
             if (_awarenessController.TargetInRange)
             {
-                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget.position));
+                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));
             }
         }
 

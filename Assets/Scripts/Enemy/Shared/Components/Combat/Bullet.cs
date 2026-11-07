@@ -12,6 +12,8 @@ namespace Game.Enemy
 
         private float _lifeTimer;
 
+        public float Speed => _data.Speed;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();

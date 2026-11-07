@@ -1,4 +1,3 @@
-
 using Game.Data;
 using System.Collections;
 using UnityEngine;
@@ -24,10 +23,7 @@ namespace Game.Enemy
         private float _cooldownTime;
         private float _cooldownTimer;
 
-        public PlantCombatController(
-            PlantCombatControllerDataSo data,
-            Transform shootPoint,
-            Collider2D hitCollider)
+        public PlantCombatController(PlantCombatControllerDataSo data, Transform shootPoint, Collider2D hitCollider)
         {
             _data = data;
             _rangeAttack = new RangeAttack(data.RangeAttackData, shootPoint);
@@ -36,12 +32,12 @@ namespace Game.Enemy
             _canAttack = true;
         }
 
-        public IEnumerator ShootRoutine(Vector2 targetPosition)
+        public IEnumerator ShootRoutine(Transform target)
         {
             _canAttack = false;
             _isShooting = true;
 
-            _rangeAttack.Shoot(targetPosition);
+            _rangeAttack.Shoot(target);
 
             yield return new WaitForSeconds(_data.ShootTime);
 

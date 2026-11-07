@@ -12,6 +12,8 @@ namespace Game.Player
         private readonly PlayerFacing _facing;
         private readonly PlayerGroundCheck _groundCheck;
         private readonly PlayerGravity _gravity;
+
+        public IMovementProvider MovementProvider => _movement.MovementProvider;
         public bool IsGrounded => _groundCheck.IsGrounded;
 
         public event Action OnJustLanded

@@ -18,7 +18,7 @@ namespace Game.Player.Brain
     [RequireComponent (typeof(Rigidbody2D))]
     [RequireComponent (typeof(PlayerInteractionController))]
         
-    public class PlayerBrain : MonoBehaviour, IPlayerIdentity, ICoroutineRunner
+    public class PlayerBrain : MonoBehaviour, IPlayerIdentity, ICoroutineRunner, IMovementProviderHolder
     {
         [SerializeField] private PlayerBrainDataSo _data;
 
@@ -49,8 +49,10 @@ namespace Game.Player.Brain
         public event Action OnInventoryEmptied;
         public event Action<int> OnHealthChanged;
         
+        public IMovementProvider MovementProvider => _locomotionController.MovementProvider;
         public PlayerType PlayerType => _data.InputData.playerType;
         public bool IsAlive => _healthController.IsAlive;
+
 
         private Vector2 _initialPos;
 

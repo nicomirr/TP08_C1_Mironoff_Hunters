@@ -16,6 +16,7 @@ namespace Game.Player
 
         private float _outsideMovement;
         private float _direction;
+        public IMovementProvider MovementProvider => _movementProvider;
 
         public PlayerMovement(PlayerMovementDataSo data, Rigidbody2D rb)
         {
