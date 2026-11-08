@@ -68,10 +68,7 @@ namespace Game.Enemy
 
         private void StartCooldown()
         {
-            _cooldownTime = Random.Range(
-                _data.MinCooldownTime,
-                _data.MaxCooldownTime
-            );
+            _cooldownTime = Random.Range(_data.MinCooldownTime, _data.MaxCooldownTime);
 
             _cooldownTimer = 0f;
             _canAttack = false;

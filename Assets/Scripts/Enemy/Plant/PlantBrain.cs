@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using Game.Data;
 using Game.Core;
@@ -57,10 +56,8 @@ namespace Game.Enemy
                 return;
             }
 
-            if (_awarenessController.TargetInRange)
-            {
-                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));
-            }
+            if (_awarenessController.TargetInRange)            
+                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));            
         }
 
         private void HandleAnimations()

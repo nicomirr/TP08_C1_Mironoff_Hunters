@@ -19,10 +19,13 @@ namespace Game.Thorns
         {
             _isAlive = true;
 
-            StartCoroutine(RevealRoutine());
+            foreach (ThornMaskController controller in _thornControllers)
+                controller.Initialize(_data.ThornSpawnTime);
+
+            StartCoroutine(TrapRoutine());
         }
 
-        private IEnumerator RevealRoutine()
+        private IEnumerator TrapRoutine()
         {
 
             yield return new WaitForSeconds(_initialDelayTime);            

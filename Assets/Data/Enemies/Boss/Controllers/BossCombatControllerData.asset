@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9294070316c1142a14a6f2335bbf98, type: 3}
+  m_Name: BossCombatControllerData
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BossCombatControllerDataSo
+  _attackDelay: 0
+  _windupTime: 0
+  _attackTime: 0
+  _shootTime: 0
+  _minCooldownTime: 0
+  _maxCooldownTime: 0
+  _rangeAttackData: {fileID: 0}
