@@ -47,6 +47,17 @@ namespace Game.Player
             _isAlive = _currentHealth > 0;
         }
 
+        public void Die()
+        {
+            if (!_isAlive) return;
+            if (_isInvulnerable) return;
+
+            _currentHealth = 0;
+            RaiseHealhChanged();
+
+            _isAlive = false;
+        }
+
         public void RestoreFullHealth(int _)
         {
             _currentHealth = _maxHealth;

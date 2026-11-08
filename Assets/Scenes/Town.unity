@@ -18554,10 +18554,6 @@ PrefabInstance:
       propertyPath: _deviceManager
       value: 
       objectReference: {fileID: 1671953908}
-    - target: {fileID: 1895474494651919895, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonKeyboardP1
-      objectReference: {fileID: 0}
     - target: {fileID: 3040680969380104970, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.21
@@ -18598,32 +18594,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4125353297150915641, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4408005323652781644, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonKeyboardSingle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4891867664639007529, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonGamepadP1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8519008902008644153, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: _playerType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8524068086057765833, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
-    - target: {fileID: 9155427732902853260, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
-      propertyPath: m_Name
-      value: InteractButtonGamepadSingle
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3567799840953584194, guid: 0424bed5ca5d1c5449a5d7c403f540bc, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19482,7 +19457,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 564828819516434031, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.09
+      value: -11.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 564828819516434031, guid: 74895424eefad1f4899b8e767d619370, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563955406288933920, guid: 74895424eefad1f4899b8e767d619370, type: 3}
+      propertyPath: _maxX
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1563955406288933920, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: _target
@@ -19491,6 +19474,10 @@ PrefabInstance:
     - target: {fileID: 2140102863349504655, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 170487
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139388669750978613, guid: 74895424eefad1f4899b8e767d619370, type: 3}
+      propertyPath: _maxX
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3139388669750978613, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: _target
@@ -19503,6 +19490,10 @@ PrefabInstance:
     - target: {fileID: 3614473426340933613, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: m_Name
       value: -----Cameras-----
+      objectReference: {fileID: 0}
+    - target: {fileID: 7119103538933420411, guid: 74895424eefad1f4899b8e767d619370, type: 3}
+      propertyPath: _maxX
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7119103538933420411, guid: 74895424eefad1f4899b8e767d619370, type: 3}
       propertyPath: _target

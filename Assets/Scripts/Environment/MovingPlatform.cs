@@ -57,6 +57,7 @@ namespace Game.Environment
         private void ResetPlatform(int _)
         {
             _isActive = false;
+            _rb.linearVelocity = Vector2.zero;
             _currentDirection = _initialDirection;
 
             this.transform.position = _initialPos;

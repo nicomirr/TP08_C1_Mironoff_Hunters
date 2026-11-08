@@ -364,9 +364,18 @@ namespace Game.Player.Brain
                 pickable.gameObject.SetActive(false);
             }
 
-            if (!collision.TryGetComponent(out EnemyAttackAreaMarker _)) return;
+            if (collision.TryGetComponent(out ThornTileMarker _))
+            {
+                _healthController.Die();
+
+            }                    
+
+            if (!collision.TryGetComponent(out EnemyAttackAreaMarker _) && !collision.TryGetComponent(out ThornTileMarker _)) return;
             
-            _healthController.TakeDamage();
+            if(collision.TryGetComponent(out EnemyAttackAreaMarker _))
+                _healthController.TakeDamage();
+            else
+                _healthController.Die();
 
             float hitDirection = this.transform.position.x - collision.transform.position.x;
 
@@ -379,7 +388,6 @@ namespace Game.Player.Brain
                 StartCoroutine(_damageFeedbackController.FlickRoutine);
 
         }
-
         public Coroutine RunRoutine(IEnumerator routine)
         {
             return StartCoroutine(routine);

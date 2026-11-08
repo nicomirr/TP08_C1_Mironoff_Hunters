@@ -57,12 +57,12 @@ namespace Game.Player
 
         public void StopOutsideMovement()
         {
+            _movementProvider = null;
             _outsideMovement = 0;
         }
 
         public void StopMovement()
         {
-            _movementProvider = null;
             _rb.linearVelocity = new Vector2(0, _rb.linearVelocityY);
         }       
     }

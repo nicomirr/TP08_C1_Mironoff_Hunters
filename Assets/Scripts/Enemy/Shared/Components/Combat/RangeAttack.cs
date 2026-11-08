@@ -23,11 +23,9 @@ namespace Game.Enemy
 
             Vector2 targetPosition = target.position;
 
-            if (target.GetComponent<IMovementProviderHolder>().MovementProvider != null)
-            {
-                Debug.Log("Entra");
+            if (target.GetComponent<IMovementProviderHolder>().MovementProvider != null)            
                 targetPosition = AnticipateMovement(target, bullet.Speed);        
-            }
+            
 
             bulletObject.transform.position = _shootPoint.position;
             bulletObject.SetActive(true);

@@ -95,9 +95,13 @@ namespace Game.ObjectPooling
 
         private void DisableBullets(int _)
         {
-            List<GameObject> plantBullets = _objectsPool[PoolObjectType.PlantBulletFast];
+            List<GameObject> plantFastBullets = _objectsPool[PoolObjectType.PlantBulletFast];
+            List<GameObject> plantNormalBullets = _objectsPool[PoolObjectType.PlantBulletNormal];
 
-            foreach(GameObject obj in plantBullets)
+            foreach(GameObject obj in plantFastBullets)
+                obj.SetActive(false);
+
+            foreach (GameObject obj in plantNormalBullets)
                 obj.SetActive(false);
         }
     }

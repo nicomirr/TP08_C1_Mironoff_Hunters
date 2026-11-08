@@ -72,7 +72,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6647
+    m_Bits: 178679
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 701855684130713122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.8, y: 2.08, z: -10}
+  m_LocalPosition: {x: 540.4, y: 11.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,7 +201,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5111
+    m_Bits: 439287
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -316,9 +316,9 @@ MonoBehaviour:
   _useTopLimit: 1
   _useBottomLimit: 1
   _minX: -10
-  _maxX: 35
+  _maxX: 1000
   _minY: -6.8
-  _maxY: 20.62
+  _maxY: 100
   _target: {fileID: 0}
   _data: {fileID: 11400000, guid: 32f80866526c8404eabfa8865ac0bd23, type: 2}
 --- !u!1 &1581006759618284139
@@ -505,9 +505,9 @@ MonoBehaviour:
   _useTopLimit: 1
   _useBottomLimit: 1
   _minX: -10
-  _maxX: 35
+  _maxX: 1000
   _minY: -6.8
-  _maxY: 20.62
+  _maxY: 100
   _target: {fileID: 0}
   _data: {fileID: 11400000, guid: 32f80866526c8404eabfa8865ac0bd23, type: 2}
 --- !u!1 &6019398262417748308
@@ -583,7 +583,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 5623
+    m_Bits: 177655
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   _useTopLimit: 1
   _useBottomLimit: 1
   _minX: -10
-  _maxX: 35
+  _maxX: 1000
   _minY: -6.8
   _maxY: 100
   _target: {fileID: 0}

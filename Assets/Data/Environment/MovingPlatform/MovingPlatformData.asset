@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b098d8260374b4092bc1e3813ddd7d, type: 3}
   m_Name: MovingPlatformData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.MovingPlatformDataSo
-  _speed: 0
+  _speed: 2
