@@ -12,6 +12,7 @@ namespace Game.Core
         PlantBulletFast,
         Coin,
         PlantBulletNormal,
-        End = 10
+        ForestBossBullet,
+        End = 11
     }
 }

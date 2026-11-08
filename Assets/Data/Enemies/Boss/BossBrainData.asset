@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BossBrainDataSo
   _animationsData: {fileID: 11400000, guid: 78aa244f07a5e5343b19d8657bcf8c31, type: 2}
   _awarenessData: {fileID: 11400000, guid: 2ace2f560822acc4aa8f96ff56db6ad1, type: 2}
-  _enemyHealthData: {fileID: 11400000, guid: 81033a2a981dac44d8e9b1d47fbd20e4, type: 2}
-  _damageFeedbackData: {fileID: 0}
-  _combatData: {fileID: 0}
+  _enemyHealthData: {fileID: 11400000, guid: 920b8a4002fc486418040f8ffa2f39c7, type: 2}
+  _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
+  _combatData: {fileID: 11400000, guid: e2198efa67855b0469afb7bd330714c5, type: 2}

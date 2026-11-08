@@ -34,7 +34,9 @@ namespace Game.UI
 
         private void Start()
         {
-            _canvasGroup.alpha = 0;
+            if(_canvasGroup != null) 
+                _canvasGroup.alpha = 0;
+
             _fillImage.fillAmount = 1;
         }
 
@@ -43,15 +45,18 @@ namespace Game.UI
             _healthChangeNotifier.OnHealthChanged -= UpdateHealth;
         }
 
-        public void UpdateHealth(float currentHealth, float maxHealth)
+        private void UpdateHealth(float currentHealth, float maxHealth)
         {
             _fillImage.fillAmount = currentHealth / maxHealth;
+
+            if (_canvasGroup == null) return; 
 
             if (_displayHealthRoutine != null)
             {
                 StopCoroutine(_displayHealthRoutine);
                 _displayHealthRoutine = null;
             }
+
 
             _displayHealthRoutine = StartCoroutine(DisplayHealthUI());
         }

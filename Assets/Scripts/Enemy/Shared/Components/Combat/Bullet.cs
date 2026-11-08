@@ -19,6 +19,11 @@ namespace Game.Enemy
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        private void OnEnable()
+        {
+            _lifeTimer = 0;
+        }
+
         private void Update()
         {
             _lifeTimer += Time.deltaTime;

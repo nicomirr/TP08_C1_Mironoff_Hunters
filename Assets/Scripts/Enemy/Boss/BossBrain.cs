@@ -1,14 +1,14 @@
+using UnityEngine;
+using System;
 using Game.Animations;
 using Game.Checkpoints;
 using Game.Core;
 using Game.Data;
 using Game.Marker;
-using System;
-using UnityEngine;
 
 namespace Game.Enemy
 {
-    public class BossBrain : MonoBehaviour
+    public class BossBrain : MonoBehaviour, IHealthChangedNotifier
     {
         [SerializeField] private BossBrainDataSo _brainData;
 
@@ -19,6 +19,8 @@ namespace Game.Enemy
         private EnemyDamageFeedbackController _damageFeedbackController;
 
         private BossCombatController _combatController;
+
+        private Collider2D _damageCollider;
 
         public event Action<float, float> OnHealthChanged;
 
@@ -31,6 +33,8 @@ namespace Game.Enemy
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
             _combatController = new BossCombatController(_brainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform);
+
+            _damageCollider = GetComponent<Collider2D>();
         }
 
         private void OnEnable()
@@ -44,6 +48,9 @@ namespace Game.Enemy
         {
             if (!_healthController.IsAlive)
             {
+                if(_damageCollider.enabled)
+                    _damageCollider.enabled = false;
+
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
                 return;
             }

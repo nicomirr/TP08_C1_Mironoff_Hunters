@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9294070316c1142a14a6f2335bbf98, type: 3}
   m_Name: BossCombatControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BossCombatControllerDataSo
-  _attackDelay: 0
+  _attackDelay: 0.7
   _windupTime: 0
   _attackTime: 0
-  _shootTime: 0
-  _minCooldownTime: 0
-  _maxCooldownTime: 0
-  _rangeAttackData: {fileID: 0}
+  _shootTime: 0.35
+  _minCooldownTime: 0.65
+  _maxCooldownTime: 1
+  _rangeAttackData: {fileID: 11400000, guid: e08e6c65c6a6f1d4bab3358b5a78fd7d, type: 2}
