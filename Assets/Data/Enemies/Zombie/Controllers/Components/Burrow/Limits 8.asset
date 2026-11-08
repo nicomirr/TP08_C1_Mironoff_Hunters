@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a269a2817e119348bea711c90c24485, type: 3}
   m_Name: Limits 8
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BurrowLimitsDataSo
-  _minX: 879
-  _maxX: 908
+  _minX: 918
+  _maxX: 957

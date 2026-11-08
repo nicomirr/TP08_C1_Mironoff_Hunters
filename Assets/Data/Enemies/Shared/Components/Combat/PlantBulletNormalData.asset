@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe2f82b364a02142a874cb2f5a303ed, type: 3}
   m_Name: PlantBulletNormalData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BulletDataSo
-  _speed: 9
+  _speed: 8
   _lifeTime: 10
