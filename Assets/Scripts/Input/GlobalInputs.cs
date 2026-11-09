@@ -1,7 +1,8 @@
+using Game.Checkpoints;
+using Game.Core;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
-using Game.Core;
 
 namespace Game.Inputs
 {
@@ -48,6 +49,8 @@ namespace Game.Inputs
 
         private void OnPausePressed(InputAction.CallbackContext ctx)
         {
+            if (FastTravel.FastTravelOpen) return;
+
             _pauseToggle.TogglePauseState();
         }
 

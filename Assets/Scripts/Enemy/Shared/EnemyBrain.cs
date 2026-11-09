@@ -59,7 +59,7 @@ namespace Game.Enemy
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        protected virtual void ResetEnemy(int _)
+        protected virtual void ResetEnemy(int _, bool __, PlayerType ___)
         {            
             this.transform.position = _initialPos;
 

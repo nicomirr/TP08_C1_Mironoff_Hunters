@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
+using TMPro;
 using System;
+using Game.Animations;
 using Game.Core;
 using Game.Data;
-using Game.Animations;
-using TMPro;
+using Game.Persistence;
+using Game.SceneTransitions;
 
 namespace Game.Checkpoints
 {
@@ -17,7 +19,7 @@ namespace Game.Checkpoints
 
         [SerializeField] private Transform _spriteTransform;
 
-        private TMP_Text _textbox;
+        [SerializeField] private TMP_Text _textbox;
 
         public int CheckpointNumber => _checkpointNumber;
 
@@ -30,19 +32,36 @@ namespace Game.Checkpoints
 
         public bool HasInteractorInRange { get; set; }
 
-        public static event Action<int> OnCheckpointUsed;
+        public static event Action<int, bool, PlayerType> OnCheckpointUsed;
+
+        private bool _checkpointReached;
+        public bool CheckpointReached => _checkpointReached;    
 
 
         private void Awake()
         {
             _animationsController = new AnimationsController(_data.AnimationData, GetComponentInChildren<Animator>(), AnimationStateType.Disabled);
             _light = GetComponentInChildren<Light2D>();
-            _textbox = GetComponentInChildren<TMP_Text>();
+
+            if (GameSessionManager.Instance.HasSavedState)
+                LoadSessionData();
+        }
+
+        private void OnEnable()
+        {
+            SceneTransitionManager.OnSceneTransitionStarted += SaveSessionData;
         }
 
         private void Start()
         {
             _canInteract = true;
+
+            if(_checkpointReached)
+            {
+                _animationsController.ChangeAnimationState(AnimationStateType.Enabled);
+                _light.enabled = true;
+            }
+
         }
 
         private void Update()
@@ -68,6 +87,52 @@ namespace Game.Checkpoints
                 _textbox.text = "";
         }
 
+        private void OnDisable()
+        {
+            SceneTransitionManager.OnSceneTransitionStarted += SaveSessionData;
+        }
+
+        private void LoadSessionData()
+        {
+            CheckpointSessionData data = new();
+
+            switch (_checkpointNumber)
+            {
+                case 1:
+
+                    data = GameSessionManager.Instance.Checkpoint1Data;
+                    break;
+
+                case 2:
+
+                    data = GameSessionManager.Instance.Checkpoint2Data;
+                    break;
+
+                case 3:
+
+                    data = GameSessionManager.Instance.Checkpoint3Data;
+                    break;
+
+                case 4:
+
+                    data = GameSessionManager.Instance.Checkpoint4Data;
+                    break;
+
+                case 5:
+
+                    data = GameSessionManager.Instance.Checkpoint5Data;
+                    break;
+
+                case 6:
+
+                    data = GameSessionManager.Instance.Checkpoint6Data;
+                    break;
+            }
+
+            _checkpointReached = data.CheckpointReached;
+
+        }
+
         public void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {
             if (GameMode.CurrentGameModeType == GameModeType.Coop && !BothPlayersNearby())
@@ -76,7 +141,9 @@ namespace Game.Checkpoints
                 return;
             }
 
-            OnCheckpointUsed?.Invoke(_checkpointNumber);
+            OnCheckpointUsed?.Invoke(_checkpointNumber, _checkpointReached, playerType);
+
+            _checkpointReached = true;
 
             _animationsController.ChangeAnimationState(AnimationStateType.Enabled);
             _light.enabled = true;
@@ -95,18 +162,17 @@ namespace Game.Checkpoints
             return players.Length >= 2;
         }
 
-        public void Reset()
-        {
-            _animationsController.ChangeAnimationState(AnimationStateType.Disabled);
-            _light.enabled = false;
-        }
-
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(_spriteTransform.position, _data.InteractionRadius);
         }
 
-    }
+        private void SaveSessionData()
+        {
+            CheckpointSessionData data =  new CheckpointSessionData(_checkpointReached);
 
+            GameSessionManager.Instance.SaveCheckpointData(data, _checkpointNumber);
+        }
+    }
 }

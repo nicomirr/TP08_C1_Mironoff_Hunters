@@ -107,7 +107,7 @@ namespace Game.Enemy
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
 
-        private void ResetBoss(int _)
+        private void ResetBoss(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
 

@@ -77,11 +77,11 @@ namespace Game.Enemy
             _animationsController.ChangeAnimationState(AnimationStateType.Idle);
         }
 
-        protected override void ResetEnemy(int checkpointNumber)
+        protected override void ResetEnemy(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
 
-            base.ResetEnemy(checkpointNumber);
+            base.ResetEnemy(_, __, ___);
 
             _combatController.Reset();
         }

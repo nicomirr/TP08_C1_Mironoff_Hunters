@@ -1,6 +1,7 @@
 using System;
 using Game.Data;
 using Game.Persistence;
+using Game.Core;
 
 namespace Game.Player
 {
@@ -58,7 +59,7 @@ namespace Game.Player
             _isAlive = false;
         }
 
-        public void RestoreFullHealth(int _)
+        public void RestoreFullHealth(int _, bool __, PlayerType ___)
         {
             _currentHealth = _maxHealth;
             RaiseHealhChanged();

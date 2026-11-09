@@ -404,6 +404,7 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 2cead29a0f265a1418f20aa3e7605405, type: 2}
   _checkpointNumber: 1
   _spriteTransform: {fileID: 5862997046833448280}
+  _textbox: {fileID: 7273230118775073469}
 --- !u!61 &2663159320916995341
 BoxCollider2D:
   m_ObjectHideFlags: 0

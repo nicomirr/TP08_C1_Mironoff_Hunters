@@ -134,7 +134,7 @@ namespace Game.Enemy
                 StartCoroutine(_damageFeedbackController.FlickRoutine);
         }
 
-        private void ResetEnemy(int checkpointNumber)
+        private void ResetEnemy(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
 

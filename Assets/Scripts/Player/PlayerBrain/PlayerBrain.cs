@@ -11,7 +11,6 @@ using Game.Animations;
 using Game.Inputs;
 using Game.Checkpoints;
 using Game.Pickables;
-using Game.Environment;
 using Game.Pause;
 
 namespace Game.Player.Brain
@@ -115,6 +114,8 @@ namespace Game.Player.Brain
 
         private void FixedUpdate()
         {
+            if (FastTravel.FastTravelOpen) return;
+
             if (!_healthController.IsAlive) return;
 
             if (_interactionController.IsInteracting || _damageFeedbackController.IsKnockedback) return;            
@@ -124,6 +125,13 @@ namespace Game.Player.Brain
 
         private void Update()
         {
+            if (FastTravel.FastTravelOpen)
+            {
+                _locomotionController.StopMovement();
+                _animationsController.ChangeAnimationState(AnimationStateType.Idle);
+                return;
+            }
+
             if (!_healthController.IsAlive)
             {
                 _locomotionController.StopMovement();

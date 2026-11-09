@@ -54,7 +54,7 @@ namespace Game.Environment
             _currentDirection *= -1;
         }
 
-        private void ResetPlatform(int _)
+        private void ResetPlatform(int _, bool __, PlayerType ___)
         {
             _isActive = false;
             _rb.linearVelocity = Vector2.zero;

@@ -124,13 +124,13 @@ namespace Game.Enemy
                 _animationsController.ChangeAnimationState(AnimationStateType.Moving);
             else
                 _animationsController.ChangeAnimationState(AnimationStateType.Idle);
-        }      
+        }
 
-        protected override void ResetEnemy(int _)
+        protected override void ResetEnemy(int _, bool __, PlayerType ___)
         {
             _burrowController.Reset();
 
-            base.ResetEnemy(_);
+            base.ResetEnemy(_, __, ___);
 
             _combatController.Reset();
         }

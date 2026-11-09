@@ -98,7 +98,7 @@ namespace Game.Enemy
                 StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));
         }       
 
-        private void ResetEnemy(int checkpointNumber)
+        private void ResetEnemy(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
 

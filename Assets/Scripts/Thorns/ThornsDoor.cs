@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Data;
+using Game.Core;
 using Game.Checkpoints;
 
 namespace Game.Thorns
@@ -31,7 +31,7 @@ namespace Game.Thorns
             Checkpoint.OnCheckpointUsed -= OpenDoor;
         }
 
-        public void OpenDoor(int _)
+        public void OpenDoor(int _, bool __, PlayerType ___)
         {
             StartCoroutine(OpenDoorRoutine());
         }
