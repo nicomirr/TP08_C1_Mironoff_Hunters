@@ -25,9 +25,13 @@ namespace Game.Enemy
 
         private BossCombatController _combatController;
 
+        private bool _bossDefeatedSent;
+
         private Collider2D _damageCollider;
 
         public event Action<float, float> OnHealthChanged;
+
+        public static event Action OnBossDefeated;
 
         private void Awake()
         {
@@ -57,6 +61,12 @@ namespace Game.Enemy
         {
             if (!_healthController.IsAlive)
             {
+                if(!_bossDefeatedSent)
+                {
+                    OnBossDefeated?.Invoke();
+                    _bossDefeatedSent = true;
+                }
+
                 _tentacle.SetActive(false);
                 _flower.SetActive(false);
 

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bfd6faf7324a0448e4f9efcccdae14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  _data: {fileID: 11400000, guid: f0593c1f72366a346b49a6d9fd46c705, type: 2}
+  _data: {fileID: 11400000, guid: 717a49c91deae824ba7ce6ce8d2fea59, type: 2}
 --- !u!114 &4007139276079433454
 MonoBehaviour:
   m_ObjectHideFlags: 0

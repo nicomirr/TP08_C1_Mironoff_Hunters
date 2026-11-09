@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Game.Core;
 using Game.Data;
 using Game.Checkpoints;
+using Game.Enemy;
 
 namespace Game.ObjectPooling
 {
@@ -36,6 +37,7 @@ namespace Game.ObjectPooling
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             Checkpoint.OnCheckpointUsed += DisableBullets;
+            BossBrain.OnBossDefeated += DisableBossBullets;
         }
         
         private void Start()
@@ -47,6 +49,7 @@ namespace Game.ObjectPooling
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Checkpoint.OnCheckpointUsed -= DisableBullets;
+            BossBrain.OnBossDefeated -= DisableBossBullets;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -97,11 +100,31 @@ namespace Game.ObjectPooling
         {
             List<GameObject> plantFastBullets = _objectsPool[PoolObjectType.PlantBulletFast];
             List<GameObject> plantNormalBullets = _objectsPool[PoolObjectType.PlantBulletNormal];
+            List<GameObject> bossBullets = _objectsPool[PoolObjectType.ForestBossBullet];
 
             foreach(GameObject obj in plantFastBullets)
                 obj.SetActive(false);
 
             foreach (GameObject obj in plantNormalBullets)
+                obj.SetActive(false);
+
+            foreach(GameObject obj in  bossBullets)
+                obj.SetActive(false);
+        }
+
+        private void DisableBossBullets()
+        {
+            List<GameObject> plantFastBullets = _objectsPool[PoolObjectType.PlantBulletFast];
+            List<GameObject> plantNormalBullets = _objectsPool[PoolObjectType.PlantBulletNormal];
+            List<GameObject> bossBullets = _objectsPool[PoolObjectType.ForestBossBullet];
+
+            foreach (GameObject obj in plantFastBullets)
+                obj.SetActive(false);
+
+            foreach (GameObject obj in plantNormalBullets)
+                obj.SetActive(false);
+
+            foreach (GameObject obj in bossBullets)
                 obj.SetActive(false);
         }
     }

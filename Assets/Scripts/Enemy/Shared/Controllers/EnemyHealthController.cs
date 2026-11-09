@@ -44,6 +44,8 @@ namespace Game.Enemy
         public void Reset()
         {
             _currentHealth = _data.MaxHealth;
+            OnHealthChanged?.Invoke(_currentHealth, _data.MaxHealth);
+
             _isAlive = true;
         }
     }
