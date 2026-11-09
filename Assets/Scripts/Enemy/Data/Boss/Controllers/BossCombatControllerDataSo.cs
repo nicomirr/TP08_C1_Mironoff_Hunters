@@ -4,16 +4,7 @@ namespace Game.Data
 {
     [CreateAssetMenu(fileName = "BossCombatControllerDataSo", menuName = "Scriptable Objects/BossCombatControllerDataSo")]
     public class BossCombatControllerDataSo : ScriptableObject
-    {
-        [SerializeField] private float _attackDelay;
-        public float AttackDelay => _attackDelay;
-
-        [SerializeField] private float _windupTime;
-        public float WindupTime => _windupTime;
-
-        [SerializeField] private float _attackTime;
-        public float AttackTime => _attackTime;
-
+    {        
         [SerializeField] private float _shootTime;
         public float ShootTime => _shootTime;
 

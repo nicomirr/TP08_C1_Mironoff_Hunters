@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623741f6519c0e04bb48e0ce85a014bb, type: 3}
   m_Name: ZombieBurrowControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZombieBurrowControllerDataSo
+  _canUnburrow: 1
   _distance: 1
   _duration: 0.2
   _minUnburrowCooldown: 2

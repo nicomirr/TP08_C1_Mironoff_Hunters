@@ -15,4 +15,5 @@ MonoBehaviour:
   _animationsData: {fileID: 11400000, guid: 60f15d2542d034d408894338d0c29e8b, type: 2}
   _awarenessData: {fileID: 11400000, guid: a5a6b71a082659640b3514ec8ddba222, type: 2}
   _burrowData: {fileID: 11400000, guid: b19b0534824a38748a898acc0754e2c5, type: 2}
+  _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
   _combatData: {fileID: 11400000, guid: 8ec486a08b86c7042b1860deff58d4ee, type: 2}

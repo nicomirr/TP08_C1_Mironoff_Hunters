@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623741f6519c0e04bb48e0ce85a014bb, type: 3}
   m_Name: BossTentacleBurrowControllerData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.ZombieBurrowControllerDataSo
+  _canUnburrow: 0
   _distance: 5
   _duration: 0.2
-  _minUnburrowCooldown: 2
-  _maxUnburrowCooldown: 3
-  _minBurrowCooldown: 6
-  _maxBurrowCooldown: 8
-  _minOffsetDistance: 4
-  _maxOffsetDistance: 6
+  _minUnburrowCooldown: 15
+  _maxUnburrowCooldown: 20
+  _minBurrowCooldown: 1.5
+  _maxBurrowCooldown: 3
+  _minOffsetDistance: 1
+  _maxOffsetDistance: 3

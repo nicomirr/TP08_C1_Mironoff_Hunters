@@ -16,8 +16,11 @@ namespace Game.Enemy
 
         private EnemyAwarenessController _awarenessController;
         private EnemyBurrowController _burrowController;
+        private EnemyDamageFeedbackController _damageFeedbackController;
 
         private BossTentacleCombatController _combatController;
+
+        private Vector2 _initialPos;
 
         private void Awake()
         {
@@ -26,7 +29,8 @@ namespace Game.Enemy
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
             _burrowController = new EnemyBurrowController(_brainData.BurrowData, _burrowLimitsData, GetComponent<Rigidbody2D>(), GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(),
                 this.transform);
-            
+            _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
+
             _combatController = new BossTentacleCombatController(_brainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
 
         }
@@ -34,6 +38,11 @@ namespace Game.Enemy
         private void OnEnable()
         {
             Checkpoint.OnCheckpointUsed += ResetEnemy;
+        }
+
+        private void Start()
+        {
+            _initialPos = this.transform.position;
         }
 
         private void OnDisable()
@@ -119,12 +128,20 @@ namespace Game.Enemy
             _animationsController.ChangeAnimationState(AnimationStateType.Idle);
         }
 
+        public void HandleDamageFeedback()
+        {
+            if (!_damageFeedbackController.IsFlickering)
+                StartCoroutine(_damageFeedbackController.FlickRoutine);
+        }
+
         private void ResetEnemy(int checkpointNumber)
         {
             StopAllCoroutines();
 
             _burrowController.Reset();
             _combatController.Reset();
+
+            this.transform.position = _initialPos;
         }
     }
 

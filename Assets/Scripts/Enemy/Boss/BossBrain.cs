@@ -12,6 +12,11 @@ namespace Game.Enemy
     {
         [SerializeField] private BossBrainDataSo _brainData;
 
+        [SerializeField] private GameObject _tentacle;
+        [SerializeField] private GameObject _flower;
+
+        private BossFlowerBrain _flowerBrain;
+
         private AnimationsController _animationsController;
 
         private EnemyAwarenessController _awarenessController;
@@ -35,11 +40,15 @@ namespace Game.Enemy
             _combatController = new BossCombatController(_brainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform);
 
             _damageCollider = GetComponent<Collider2D>();
+
+            _flowerBrain = _flower.GetComponent<BossFlowerBrain>();
         }
 
         private void OnEnable()
         {
             Checkpoint.OnCheckpointUsed += ResetBoss;
+
+            _flowerBrain.OnDamageTaken += HandleDamage;
 
             _healthController.OnHealthChanged += NotifyHealthChanged;
         }
@@ -48,6 +57,9 @@ namespace Game.Enemy
         {
             if (!_healthController.IsAlive)
             {
+                _tentacle.SetActive(false);
+                _flower.SetActive(false);
+
                 if(_damageCollider.enabled)
                     _damageCollider.enabled = false;
 
@@ -63,6 +75,8 @@ namespace Game.Enemy
         private void OnDisable()
         {
             Checkpoint.OnCheckpointUsed -= ResetBoss;
+
+            _flowerBrain.OnDamageTaken -= HandleDamage;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
@@ -92,21 +106,15 @@ namespace Game.Enemy
             _healthController.Reset();            
         }
 
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
+        private void HandleDamage(float damage, DamageType damageType)
         {
             if (!_healthController.IsAlive) return;
 
-            if (collision.TryGetComponent(out IDamageProvider damageProvider))
-            {
-                _healthController.TakeDamage(damageProvider.Damage, damageProvider.DamageType);
+            _healthController.TakeDamage(damage, damageType);
 
-                if (!_damageFeedbackController.IsFlickering)
-                    StartCoroutine(_damageFeedbackController.FlickRoutine);
-            }
-
-        }
-
+            if (!_damageFeedbackController.IsFlickering)
+                StartCoroutine(_damageFeedbackController.FlickRoutine);
+        }        
     }
-
 }
 

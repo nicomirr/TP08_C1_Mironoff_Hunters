@@ -9,13 +9,13 @@ namespace Game.Enemy
     public class ZombieBrain : EnemyBrain
     {
         [SerializeField] private BurrowLimitsDataSo _limitsData;
-        
+
         private ZombieBrainDataSo _zombieBrainData;
                 
         private ZombieLocomotionController _locomotionController;
         private ZombieCombatController _combatController;
         private EnemyBurrowController _burrowController;
-
+                
         protected override void Awake()
         {      
             base.Awake();
@@ -140,10 +140,8 @@ namespace Game.Enemy
             base.OnTriggerEnter2D(collision);
 
             if (collision.TryGetComponent(out ZombieLimitMarker _))
-                _burrowController.ForceBurrow();        
+                _burrowController.ForceBurrow();     
 
-            
-            
         }
 
     }
