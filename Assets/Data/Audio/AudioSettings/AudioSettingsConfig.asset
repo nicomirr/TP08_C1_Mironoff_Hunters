@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1467e91aab19a74da9771a501302345, type: 3}
+  m_Script: {fileID: 11500000, guid: a30cbaa3ebe2b5847adcabb36b083b29, type: 3}
   m_Name: AudioSettingsConfig
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioSettingsConfigSo
   _group: {fileID: 11400000, guid: 38ef3c9a443638b4c93696fc06e02c26, type: 2}

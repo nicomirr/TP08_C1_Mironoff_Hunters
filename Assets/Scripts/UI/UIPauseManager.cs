@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Game.Core;
+using Game.Pause;
 
 namespace Game.UI
 {
@@ -11,22 +12,20 @@ namespace Game.UI
         [SerializeField] private Button _mainMenuButton;
 
         private IPauseToggle _pauseToggle;
-        private IPauseNotifier _pauseNotifier;
 
         protected override void Awake()
         {
             base.Awake();
 
             _pauseToggle = _pauseGameObject.GetComponent<IPauseToggle>();
-            _pauseNotifier = _pauseGameObject.GetComponent<IPauseNotifier>();
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            _pauseNotifier.OnGamePaused += DisplayPausePanel;
-            _pauseNotifier.OnGameUnpaused += ResetPauseState;
+            PauseManager.OnGamePaused += DisplayPausePanel;
+            PauseManager.OnGameUnpaused += ResetPauseState;
 
             _mainMenuButton.onClick.AddListener(OnMainMenuClicked);
         }
@@ -35,8 +34,8 @@ namespace Game.UI
         {
             base.OnDisable();
 
-            _pauseNotifier.OnGamePaused -= DisplayPausePanel;
-            _pauseNotifier.OnGameUnpaused -= ResetPauseState;
+            PauseManager.OnGamePaused -= DisplayPausePanel;
+            PauseManager.OnGameUnpaused -= ResetPauseState;
 
             _mainMenuButton.onClick.RemoveAllListeners();
         }

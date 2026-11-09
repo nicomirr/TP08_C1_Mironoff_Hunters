@@ -8,6 +8,7 @@ namespace Game.UI
         [SerializeField] private Button _creditsButton;
 
         [SerializeField] private UIPanel _creditsPanel;
+        [SerializeField] private UIPanel _gameModeSelectionPanel;
 
         protected override void OnEnable()
         {
@@ -21,6 +22,17 @@ namespace Game.UI
             base.OnDisable();
 
             _creditsButton.onClick.RemoveAllListeners();
+        }
+
+        protected override void OnPlayClicked()
+        {
+            base.OnPlayClicked();
+
+            _previousPanel = _currentPanel;
+            _currentPanel = _gameModeSelectionPanel;
+
+            ChangePanels();
+
         }
 
         private void OnCreditsClicked()

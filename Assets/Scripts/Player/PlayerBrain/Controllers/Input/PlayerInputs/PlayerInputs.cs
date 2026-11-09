@@ -124,6 +124,16 @@ namespace Game.Player
             OnCurrentDeviceChanged?.Invoke(device);
         }
 
+        public void ReenablePlayerInputs()
+        {
+            _playerControls.Player.Enable();
+        }
+
+        public void DisablePlayerInputs()
+        {
+            _playerControls.Player.Disable();
+        }
+
         public void Deinitialize()
         {
             _playerControls.Player.Get().actionTriggered -= OnActionTriggered;

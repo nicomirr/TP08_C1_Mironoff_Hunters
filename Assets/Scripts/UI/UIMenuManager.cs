@@ -84,9 +84,6 @@ namespace Game.UI
         protected virtual void OnPlayClicked()
         {
             _audioSource.Play();
-
-            _currentPanel.HidePanel();
-            _transitionManager.ChangeScene(_sceneToLoad);
         }
 
         private void OnSettingsClicked()

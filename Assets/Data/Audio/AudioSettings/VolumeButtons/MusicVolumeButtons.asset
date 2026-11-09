@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70088d02f8f875b40b1d6257b6bc5f02, type: 3}
+  m_Script: {fileID: 11500000, guid: 7468921b8fc5ccf48ab23b26934fb64a, type: 3}
   m_Name: MusicVolumeButtons
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.VolumeButtonsTypeSo
   _volumeTypes:

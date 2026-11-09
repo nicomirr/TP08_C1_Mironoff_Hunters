@@ -12,6 +12,7 @@ using Game.Inputs;
 using Game.Checkpoints;
 using Game.Pickables;
 using Game.Environment;
+using Game.Pause;
 
 namespace Game.Player.Brain
 {    
@@ -75,6 +76,9 @@ namespace Game.Player.Brain
         {
             SceneTransitionManager.OnSceneTransitionStarted += SaveSessionDataAndDisable;
             Checkpoint.OnCheckpointUsed += _healthController.RestoreFullHealth;
+
+            PauseManager.OnGamePaused += _inputController.PlayerInputs.DisablePlayerInputs;
+            PauseManager.OnGameUnpaused += _inputController.PlayerInputs.ReenablePlayerInputs;
 
             _deviceManager.OnPlayerDeviceReconnected += _inputController.PlayerInputs.ReconnectGamepad;
 
@@ -147,6 +151,9 @@ namespace Game.Player.Brain
         {
             SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionDataAndDisable;
             Checkpoint.OnCheckpointUsed -= _healthController.RestoreFullHealth;
+
+            PauseManager.OnGamePaused -= _inputController.PlayerInputs.DisablePlayerInputs;
+            PauseManager.OnGameUnpaused -= _inputController.PlayerInputs.ReenablePlayerInputs;
 
             _inputController.PlayerInputs.Deinitialize();
 
