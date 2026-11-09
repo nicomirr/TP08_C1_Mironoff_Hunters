@@ -4,9 +4,9 @@ using Game.Data;
 
 namespace Game.Enemy
 {
-    public class ZombieBurrowController
+    public class EnemyBurrowController
     {
-        private readonly ZombieBurrowControllerDataSo _controllerData;
+        private readonly EnemyBurrowControllerDataSo _controllerData;
         private readonly BurrowLimitsDataSo _limitsData;
 
         private readonly Rigidbody2D _rb;
@@ -39,7 +39,7 @@ namespace Game.Enemy
         private float _offsetX;
         private bool _hasOffset;
 
-        public ZombieBurrowController(ZombieBurrowControllerDataSo controllersData, BurrowLimitsDataSo limitsData, Rigidbody2D rb, Collider2D bodyCollider, Transform ownerTransform)
+        public EnemyBurrowController(EnemyBurrowControllerDataSo controllersData, BurrowLimitsDataSo limitsData, Rigidbody2D rb, Collider2D bodyCollider, Transform ownerTransform)
         {
             _controllerData = controllersData;
             _limitsData = limitsData;   
@@ -52,7 +52,7 @@ namespace Game.Enemy
 
             _isBurrowed = true;
 
-            _canUnburrow = true;
+            _canUnburrow = controllersData.CanUnburrow;                       
         }
 
         public void UpdateBurrowTimer()
@@ -209,7 +209,7 @@ namespace Game.Enemy
             _reenableUnburrowTimer = 0;
 
             _isBurrowed = true;
-            _canUnburrow = true;
+            _canUnburrow = _controllerData.CanUnburrow;
         }
     }
 }

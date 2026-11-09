@@ -3,8 +3,11 @@ using UnityEngine;
 namespace Game.Data
 {
     [CreateAssetMenu(fileName = "ZombieBurrowControllerDataSo", menuName = "Scriptable Objects/ZombieBurrowControllerDataSo")]
-    public class ZombieBurrowControllerDataSo : ScriptableObject
+    public class EnemyBurrowControllerDataSo : ScriptableObject
     {
+        [SerializeField] private bool _canUnburrow;
+        public bool CanUnburrow => _canUnburrow;
+
         [SerializeField] private float _distance;
         public float Distance => _distance;
 

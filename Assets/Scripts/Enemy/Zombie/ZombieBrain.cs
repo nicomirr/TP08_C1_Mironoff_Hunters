@@ -14,7 +14,7 @@ namespace Game.Enemy
                 
         private ZombieLocomotionController _locomotionController;
         private ZombieCombatController _combatController;
-        private ZombieBurrowController _burrowController;
+        private EnemyBurrowController _burrowController;
 
         protected override void Awake()
         {      
@@ -26,7 +26,7 @@ namespace Game.Enemy
             
             _locomotionController = new ZombieLocomotionController(_zombieBrainData.LocomotionData, _rb, this.transform);
             _combatController = new ZombieCombatController(_zombieBrainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
-            _burrowController = new ZombieBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);
+            _burrowController = new EnemyBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);
         }
 
         private void FixedUpdate()

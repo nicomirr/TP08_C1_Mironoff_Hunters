@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f83bf75d2c440b418ab639246f6dc49, type: 3}
-  m_Name: BossTentacleData
+  m_Name: BossTentacleBrainData
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BossTentacleDataSo
+  _animationsData: {fileID: 11400000, guid: 60f15d2542d034d408894338d0c29e8b, type: 2}
   _awarenessData: {fileID: 11400000, guid: a5a6b71a082659640b3514ec8ddba222, type: 2}
+  _burrowData: {fileID: 11400000, guid: b19b0534824a38748a898acc0754e2c5, type: 2}
+  _combatData: {fileID: 11400000, guid: 8ec486a08b86c7042b1860deff58d4ee, type: 2}

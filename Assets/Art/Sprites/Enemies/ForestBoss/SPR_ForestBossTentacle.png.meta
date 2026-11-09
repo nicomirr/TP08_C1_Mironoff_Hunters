@@ -203,9 +203,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -225,9 +225,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_1
       rect:
         serializedVersion: 2
-        x: 90
+        x: 99
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -247,9 +247,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_2
       rect:
         serializedVersion: 2
-        x: 180
+        x: 195
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -269,9 +269,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_3
       rect:
         serializedVersion: 2
-        x: 270
+        x: 291
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -291,9 +291,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_4
       rect:
         serializedVersion: 2
-        x: 360
+        x: 387
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -313,9 +313,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_5
       rect:
         serializedVersion: 2
-        x: 450
+        x: 483
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -335,9 +335,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_6
       rect:
         serializedVersion: 2
-        x: 540
+        x: 579
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -357,9 +357,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_7
       rect:
         serializedVersion: 2
-        x: 630
+        x: 675
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -379,9 +379,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_8
       rect:
         serializedVersion: 2
-        x: 720
+        x: 771
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -401,9 +401,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_9
       rect:
         serializedVersion: 2
-        x: 810
+        x: 867
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -423,9 +423,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_10
       rect:
         serializedVersion: 2
-        x: 900
+        x: 963
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -445,9 +445,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_11
       rect:
         serializedVersion: 2
-        x: 990
+        x: 1059
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -467,9 +467,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_12
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 1155
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -489,9 +489,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_13
       rect:
         serializedVersion: 2
-        x: 1170
+        x: 1251
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -511,9 +511,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_14
       rect:
         serializedVersion: 2
-        x: 1260
+        x: 1347
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -533,9 +533,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_15
       rect:
         serializedVersion: 2
-        x: 1350
+        x: 1443
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -555,9 +555,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_16
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 1539
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -577,9 +577,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_17
       rect:
         serializedVersion: 2
-        x: 1530
+        x: 1635
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -599,9 +599,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_18
       rect:
         serializedVersion: 2
-        x: 1620
+        x: 1731
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -621,9 +621,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_19
       rect:
         serializedVersion: 2
-        x: 1710
+        x: 1827
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -643,9 +643,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_20
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 1923
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -665,9 +665,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_21
       rect:
         serializedVersion: 2
-        x: 1890
+        x: 2019
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -687,9 +687,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_22
       rect:
         serializedVersion: 2
-        x: 1980
+        x: 2115
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -709,9 +709,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_23
       rect:
         serializedVersion: 2
-        x: 2070
+        x: 2211
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -731,9 +731,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_24
       rect:
         serializedVersion: 2
-        x: 2160
+        x: 2307
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -753,9 +753,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_25
       rect:
         serializedVersion: 2
-        x: 2250
+        x: 2403
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -775,9 +775,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_26
       rect:
         serializedVersion: 2
-        x: 2340
+        x: 2499
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -797,9 +797,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_27
       rect:
         serializedVersion: 2
-        x: 2430
+        x: 2595
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -819,9 +819,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_28
       rect:
         serializedVersion: 2
-        x: 2520
+        x: 2691
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -841,9 +841,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_29
       rect:
         serializedVersion: 2
-        x: 2610
+        x: 2787
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -863,9 +863,9 @@ TextureImporter:
       name: SPR_ForestBossTentacle_30
       rect:
         serializedVersion: 2
-        x: 2700
+        x: 2883
         y: 0
-        width: 90
+        width: 96
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -875,7 +875,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7878e7d880dfc7c4db56bbe09108d664
+      spriteID: 9c77388e552c6094b819748b2ca862f0
       internalID: 222963611
       vertices: []
       indices: 
@@ -895,7 +895,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":90.0,"y":110.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":96.0,"y":110.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       SPR_ForestBossTentacle_0: -5579602984516617771
       SPR_ForestBossTentacle_1: -8065496137248390796
