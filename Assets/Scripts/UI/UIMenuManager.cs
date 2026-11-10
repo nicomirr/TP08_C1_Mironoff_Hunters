@@ -57,6 +57,8 @@ namespace Game.UI
             _currentPanel.DisplayPanel();
 
             EventSystem.current.SetSelectedGameObject(_currentPanel.GamepadInitialButton.gameObject);
+
+            _audioSource.Stop();
         }
 
         private void Update()

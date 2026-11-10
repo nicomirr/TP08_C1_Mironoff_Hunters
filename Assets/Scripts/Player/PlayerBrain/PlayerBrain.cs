@@ -12,6 +12,7 @@ using Game.Inputs;
 using Game.Checkpoints;
 using Game.Pickables;
 using Game.Pause;
+using Game.Audio;
 
 namespace Game.Player.Brain
 {    
@@ -38,6 +39,8 @@ namespace Game.Player.Brain
 
         private PlayerPickablesHandler _pickablesHandler;
 
+        private AudioPlayer _audioplayer;
+
         public PlayerCurrencyController CurrencyController => _currencyController;
         public PlayerInventoryController InventoryController => _inventoryController;
 
@@ -52,7 +55,6 @@ namespace Game.Player.Brain
         public IMovementProvider MovementProvider => _locomotionController.MovementProvider;
         public PlayerType PlayerType => _data.InputData.playerType;
         public bool IsAlive => _healthController.IsAlive;
-
 
         private Vector2 _initialPos;
 
@@ -149,12 +151,14 @@ namespace Game.Player.Brain
 
             HandleGroundedState();
             HandleJumpUpdate();
+            HandleFootsteps();
             HandleAttack();
             HandleInteractions();
             HandleInventoryInputs();
             HandleAnimations();
-        }       
+        }
 
+       
         private void OnDisable()
         {
             SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionDataAndDisable;
@@ -197,13 +201,15 @@ namespace Game.Player.Brain
             _inputController = new PlayerInputController(_data.InputData);
 
             _locomotionController = new PlayerLocomotionController(_data.LocomotionData, rb, this.transform,
-                GetComponentInChildren<GroundCheckMarker>().transform);
+                GetComponentInChildren<GroundCheckMarker>().transform, GetComponentInChildren<FootstepsMarker>().GetComponent<AudioSource>());
 
             _interactionController = GetComponent<PlayerInteractionController>();
 
             _combatController = new PlayerCombatController(_data.CombatData, GetComponentInChildren<PlayerAttackArea>());
 
             _damageFeedbackController = new PlayerDamageFeedbackController(_data.DamageHandlerData, rb, GetComponentInChildren<PlayerImageMarker>().GetComponent<SpriteRenderer>());
+
+            _audioplayer = new AudioPlayer(_data.AudioConfig, GetComponentInChildren<MainAudioMarker>().GetComponent<AudioSource>());
         }
 
         private void InitializeDefaultData()
@@ -257,13 +263,25 @@ namespace Game.Player.Brain
 
             if (_inputController.PlayerInputs.JumpPressed)
             {
-                bool jumpPerformed = _locomotionController.HandleJump();            
+                bool jumpPerformed = _locomotionController.HandleJump();
+
+                if (jumpPerformed)
+                    _audioplayer.PlayAudio(AudioCategory.JumpSFX);
             }
         }
+
+        private void HandleFootsteps()
+        {
+            if (_inputController.PlayerInputs.Direction == 0) return;
+
+            _locomotionController.HandleFootstepsSound();
+        }
+
 
         private void HandleLand()
         {
             _locomotionController.HandleLand();
+            _audioplayer.PlayAudio(AudioCategory.LandSFX);
         }
 
         private void HandleAttack()
@@ -272,8 +290,11 @@ namespace Game.Player.Brain
 
             if (!_combatController.CanAttack) return;
 
-            if (_inputController.PlayerInputs.AttackPressed)            
+            if (_inputController.PlayerInputs.AttackPressed)
+            {
                 StartCoroutine(_combatController.AttackRoutine());            
+                _audioplayer.PlayAudio(AudioCategory.AttackSFX);
+            }
         }
 
         private void HandleInteractions()
@@ -378,19 +399,15 @@ namespace Game.Player.Brain
                 _pickablesHandler.HandleCollectedPickable(pickable.PickableType, pickable.Amount);
                 pickable.gameObject.SetActive(false);
             }
-
-            if (collision.TryGetComponent(out ThornTileMarker _))
-            {
-                _healthController.Die();
-
-            }                    
-
+                  
             if (!collision.TryGetComponent(out EnemyAttackAreaMarker _) && !collision.TryGetComponent(out ThornTileMarker _)) return;
             
             if(collision.TryGetComponent(out EnemyAttackAreaMarker _))
                 _healthController.TakeDamage();
             else
                 _healthController.Die();
+
+            _audioplayer.PlayAudio(AudioCategory.DamageSFX);
 
             float hitDirection = this.transform.position.x - collision.transform.position.x;
 

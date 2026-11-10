@@ -9,11 +9,21 @@ namespace Game.Store
 {
     public class StoreManager : MonoBehaviour
     {
+        [SerializeField] private AudioClip _successfullPurchaseClip;
+        [SerializeField] private AudioClip _purchaseDeniedClip;
+
         [SerializeField] private PlayerBrain _playerOne;
         [SerializeField] private PlayerBrain _playerTwo;
 
         [SerializeField] private List<StoreItem> _storeItems;
         [SerializeField] private UIStore _storeUI;
+
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         private void OnEnable()
         {
@@ -46,11 +56,26 @@ namespace Game.Store
 
                     canBuy = _playerOne.CurrencyController.HasEnoughFunds(value);
 
-                    if (!canBuy) return;
+                    if (!canBuy)
+                    {
+                        _audioSource.clip = _purchaseDeniedClip;
+                        _audioSource.Play();
+
+                        return;
+                    }
                                         
                     hasSpace = _playerOne.InventoryController.TryAddInventoryItem(item);
 
-                    if (!hasSpace) return;
+                    if (!hasSpace)
+                    {
+                        _audioSource.clip = _purchaseDeniedClip;
+                        _audioSource.Play();
+
+                        return;
+                    }
+
+                    _audioSource.clip = _successfullPurchaseClip;
+                    _audioSource.Play();
 
                     _playerOne.CurrencyController.SubstractCurrency(value);
 
@@ -60,11 +85,26 @@ namespace Game.Store
 
                     canBuy = _playerTwo.CurrencyController.HasEnoughFunds(value);
 
-                    if (!canBuy) return;
+                    if (!canBuy)
+                    {
+                        _audioSource.clip = _purchaseDeniedClip;
+                        _audioSource.Play();
+
+                        return;
+                    }
 
                     hasSpace = _playerTwo.InventoryController.TryAddInventoryItem(item);
 
-                    if (!hasSpace) return;
+                    if (!hasSpace)
+                    {
+                        _audioSource.clip = _purchaseDeniedClip;
+                        _audioSource.Play();
+
+                        return;
+                    }
+
+                    _audioSource.clip = _successfullPurchaseClip;
+                    _audioSource.Play();
 
                     _playerTwo.CurrencyController.SubstractCurrency(value);
 

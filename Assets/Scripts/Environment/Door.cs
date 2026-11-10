@@ -12,10 +12,16 @@ namespace Game.Environment
 
         public static event Action<PlayerType, Transform, float> OnDoorUsed;
 
+        private AudioSource _audioSource;
+
         private bool _canInteract;
         public bool CanInteract => _canInteract;
         public bool HasInteractorInRange { get; set; }
 
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         private void Start()
         {
@@ -24,6 +30,8 @@ namespace Game.Environment
 
         public void Interact(InputAction interactAction, Transform interactor, PlayerType playerType)
         {
+            _audioSource.Play();
+
             interactor.position = _moveToTransform.position;
             OnDoorUsed?.Invoke(playerType, _moveToTransform, _newLeftCameraLimit);
         }

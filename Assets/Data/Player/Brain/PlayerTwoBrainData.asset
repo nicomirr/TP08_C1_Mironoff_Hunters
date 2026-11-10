@@ -20,3 +20,4 @@ MonoBehaviour:
   _healthData: {fileID: 11400000, guid: 27e16f5095bba584f9859fb1fcd7a5e0, type: 2}
   _damageHandlerData: {fileID: 11400000, guid: 77630d0591abdb4479d3507feea08feb, type: 2}
   _effectsData: {fileID: 11400000, guid: 8b5de2864ff11cc4e932e45b8ec81415, type: 2}
+  _audioConfig: {fileID: 11400000, guid: f075e4b1752e9ba43ad497815c3024ad, type: 2}

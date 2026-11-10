@@ -5,17 +5,12 @@ namespace Game.Core
         None = 0,
         JumpSFX,
         LandSFX,
-        SheepSFX,
-        TreeSFX,
-        BellSFX,
-        KnockSFX,
-        BushSFX,
-        DestroySFX,
-        CloudSFX,
+        DoorSFX,
+        ZombieSFX,
         DamageSFX,
-        InvincibilityPowUpSFX,
-        HealthPowUpSFX,
-        End = 12
+        InvincibilitySFX,
+        HealthSFX,
+        AttackSFX,
+        End = 9
     }
-
 }

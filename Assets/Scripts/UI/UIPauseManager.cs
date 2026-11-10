@@ -66,6 +66,7 @@ namespace Game.UI
 
         private void DisplayPausePanel()
         {
+            EventSystem.current.SetSelectedGameObject(_currentPanel.GamepadInitialButton.gameObject);
             _currentPanel.DisplayPanel();
         }
 
