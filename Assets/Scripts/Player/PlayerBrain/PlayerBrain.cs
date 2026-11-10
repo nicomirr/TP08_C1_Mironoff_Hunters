@@ -100,7 +100,7 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied += NotifyInventoryEmptied;
 
-            _inventoryController.OnItemUsed += _effectsController.HandleItemUsed;
+            _inventoryController.OnItemUsed += HandleItemUsed;
 
             _healthController.OnHealthChanged += NotifyHealthChanged;           
         }
@@ -187,7 +187,7 @@ namespace Game.Player.Brain
 
             _inventoryController.OnInventoryEmptied -= NotifyInventoryEmptied;
 
-            _inventoryController.OnItemUsed -= _effectsController.HandleItemUsed;
+            _inventoryController.OnItemUsed -= HandleItemUsed;
 
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
@@ -314,6 +314,35 @@ namespace Game.Player.Brain
             if (_inputController.PlayerInputs.UseItemPressed)
                 _inventoryController.UseCurrentSlotItem();
         }
+
+        private void HandleItemUsed(ItemType itemType)
+        {
+            switch (itemType)
+            {
+                case ItemType.HealingBalmItem:
+
+                    _audioplayer.PlayAudio(AudioCategory.HealthSFX);
+                    break;
+
+                case ItemType.Embers:
+
+                    _audioplayer.PlayAudio(AudioCategory.EmbersSFX);
+                    break;
+
+                case ItemType.PosionPowder:
+
+                    _audioplayer.PlayAudio(AudioCategory.PoisonSFX);
+                    break;
+
+                case ItemType.WardingCharm:
+
+                    _audioplayer.PlayAudio(AudioCategory.InvincibilitySFX);
+                    break;
+            }
+
+
+            _effectsController.HandleItemUsed(itemType);
+        }
                    
         private void HandleAnimations()
         {
@@ -396,6 +425,14 @@ namespace Game.Player.Brain
 
             if (collision.TryGetComponent(out Pickable pickable))
             {
+                switch(pickable.PickableType)
+                {
+                    case PickableType.Coin:
+
+                        _audioplayer.PlayAudio(AudioCategory.CoinSFX);
+                        break;
+                }
+
                 _pickablesHandler.HandleCollectedPickable(pickable.PickableType, pickable.Amount);
                 pickable.gameObject.SetActive(false);
             }

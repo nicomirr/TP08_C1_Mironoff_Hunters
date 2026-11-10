@@ -2,6 +2,7 @@ using UnityEngine;
 using Game.Data;
 using Game.Core;
 using Game.Marker;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -14,7 +15,7 @@ namespace Game.Enemy
                 
         private ZombieLocomotionController _locomotionController;
         private ZombieCombatController _combatController;
-        private EnemyBurrowController _burrowController;
+        private EnemyBurrowController _burrowController;               
                 
         protected override void Awake()
         {      
@@ -26,7 +27,7 @@ namespace Game.Enemy
             
             _locomotionController = new ZombieLocomotionController(_zombieBrainData.LocomotionData, _rb, this.transform);
             _combatController = new ZombieCombatController(_zombieBrainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
-            _burrowController = new EnemyBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);
+            _burrowController = new EnemyBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);            
         }
 
         private void FixedUpdate()
@@ -61,6 +62,8 @@ namespace Game.Enemy
 
             if (!_combatController.IsAttacking)
                 _locomotionController.FaceTarget(_awarenessController.CurrentTarget);
+
+            HandleRandomZombieSound();
 
             HandleAttack();
 
@@ -105,6 +108,7 @@ namespace Game.Enemy
 
             if (!_combatController.CanAttack) return;
 
+            _audioPlayer.PlayAudio(AudioCategory.AttackSFX);
             StartCoroutine(_combatController.AttackRoutine());
         }
 
@@ -124,6 +128,19 @@ namespace Game.Enemy
                 _animationsController.ChangeAnimationState(AnimationStateType.Moving);
             else
                 _animationsController.ChangeAnimationState(AnimationStateType.Idle);
+        }
+
+        private void HandleRandomZombieSound()
+        {
+            if (_burrowController.IsBurrowed || _burrowController.IsBurrowing) return;
+
+            if (!_awarenessController.TargetInRange) return;
+
+            if (_audioPlayer.IsPlaying()) return;
+
+            int num = Random.Range(0, 2500);
+            if (num < 5)
+                _audioPlayer.PlayAudio(AudioCategory.ZombieSFX);
         }
 
         protected override void ResetEnemy(int _, bool __, PlayerType ___)

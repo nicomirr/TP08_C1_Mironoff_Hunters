@@ -17,6 +17,7 @@ MonoBehaviour:
   _enemyHealthData: {fileID: 11400000, guid: 981a5358020fd474d82ae6bc5a25ceb7, type: 2}
   _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
   _spawnerData: {fileID: 11400000, guid: 5ab1267a16fc93b419c47eda24afd51a, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 6706214a0e02fda4a9ff65c749288cab, type: 2}
   _locomotionData: {fileID: 11400000, guid: 67c0e4c175941dc45951073562f12f11, type: 2}
   _combatData: {fileID: 11400000, guid: ebc8f1f0dbea32044b29c339b79a41c8, type: 2}
   _burrowData: {fileID: 11400000, guid: 892317105e4a07e4daac15ebf2db93b3, type: 2}

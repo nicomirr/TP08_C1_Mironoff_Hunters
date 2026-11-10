@@ -47,6 +47,7 @@ namespace Game.Pickables
 
             _rb.AddForce(direction * randomForce, ForceMode2D.Impulse);
         }
+
     }
 }
 

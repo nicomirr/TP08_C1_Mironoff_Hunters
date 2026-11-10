@@ -11,6 +11,10 @@ namespace Game.Core
         InvincibilitySFX,
         HealthSFX,
         AttackSFX,
-        End = 9
+        EmbersSFX,
+        PoisonSFX,
+        CoinSFX,
+        CheckpointSFX,
+        End = 13
     }
 }

@@ -19,6 +19,9 @@ namespace Game.Data
 
         [SerializeField] private PickableSpawnerDataSo _spawnerData;
         public PickableSpawnerDataSo SpawnerData => _spawnerData;
+
+        [SerializeField] private AudioConfigSo _audioConfig;
+        public AudioConfigSo AudioConfig => _audioConfig;
     }
 
 }

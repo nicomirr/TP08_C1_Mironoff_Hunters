@@ -22,13 +22,14 @@ namespace Game.Throwables
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            this.gameObject.SetActive(false);
             GameObject explosionObject = ObjectPool.Instance.GetPoolObject(_data.ExplosionType);
 
             explosionObject.transform.position = this.transform.position;
             explosionObject.SetActive(true);
 
             explosionObject.GetComponent<ParticleSystem>().Play();
+
+            this.gameObject.SetActive(false);
         }
     }
 

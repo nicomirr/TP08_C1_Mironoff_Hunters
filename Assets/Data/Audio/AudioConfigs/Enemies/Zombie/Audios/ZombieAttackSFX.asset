@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 655ddb50a0b5d5c4cbbaf5a1a7b45448, type: 3}
-  m_Name: PlayerDamageSFX
+  m_Name: ZombieAttackSFX
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioDataSo
-  _audioClip: {fileID: 8300000, guid: bbe32b927128c424aa70a02e279496fe, type: 3}
-  _audioCategory: 5
+  _audioClip: {fileID: 8300000, guid: 7740de0080438204080fdf5f2ead9c62, type: 3}
+  _audioCategory: 8

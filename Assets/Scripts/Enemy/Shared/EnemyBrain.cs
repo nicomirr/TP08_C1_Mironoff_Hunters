@@ -1,10 +1,11 @@
-using UnityEngine;
-using System;
-using Game.Data;
-using Game.Core;
-using Game.Marker;
 using Game.Animations;
+using Game.Audio;
 using Game.Checkpoints;
+using Game.Core;
+using Game.Data;
+using Game.Marker;
+using System;
+using UnityEngine;
 
 namespace Game.Enemy
 {
@@ -20,6 +21,8 @@ namespace Game.Enemy
 
         protected PickableSpawner _pickablesSpawner;
 
+        protected AudioPlayer _audioPlayer;
+
         public event Action<float, float> OnHealthChanged;
 
         protected Vector2 _initialPos;
@@ -33,6 +36,8 @@ namespace Game.Enemy
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
             _pickablesSpawner = new PickableSpawner(_brainData.SpawnerData, this.transform);
+
+            _audioPlayer = new AudioPlayer(_brainData.AudioConfig, GetComponentInChildren<MainAudioMarker>().GetComponent<AudioSource>());
         }
 
         private void OnEnable()
@@ -75,6 +80,7 @@ namespace Game.Enemy
             if (collision.TryGetComponent(out IDamageProvider damageProvider))
             {
                 _healthController.TakeDamage(damageProvider.Damage, damageProvider.DamageType);
+                _audioPlayer.PlayAudio(AudioCategory.DamageSFX);
 
                 if (!_damageFeedbackController.IsFlickering)
                     StartCoroutine(_damageFeedbackController.FlickRoutine);
