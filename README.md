@@ -2,9 +2,9 @@
 
 # Hunters
 
-Hunters is a dark 2D pixel-art platformer where players must survive a world filled with dangerous creatures, including zombies, skeletons, and other monsters.
+Hunters is a dark 2D pixel-art platformer where players must slay the evil.
 
-Play alone or team up with a friend in local co-op mode. Fight enemies, explore the environment, collect items, and use your abilities to stay alive.
+Play alone or team up with a friend in local co-op mode. Fight enemies, collect coins, and use your abilities to stay alive.
 
 With challenging combat, a dark atmosphere, and simple mechanics, Hunters puts your reflexes and survival skills to the test.
 
