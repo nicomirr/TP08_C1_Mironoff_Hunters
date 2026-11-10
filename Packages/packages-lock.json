@@ -1,12 +1,13 @@
 {
   "dependencies": {
     "com.luca3317.tmpeffects": {
-      "version": "file:C:/Users/nicom/Desktop/TMPEffects-main/Package",
+      "version": "https://github.com/Luca3317/TMPEffects.git?path=/Package",
       "depth": 0,
-      "source": "local",
+      "source": "git",
       "dependencies": {
         "com.unity.textmeshpro": "3.0.6"
-      }
+      },
+      "hash": "8f736cef76d5beefefc8adc527c79e05d8e17bce"
     },
     "com.unity.2d.animation": {
       "version": "13.0.5",
