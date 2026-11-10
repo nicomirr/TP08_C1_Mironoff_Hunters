@@ -74,7 +74,7 @@ namespace Game.Checkpoints
                     _checkpoint6Button.interactable = true;
 
                 if (checkpointNumber == 7)
-                    _checkpoint6Button.interactable = true;
+                    _checkpoint7Button.interactable = true;
             }
             
         }

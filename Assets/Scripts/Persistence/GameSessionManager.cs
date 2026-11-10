@@ -36,7 +36,7 @@ namespace Game.Persistence
         public CheckpointSessionData Checkpoint6Data => _checkpoint6Data;
 
         private CheckpointSessionData _checkpoint7Data = new();
-        public CheckpointSessionData Checkpoint7Data => _checkpoint6Data;
+        public CheckpointSessionData Checkpoint7Data => _checkpoint7Data;
 
         private CheckpointManagerSessionData _checkpointManagerData = new();
         public CheckpointManagerSessionData CheckpointManagerData => _checkpointManagerData;
