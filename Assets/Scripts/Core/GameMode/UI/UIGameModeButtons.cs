@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using Game.Core;
 using Game.SceneTransitions;
 using Game.Data;
+using Game.Persistence;
+using Game.GameManagement;
 
 namespace Game.UI
 {
@@ -28,12 +30,24 @@ namespace Game.UI
 
         private void SetSinglePlayerMode()
         {
+            GameSessionManager.Instance.EraseSavedData();
+
+            GameManager.BossKilled = false;
+            GameManager.KeyPicked = false;
+            GameManager.FragmentPicked = false;
+
             GameMode.SetGameMode(GameModeType.SinglePlayer);
             _sceneTransitionsManager.ChangeScene(_sceneToLoad);
         }
 
         private void SetCoopMode()
         {
+            GameSessionManager.Instance.EraseSavedData();
+
+            GameManager.BossKilled = false;
+            GameManager.KeyPicked = false;
+            GameManager.FragmentPicked = false;
+
             GameMode.SetGameMode(GameModeType.Coop);
             _sceneTransitionsManager.ChangeScene(_sceneToLoad);
         }

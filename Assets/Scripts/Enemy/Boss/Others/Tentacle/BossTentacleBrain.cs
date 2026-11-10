@@ -5,6 +5,7 @@ using Game.Core;
 using Game.Data;
 using Game.Marker;
 using Game.Audio;
+using Game.GameManagement;
 
 namespace Game.Enemy
 {
@@ -27,6 +28,8 @@ namespace Game.Enemy
 
         private void Awake()
         {
+            _audioPlayer = new AudioPlayer(_brainData.AudioConfig, GetComponent<AudioSource>());
+
             _animationsController = new AnimationsController(_brainData.AnimationsData, GetComponentInChildren<Animator>(), Core.AnimationStateType.Idle);
 
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
@@ -34,7 +37,7 @@ namespace Game.Enemy
                 this.transform, _audioPlayer);
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
-            _combatController = new BossTentacleCombatController(_brainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
+            _combatController = new BossTentacleCombatController(_brainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>(), _audioPlayer);
 
         }
 
@@ -140,6 +143,8 @@ namespace Game.Enemy
         private void ResetEnemy(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
+
+            if (GameManager.BossKilled) return;
 
             _burrowController.Reset();
             _combatController.Reset();

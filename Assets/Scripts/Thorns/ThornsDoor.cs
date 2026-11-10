@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
 using Game.Checkpoints;
+using Game.GameManagement;
 
 namespace Game.Thorns
 {
@@ -10,8 +11,15 @@ namespace Game.Thorns
     {
         [SerializeField] private List<ThornMaskController> _thornControllers = new();
 
+        private AudioSource _audioSource;
+
         private bool _isOpen;
         public bool IsOpen => _isOpen;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>(); 
+        }
 
         private void OnEnable()
         {
@@ -26,6 +34,17 @@ namespace Game.Thorns
             _isOpen = true;
         }
 
+        private void Update()
+        {
+            if (_isOpen) return;
+
+            if(GameManager.BossKilled)
+            {
+                StartCoroutine(OpenDoorRoutine());
+                _isOpen = true;
+            }
+        }
+
         private void OnDisable()
         {
             Checkpoint.OnCheckpointUsed -= OpenDoor;
@@ -38,6 +57,8 @@ namespace Game.Thorns
 
         public void CloseDoor()
         {
+            if (GameManager.BossKilled) return;
+
             StartCoroutine(CloseDoorRoutine()); 
         }
 
@@ -54,6 +75,8 @@ namespace Game.Thorns
 
         private IEnumerator CloseDoorRoutine()
         {
+            _audioSource.Play();
+
             foreach (ThornMaskController thorn in _thornControllers)
             {
                 StartCoroutine(thorn.RevealRoutine());

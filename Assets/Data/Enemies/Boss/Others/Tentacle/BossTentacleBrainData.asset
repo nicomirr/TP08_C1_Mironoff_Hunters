@@ -17,3 +17,4 @@ MonoBehaviour:
   _burrowData: {fileID: 11400000, guid: b19b0534824a38748a898acc0754e2c5, type: 2}
   _damageFeedbackData: {fileID: 11400000, guid: 8ecc5e4a0a199c54db37db0c40e5352b, type: 2}
   _combatData: {fileID: 11400000, guid: 8ec486a08b86c7042b1860deff58d4ee, type: 2}
+  _audioConfig: {fileID: 11400000, guid: d2cde68826e237f4b8be4cf1ff32b400, type: 2}

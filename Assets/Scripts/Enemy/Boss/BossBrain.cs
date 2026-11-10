@@ -1,9 +1,11 @@
 using UnityEngine;
 using System;
-using Game.Animations;
-using Game.Checkpoints;
 using Game.Core;
 using Game.Data;
+using Game.Animations;
+using Game.Audio;
+using Game.Checkpoints;
+using Game.GameManagement;
 using Game.Marker;
 
 namespace Game.Enemy
@@ -15,6 +17,9 @@ namespace Game.Enemy
         [SerializeField] private GameObject _tentacle;
         [SerializeField] private GameObject _flower;
 
+        [SerializeField] private AudioSource _backgroundMusic;
+        [SerializeField] private AudioSource _bossMusic;
+
         private BossFlowerBrain _flowerBrain;
 
         private AnimationsController _animationsController;
@@ -24,6 +29,8 @@ namespace Game.Enemy
         private EnemyDamageFeedbackController _damageFeedbackController;
 
         private BossCombatController _combatController;
+
+        private AudioPlayer _audioPlayer;
 
         private bool _bossDefeatedSent;
 
@@ -42,6 +49,8 @@ namespace Game.Enemy
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
             _combatController = new BossCombatController(_brainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform);
+
+            _audioPlayer = new AudioPlayer(_brainData.AudioConfig, GetComponent<AudioSource>());
 
             _damageCollider = GetComponent<Collider2D>();
 
@@ -65,7 +74,15 @@ namespace Game.Enemy
                 {
                     OnBossDefeated?.Invoke();
                     _bossDefeatedSent = true;
+
+                    GameManager.BossKilled = true;
                 }
+
+                if (!_backgroundMusic.isPlaying)
+                    _backgroundMusic.Play();
+
+                if (_bossMusic.isPlaying)
+                    _bossMusic.Stop();
 
                 _tentacle.SetActive(false);
                 _flower.SetActive(false);
@@ -79,6 +96,8 @@ namespace Game.Enemy
 
             _awarenessController.Update();
 
+            HandleMusic();
+
             HandleAttack();
         }
 
@@ -91,6 +110,26 @@ namespace Game.Enemy
             _healthController.OnHealthChanged -= NotifyHealthChanged;
         }
 
+        private void HandleMusic()
+        {
+            if (_awarenessController.TargetInRange)
+            {
+                if (_backgroundMusic.isPlaying)
+                    _backgroundMusic.Stop();
+
+                if (!_bossMusic.isPlaying)
+                    _bossMusic.Play();
+            }
+            else
+            {
+                if (!_backgroundMusic.isPlaying)
+                    _backgroundMusic.Play();
+
+                if (_bossMusic.isPlaying)
+                    _bossMusic.Stop();
+            }
+        }
+
         private void HandleAttack()
         {
             _combatController.UpdateCooldownTimer();
@@ -98,8 +137,11 @@ namespace Game.Enemy
             if (!_combatController.CanAttack)
                 return;
 
-            if (_awarenessController.TargetInRange)            
+            if (_awarenessController.TargetInRange)
+            {
+                _audioPlayer.PlayAudio(AudioCategory.BulletSFX);
                 StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));            
+            }
         }
 
         private void NotifyHealthChanged(float currentHealth, float maxHealth)
@@ -111,6 +153,8 @@ namespace Game.Enemy
         {
             StopAllCoroutines();
 
+            if (GameManager.BossKilled) return;
+
             _combatController.Reset();
             _animationsController.Reset();
             _healthController.Reset();            
@@ -119,6 +163,8 @@ namespace Game.Enemy
         private void HandleDamage(float damage, DamageType damageType)
         {
             if (!_healthController.IsAlive) return;
+
+            _audioPlayer.PlayAudio(AudioCategory.DamageSFX);
 
             _healthController.TakeDamage(damage, damageType);
 

@@ -1,7 +1,5 @@
 using UnityEngine;
 using Game.Core;
-using Game.Checkpoints;
-using System.Security.Cryptography;
 
 namespace Game.Persistence
 {
@@ -36,6 +34,9 @@ namespace Game.Persistence
 
         private CheckpointSessionData _checkpoint6Data = new();
         public CheckpointSessionData Checkpoint6Data => _checkpoint6Data;
+
+        private CheckpointSessionData _checkpoint7Data = new();
+        public CheckpointSessionData Checkpoint7Data => _checkpoint6Data;
 
         private CheckpointManagerSessionData _checkpointManagerData = new();
         public CheckpointManagerSessionData CheckpointManagerData => _checkpointManagerData;
@@ -104,7 +105,31 @@ namespace Game.Persistence
                 case 6:
                     _checkpoint6Data = data;
                     break;
+
+                case 7:
+                    _checkpoint7Data = data;
+                    break;
             }
+        }
+
+        public void EraseSavedData()
+        {
+            _hasSavedState = false;
+
+            _player1Data = new PlayerSessionData();
+            _player2Data = new PlayerSessionData();
+
+            _playerPositionerData = new PlayerPositionerData();
+
+            _checkpoint1Data = new CheckpointSessionData();
+            _checkpoint2Data = new CheckpointSessionData();
+            _checkpoint3Data = new CheckpointSessionData();
+            _checkpoint4Data = new CheckpointSessionData();
+            _checkpoint5Data = new CheckpointSessionData();
+            _checkpoint6Data = new CheckpointSessionData();
+            _checkpoint7Data = new CheckpointSessionData();
+
+            _checkpointManagerData = new CheckpointManagerSessionData();
         }
 
         public void SaveCheckpointManagerData(CheckpointManagerSessionData data)

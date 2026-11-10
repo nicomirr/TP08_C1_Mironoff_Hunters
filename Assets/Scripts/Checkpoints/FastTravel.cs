@@ -14,6 +14,7 @@ namespace Game.Checkpoints
         [SerializeField] private Button _checkpoint4Button;
         [SerializeField] private Button _checkpoint5Button;
         [SerializeField] private Button _checkpoint6Button;
+        [SerializeField] private Button _checkpoint7Button;
 
         [SerializeField] private Button _leaveButton;
 
@@ -34,6 +35,7 @@ namespace Game.Checkpoints
             _checkpoint4Button.onClick.AddListener(CheckpointFourClicked);
             _checkpoint5Button.onClick.AddListener(CheckpointFiveClicked);
             _checkpoint6Button.onClick.AddListener(CheckpointSixClicked);
+            _checkpoint7Button.onClick.AddListener(CheckpointSevenClicked);
 
             _leaveButton.onClick.AddListener(HideFastTravel);
         }
@@ -46,6 +48,7 @@ namespace Game.Checkpoints
             _checkpoint4Button.interactable = false;
             _checkpoint5Button.interactable = false;
             _checkpoint6Button.interactable = false;
+            _checkpoint7Button.interactable = false;
         }        
 
         private void Update()
@@ -69,6 +72,9 @@ namespace Game.Checkpoints
 
                 if (checkpointNumber == 6)
                     _checkpoint6Button.interactable = true;
+
+                if (checkpointNumber == 7)
+                    _checkpoint6Button.interactable = true;
             }
             
         }
@@ -81,6 +87,7 @@ namespace Game.Checkpoints
             _checkpoint4Button.onClick.RemoveAllListeners();
             _checkpoint5Button.onClick.RemoveAllListeners();
             _checkpoint6Button.onClick.RemoveAllListeners();
+            _checkpoint7Button.onClick.RemoveAllListeners();
         }
 
         public void DisplayFastTravel()
@@ -136,6 +143,12 @@ namespace Game.Checkpoints
         private void CheckpointSixClicked()
         {
             _checkpointsManager.FastTravel(6);
+            HideFastTravel();
+        }
+
+        private void CheckpointSevenClicked()
+        {
+            _checkpointsManager.FastTravel(7);
             HideFastTravel();
         }
     }

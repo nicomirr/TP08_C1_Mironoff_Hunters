@@ -14,6 +14,8 @@ namespace Game.UI
 
         [SerializeField] private Image _fillImage;
 
+        [SerializeField] private bool _isBoss;
+
         private IHealthChangedNotifier _healthChangeNotifier;
 
         private CanvasGroup _canvasGroup;
@@ -48,6 +50,9 @@ namespace Game.UI
         private void UpdateHealth(float currentHealth, float maxHealth)
         {
             _fillImage.fillAmount = currentHealth / maxHealth;
+
+            if(_isBoss && _fillImage.fillAmount <= 0)
+                this.gameObject.SetActive(false);
 
             if (_canvasGroup == null) return; 
 

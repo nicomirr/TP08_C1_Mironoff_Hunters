@@ -92,7 +92,7 @@ namespace Game.Checkpoints
 
         private void OnDisable()
         {
-            SceneTransitionManager.OnSceneTransitionStarted += SaveSessionData;
+            SceneTransitionManager.OnSceneTransitionStarted -= SaveSessionData;
         }
 
         private void LoadSessionData()
@@ -129,6 +129,11 @@ namespace Game.Checkpoints
                 case 6:
 
                     data = GameSessionManager.Instance.Checkpoint6Data;
+                    break;
+
+                case 7:
+
+                    data = GameSessionManager.Instance.Checkpoint7Data;
                     break;
             }
 

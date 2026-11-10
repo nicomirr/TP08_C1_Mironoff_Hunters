@@ -20,6 +20,9 @@ namespace Game.Data
 
         [SerializeField] private BossTentacleCombatControllerDataSo _combatData;
         public BossTentacleCombatControllerDataSo CombatData => _combatData;
+
+        [SerializeField] private AudioConfigSo _audioConfig;
+        public AudioConfigSo AudioConfig => _audioConfig;   
     }
 }
 

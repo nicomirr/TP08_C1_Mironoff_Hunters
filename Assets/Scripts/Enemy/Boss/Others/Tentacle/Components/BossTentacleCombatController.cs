@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using Game.Core;
 using Game.Data;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -9,6 +11,8 @@ namespace Game.Enemy
         private readonly BossTentacleCombatControllerDataSo _data;
 
         private readonly Collider2D _hitCollider;
+
+        private readonly AudioPlayer _audioPlayer;
 
         private bool _canAttack;
         public bool CanAttack => _canAttack;
@@ -19,11 +23,13 @@ namespace Game.Enemy
         private float _cooldownTime;
         private float _cooldownTimer;
 
-        public BossTentacleCombatController(BossTentacleCombatControllerDataSo data, Collider2D hitCollider)
+        public BossTentacleCombatController(BossTentacleCombatControllerDataSo data, Collider2D hitCollider, AudioPlayer audioPlayer)
         {
             _data = data;
 
             _hitCollider = hitCollider;
+
+            _audioPlayer = audioPlayer;
 
             _hitCollider.enabled = false;
 
@@ -37,6 +43,9 @@ namespace Game.Enemy
             yield return new WaitForSeconds(_data.AttackDelay);
 
             _isAttacking = true;
+
+            if(!_audioPlayer.IsPlaying())
+                _audioPlayer.PlayAudio(AudioCategory.AttackSFX);
 
             yield return new WaitForSeconds(_data.WindupTime);
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655ddb50a0b5d5c4cbbaf5a1a7b45448, type: 3}
   m_Name: ZombieBurrowSFX
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioDataSo
-  _audioClip: {fileID: 8300000, guid: 4952cd8d536163640994f0dd3f48c501, type: 3}
-  _audioCategory: 4
+  _audioClip: {fileID: 8300000, guid: 9be0f6bcbf19f1d4e8040deb664c7ef4, type: 3}
+  _audioCategory: 13

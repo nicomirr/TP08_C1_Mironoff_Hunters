@@ -1,10 +1,11 @@
 using UnityEngine;
 using System;
-using Game.Checkpoints;
 using Game.Core;
 using Game.Data;
-using Game.Marker;
 using Game.Audio;
+using Game.Checkpoints;
+using Game.GameManagement;
+using Game.Marker;
 
 namespace Game.Enemy
 {
@@ -27,6 +28,8 @@ namespace Game.Enemy
 
         private void Awake()
         {
+            _audioPlayer = new AudioPlayer(_brainData.AudioConfig, GetComponent<AudioSource>());
+            
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
             _burrowController = new EnemyBurrowController(_brainData.BurrowData, _burrowLimitsData, GetComponent<Rigidbody2D>(), GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(),
                 this.transform, _audioPlayer);
@@ -98,12 +101,17 @@ namespace Game.Enemy
                 return;
 
             if (_awarenessController.TargetInRange)
+            {
+                _audioPlayer.PlayAudio(AudioCategory.BulletSFX);
                 StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));
+            }
         }       
 
         private void ResetEnemy(int _, bool __, PlayerType ___)
         {
             StopAllCoroutines();
+
+            if (GameManager.BossKilled) return;
 
             _burrowController.Reset();
             _combatController.Reset();
