@@ -13,7 +13,14 @@ namespace Game.Thorns
 
         [SerializeField] private float _initialDelayTime;
 
+        private AudioSource _audioSource;
+
         private bool _isAlive;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         private void Start()
         {
@@ -32,6 +39,8 @@ namespace Game.Thorns
 
             while (_isAlive)
             {                
+                _audioSource.Play();
+
                 foreach (ThornMaskController thorn in _thornControllers)
                 {
                     StartCoroutine(thorn.RevealRoutine());
@@ -40,7 +49,9 @@ namespace Game.Thorns
 
                 yield return new WaitForSeconds(_data.ActiveTime);
 
-                for(int i = _thornControllers.Count - 1; i >= 0; i--)
+                _audioSource.Play();
+
+                for (int i = _thornControllers.Count - 1; i >= 0; i--)
                 {
                     StartCoroutine(_thornControllers[i].HideRoutine());
                     yield return new WaitForSeconds(_data.ThornSpawnTime);

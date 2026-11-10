@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using Game.Core;
 using Game.Data;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -12,6 +14,8 @@ namespace Game.Enemy
         private readonly Rigidbody2D _rb;
         private readonly Collider2D _bodyCollider;
         private readonly Transform _ownerTransform;
+
+        private readonly AudioPlayer _audioPlayer;
 
         private bool _isBurrowed;
         public bool IsBurrowed => _isBurrowed;
@@ -39,10 +43,13 @@ namespace Game.Enemy
         private float _offsetX;
         private bool _hasOffset;
 
-        public EnemyBurrowController(EnemyBurrowControllerDataSo controllersData, BurrowLimitsDataSo limitsData, Rigidbody2D rb, Collider2D bodyCollider, Transform ownerTransform)
+        public EnemyBurrowController(EnemyBurrowControllerDataSo controllersData, BurrowLimitsDataSo limitsData, Rigidbody2D rb, Collider2D bodyCollider, Transform ownerTransform,
+            AudioPlayer audioPlayer)
         {
             _controllerData = controllersData;
             _limitsData = limitsData;   
+
+            _audioPlayer = audioPlayer;
 
             _rb = rb;
 
@@ -127,6 +134,8 @@ namespace Game.Enemy
 
             float elapsed = 0f;
 
+            _audioPlayer.PlayAudio(AudioCategory.BurrowSFX);
+
             while (elapsed < _controllerData.Duration)
             {
                 elapsed += Time.deltaTime;
@@ -161,6 +170,8 @@ namespace Game.Enemy
             Vector3 endPosition = startPosition + Vector3.down * _controllerData.Distance;
 
             float elapsed = 0f;
+
+            _audioPlayer.PlayAudio(AudioCategory.BurrowSFX);
 
             while (elapsed < _controllerData.Duration)
             {

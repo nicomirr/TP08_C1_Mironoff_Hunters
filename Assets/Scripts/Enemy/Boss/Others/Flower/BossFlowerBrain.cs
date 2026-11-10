@@ -4,6 +4,7 @@ using Game.Checkpoints;
 using Game.Core;
 using Game.Data;
 using Game.Marker;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -20,13 +21,15 @@ namespace Game.Enemy
 
         private Vector2 _initialPos;
 
+        private AudioPlayer _audioPlayer;
+
         public event Action<float, DamageType> OnDamageTaken;
 
         private void Awake()
         {
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
             _burrowController = new EnemyBurrowController(_brainData.BurrowData, _burrowLimitsData, GetComponent<Rigidbody2D>(), GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(),
-                this.transform);
+                this.transform, _audioPlayer);
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
             _combatController = new BossCombatController(_brainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform);

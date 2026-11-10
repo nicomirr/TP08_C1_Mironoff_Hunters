@@ -2,6 +2,7 @@ using UnityEngine;
 using Game.Data;
 using Game.Core;
 using Game.Marker;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -20,7 +21,8 @@ namespace Game.Enemy
 
             _locomotionController = new PlantLocomotionController(this.transform);
             _combatController = new PlantCombatController(_plantBrainData.CombatData, GetComponentInChildren<ShootPointMarker>().transform,
-                GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
+                GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>(), _audioPlayer);
+
         }
 
         private void Update()
@@ -52,12 +54,14 @@ namespace Game.Enemy
 
             if (_awarenessController.TargetInAttackRange)
             {
+
                 StartCoroutine(_combatController.AttackRoutine());
                 return;
             }
 
             if (_awarenessController.TargetInRange)            
-                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));            
+                StartCoroutine(_combatController.ShootRoutine(_awarenessController.CurrentTarget));           
+
         }
 
         private void HandleAnimations()

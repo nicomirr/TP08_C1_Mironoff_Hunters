@@ -1,6 +1,8 @@
-using Game.Data;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+using Game.Core;
+using Game.Data;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -10,6 +12,8 @@ namespace Game.Enemy
         private readonly RangeAttack _rangeAttack;
 
         private readonly Collider2D _hitCollider;
+
+        private readonly AudioPlayer _audioPlayer;
 
         private bool _canAttack;
         public bool CanAttack => _canAttack;
@@ -23,11 +27,12 @@ namespace Game.Enemy
         private float _cooldownTime;
         private float _cooldownTimer;
 
-        public PlantCombatController(PlantCombatControllerDataSo data, Transform shootPoint, Collider2D hitCollider)
+        public PlantCombatController(PlantCombatControllerDataSo data, Transform shootPoint, Collider2D hitCollider, AudioPlayer audioPlayer)
         {
             _data = data;
             _rangeAttack = new RangeAttack(data.RangeAttackData, shootPoint);
             _hitCollider = hitCollider;
+            _audioPlayer = audioPlayer;
 
             _canAttack = true;
         }
@@ -38,6 +43,8 @@ namespace Game.Enemy
             _isShooting = true;
 
             _rangeAttack.Shoot(target);
+
+            _audioPlayer.PlayAudio(AudioCategory.BulletSFX);
 
             yield return new WaitForSeconds(_data.ShootTime);
 
@@ -53,6 +60,7 @@ namespace Game.Enemy
             yield return new WaitForSeconds(_data.AttackDelay);
 
             _isAttacking = true;
+            _audioPlayer.PlayAudio(AudioCategory.AttackSFX);
 
             yield return new WaitForSeconds(_data.WindupTime);
 

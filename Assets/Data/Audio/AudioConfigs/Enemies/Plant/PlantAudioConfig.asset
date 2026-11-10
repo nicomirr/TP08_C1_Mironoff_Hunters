@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e7d83c56decaf47b20b5a8d43da970, type: 3}
+  m_Name: PlantAudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioConfigSo
+  _audios:
+  - {fileID: 11400000, guid: d568ee151f0129c4398e65425109dbd1, type: 2}
+  - {fileID: 11400000, guid: 8f227cc0f83bb8e45af6e8dcada815ef, type: 2}
+  - {fileID: 11400000, guid: 599784f60c3f4f74facb99182e3ec6f8, type: 2}

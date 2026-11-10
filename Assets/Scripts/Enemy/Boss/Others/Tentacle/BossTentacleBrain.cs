@@ -4,6 +4,7 @@ using Game.Checkpoints;
 using Game.Core;
 using Game.Data;
 using Game.Marker;
+using Game.Audio;
 
 namespace Game.Enemy
 {
@@ -20,6 +21,8 @@ namespace Game.Enemy
 
         private BossTentacleCombatController _combatController;
 
+        private AudioPlayer _audioPlayer;
+
         private Vector2 _initialPos;
 
         private void Awake()
@@ -28,7 +31,7 @@ namespace Game.Enemy
 
             _awarenessController = new EnemyAwarenessController(_brainData.AwarenessData, this.transform);
             _burrowController = new EnemyBurrowController(_brainData.BurrowData, _burrowLimitsData, GetComponent<Rigidbody2D>(), GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(),
-                this.transform);
+                this.transform, _audioPlayer);
             _damageFeedbackController = new EnemyDamageFeedbackController(_brainData.DamageFeedbackData, GetComponentInChildren<EnemyImageMarker>().GetComponent<SpriteRenderer>());
 
             _combatController = new BossTentacleCombatController(_brainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());

@@ -14,7 +14,8 @@ namespace Game.Core
         EmbersSFX,
         PoisonSFX,
         CoinSFX,
-        CheckpointSFX,
-        End = 13
+        BulletSFX,
+        BurrowSFX,
+        End = 14
     }
 }

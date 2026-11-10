@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655ddb50a0b5d5c4cbbaf5a1a7b45448, type: 3}
   m_Name: PlayerCoinSFX
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioDataSo
-  _audioClip: {fileID: 8300000, guid: 3d3119d8f3004df489dd5816bc799308, type: 3}
-  _audioCategory: 10
+  _audioClip: {fileID: 8300000, guid: 17b55dd1f7a97584a896e7aee8e64ec9, type: 3}
+  _audioCategory: 11

@@ -626,8 +626,8 @@ Transform:
   - {fileID: 1378334129}
   - {fileID: 1310245147}
   - {fileID: 1815602303}
-  - {fileID: 1818895433}
   - {fileID: 484231411}
+  - {fileID: 1818895433}
   - {fileID: 1533938838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23395,7 +23395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3108886218025256259, guid: 370240161a713774590512460fa5d898, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -81.21
+      value: -81.20999
       objectReference: {fileID: 0}
     - target: {fileID: 3451808003056005994, guid: 370240161a713774590512460fa5d898, type: 3}
       propertyPath: m_Camera

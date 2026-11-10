@@ -27,13 +27,15 @@ namespace Game.Checkpoints
 
         private Light2D _light;
 
+        private AudioSource _audioSource;
+
         private bool _canInteract;
         public bool CanInteract => _canInteract;
 
         public bool HasInteractorInRange { get; set; }
 
         public static event Action<int, bool, PlayerType> OnCheckpointUsed;
-
+                
         private bool _checkpointReached;
         public bool CheckpointReached => _checkpointReached;    
 
@@ -42,6 +44,7 @@ namespace Game.Checkpoints
         {
             _animationsController = new AnimationsController(_data.AnimationData, GetComponentInChildren<Animator>(), AnimationStateType.Disabled);
             _light = GetComponentInChildren<Light2D>();
+            _audioSource = GetComponent<AudioSource>();
 
             if (GameSessionManager.Instance.HasSavedState)
                 LoadSessionData();
@@ -140,6 +143,8 @@ namespace Game.Checkpoints
                 HasInteractorInRange = false;
                 return;
             }
+
+            _audioSource.Play();
 
             OnCheckpointUsed?.Invoke(_checkpointNumber, _checkpointReached, playerType);
 

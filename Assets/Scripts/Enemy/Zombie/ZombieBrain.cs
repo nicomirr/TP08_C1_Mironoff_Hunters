@@ -27,7 +27,8 @@ namespace Game.Enemy
             
             _locomotionController = new ZombieLocomotionController(_zombieBrainData.LocomotionData, _rb, this.transform);
             _combatController = new ZombieCombatController(_zombieBrainData.CombatData, GetComponentInChildren<EnemyAttackAreaMarker>().GetComponent<Collider2D>());
-            _burrowController = new EnemyBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform);            
+            _burrowController = new EnemyBurrowController(_zombieBrainData.BurrowData, _limitsData, _rb, GetComponentInChildren<BodyColliderMarker>().GetComponent<Collider2D>(), this.transform,
+                _audioPlayer);            
         }
 
         private void FixedUpdate()
@@ -138,7 +139,7 @@ namespace Game.Enemy
 
             if (_audioPlayer.IsPlaying()) return;
 
-            int num = Random.Range(0, 2500);
+            int num = Random.Range(0, 1500);
             if (num < 5)
                 _audioPlayer.PlayAudio(AudioCategory.ZombieSFX);
         }
