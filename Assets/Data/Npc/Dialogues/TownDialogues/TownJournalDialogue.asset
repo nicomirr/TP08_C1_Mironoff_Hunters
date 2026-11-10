@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c885f0dfcd61a46b5c031654a1346c, type: 3}
+  m_Name: TownJournalDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Data.DialogueDataSo
+  _dialogue:
+  - An open journal. The date is scarcely legible.
+  - 'It reads: "It all began with the arrival of that accursed count."'
+  - '"First the disappearances, then those thorny vines, and now the sun..."'
+  - The rest is unreadable.
+  _letterDelayTime: 0.06

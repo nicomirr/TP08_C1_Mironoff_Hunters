@@ -10,6 +10,7 @@ namespace Game.Environment
 
         [SerializeField] private ParticleSystem _rainParticles;
         [SerializeField] private Animator _thunderAnimator;
+        [SerializeField] private AudioSource _thunderAudio;
 
         private bool _isRaining;
 
@@ -30,6 +31,12 @@ namespace Game.Environment
                 yield return new WaitForSeconds(randomTime);
 
                 _thunderAnimator.SetTrigger(_data.ThunderAnimationTriggerHash);
+
+                float randTime = Random.Range(1, 3);
+
+                yield return new WaitForSeconds(randTime);
+
+                _thunderAudio.Play();
             }
 
             _rainParticles.Stop();
