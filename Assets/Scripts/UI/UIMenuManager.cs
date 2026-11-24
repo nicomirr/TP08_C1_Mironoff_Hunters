@@ -63,6 +63,7 @@ namespace Game.UI
 
         private void Update()
         {
+            // Warning: string mágico "Gamepad" (nombre del control scheme). Si se renombra en GameControls.inputactions esto deja de funcionar sin error. Pasalo a const.
             bool isGamepad = _playerInput.currentControlScheme == "Gamepad";
 
             if (isGamepad != _wasGamepad)            
@@ -73,6 +74,7 @@ namespace Game.UI
 
         protected virtual void OnDisable()
         {
+            // Suggestion: RemoveAllListeners() borra también listeners que se hayan cargado por inspector. Usá RemoveListener(OnPlayClicked) con el mismo método que agregaste.
             _playButton.onClick.RemoveAllListeners();
             _settingsButton.onClick.RemoveAllListeners();
             _exitButton.onClick.RemoveAllListeners();

@@ -23,6 +23,8 @@ namespace Game.Enemy
 
             Vector2 targetPosition = target.position;
 
+            // Warning: GetComponent<IMovementProviderHolder>() en cada disparo, y AnticipateMovement() hace otro GetComponent<Rigidbody2D>().
+            // Cacheá las referencias del target (por ejemplo en TargetDetector cuando lo detecta).
             if (target.GetComponent<IMovementProviderHolder>().MovementProvider != null)            
                 targetPosition = AnticipateMovement(target, bullet.Speed);        
             

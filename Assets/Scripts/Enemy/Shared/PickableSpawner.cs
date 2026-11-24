@@ -24,6 +24,7 @@ namespace Game.Enemy
 
             foreach (PickableSpawnDataSo pickableData in _pickablesData)
             {
+                // Suggestion: variable local en PascalCase. Por estandar de C# deberia ser randomChance.
                 int RandomChance = Random.Range(1, 101);
 
                 if (RandomChance <= pickableData.SpawnChance)
@@ -40,6 +41,7 @@ namespace Game.Enemy
 
             _lootSpawned = true;
 
+            // Suggestion: notas de planificacion (orbes de experiencia que no existen en el proyecto). Borralas de la entrega.
             //se spawnean todos los tipos de pickables
             //si o si se spawnean los orbes de experiencia, varia de enemigo en enemigo el tipo de orbe (dan mas experiencia algunos)
             //Moneda posiblemente sea siempre 1. 

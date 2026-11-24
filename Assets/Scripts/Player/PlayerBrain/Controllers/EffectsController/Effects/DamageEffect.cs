@@ -46,6 +46,8 @@ namespace Game.Player
                 yield return null;
             }
 
+            // Bug: mismo caso que la invulnerabilidad: si se usa Embers y después PosionPowder antes de que termine, la primera corrutina vuelve el daño a Normal y corta el efecto de la segunda.
+            // Detené la corrutina anterior antes de arrancar una nueva.
             _combatController.ChangeDamageType(DamageType.Normal);
 
             damageEffectParticles.transform.position = _userTransform.position;

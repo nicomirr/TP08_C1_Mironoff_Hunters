@@ -6,6 +6,8 @@ namespace Game.GameManagement
     {
         private static GameManager _instance;
 
+        // Warning: campos public static mutables. Cualquier clase puede escribir BossKilled, KeyPicked o FragmentPicked y no se resetean al volver al menú.
+        // Exponé properties de solo lectura con métodos para cambiarlos y reseteálos junto con GameSessionManager.EraseSavedData().
         public static bool BossKilled;
 
         public static bool KeyPicked;

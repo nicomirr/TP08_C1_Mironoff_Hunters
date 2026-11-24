@@ -85,12 +85,14 @@ namespace Game.Player
 
         public void Reset()
         {
+            // Suggestion: número mágico. La vida con la que reaparece el jugador debería estar en PlayerHealthControllerDataSo.
             _currentHealth = 1;
             RaiseHealhChanged();
 
             _isAlive = true;
         }
 
+        // Suggestion: error de tipeo en el nombre del método (RaiseHealhChanged). Renombralo a RaiseHealthChanged.
         public void RaiseHealhChanged()
         {
             OnHealthChanged?.Invoke(_currentHealth);

@@ -8,6 +8,7 @@ namespace Game.Throwables
     {
         [SerializeField] private ThrowableDataSo _data;
 
+        // Suggestion: el campo es [SerializeField] pero Awake lo pisa con GetComponent. Elegí una de las dos formas.
         [SerializeField] private Rigidbody2D _rb;
 
         private void Awake()
@@ -22,6 +23,8 @@ namespace Game.Throwables
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            // Warning: explota con cualquier trigger que toque (zonas de detección de enemigos, pickables, otros triggers del mapa) porque no filtra nada.
+            // Filtrá por capa o por componente (por ejemplo BodyColliderMarker o suelo) antes de explotar.
             GameObject explosionObject = ObjectPool.Instance.GetPoolObject(_data.ExplosionType);
 
             explosionObject.transform.position = this.transform.position;

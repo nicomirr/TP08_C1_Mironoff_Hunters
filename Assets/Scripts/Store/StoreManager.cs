@@ -50,6 +50,7 @@ namespace Game.Store
             bool canBuy = false;           
             bool hasSpace = false; 
 
+            // Suggestion: los dos case del switch son iguales salvo por _playerOne/_playerTwo. Resolvé primero el PlayerBrain según playerType y escribí la lógica de compra una sola vez.
             switch (playerType)
             {
                 case PlayerType.Player1:

@@ -17,6 +17,8 @@ namespace Game.Persistence
         private PlayerPositionerData _playerPositionerData = new();
         public PlayerPositionerData PlayerPositionerData => _playerPositionerData;
 
+        // Warning: siete campos _checkpointNData y un switch de siete casos atan el código a la cantidad de checkpoints del mapa. Agregar el octavo obliga a tocar esta clase, Checkpoint y FastTravel.
+        // Usá un Dictionary<int, CheckpointSessionData> o una lista indexada por número de checkpoint.
         private CheckpointSessionData _checkpoint1Data = new();
         public CheckpointSessionData Checkpoint1Data => _checkpoint1Data;
 

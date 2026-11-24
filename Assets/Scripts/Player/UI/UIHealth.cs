@@ -23,6 +23,7 @@ namespace Game.UI
                 List<GameObject> objs = healthPointGroup.HealthPoints;
 
                 for (int i = 0; i < value; i++)
+                    // Warning: si value supera la cantidad de HealthPoints del grupo, objs[i] tira ArgumentOutOfRangeException. Limitá el for con Mathf.Min(value, objs.Count).
                     objs[i].SetActive(true);
             }
         }

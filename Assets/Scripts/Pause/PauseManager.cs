@@ -22,6 +22,7 @@ namespace Game.Pause
             else            
                 OnGameUnpaused?.Invoke();               
             
+            // Suggestion: código comentado. Borralo si no se usa.
             //CursorEvents.RaiseChangeCursorVisibilityRequest(_gamePaused);
 
             Time.timeScale = _gamePaused ? 0f : 1f;            

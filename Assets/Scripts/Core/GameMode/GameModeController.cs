@@ -4,6 +4,7 @@ namespace Game.Core
 {
     public class GameModeController : MonoBehaviour
     {
+        // Suggestion: flag de prueba (_testCoop) que quedó en el build. Si queda tildado en la escena fuerza el modo Coop. Sacalo o envolvelo en #if UNITY_EDITOR.
         [SerializeField] private bool _testCoop;
 
         [SerializeField] private GameObject _coopCameras;

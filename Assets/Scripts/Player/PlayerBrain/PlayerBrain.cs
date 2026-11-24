@@ -136,6 +136,8 @@ namespace Game.Player.Brain
 
             if (!_healthController.IsAlive)
             {
+                // Warning: StopMovement() toca la velocidad del Rigidbody2D (PlayerMovement.StopMovement y PlayerJump.CutJump) desde Update, y lo hace en cada frame mientras el jugador está muerto.
+                // Llamalo una sola vez al cambiar de estado (por ejemplo, cuando IsAlive pasa a false) o movelo a FixedUpdate.
                 _locomotionController.StopMovement();
                 _animationsController.ChangeAnimationState(AnimationStateType.Dead);
                 return;
@@ -444,6 +446,8 @@ namespace Game.Player.Brain
             else
                 _healthController.Die();
 
+            // Bug: con invulnerabilidad activa, TakeDamage() sale sin restar vida, pero igual suena DamageSFX y se aplica el knockback (líneas siguientes).
+            // Chequeá _healthController.IsInvulnerable antes del sonido y del knockback, no solo antes del flicker.
             _audioplayer.PlayAudio(AudioCategory.DamageSFX);
 
             float hitDirection = this.transform.position.x - collision.transform.position.x;

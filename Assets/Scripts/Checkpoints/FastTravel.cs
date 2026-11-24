@@ -53,6 +53,8 @@ namespace Game.Checkpoints
 
         private void Update()
         {
+            // Warning: este Update recorre CheckpointsReached y setea interactable en cada frame aunque el panel esté oculto.
+            // Actualizá los botones una sola vez en DisplayFastTravel(), y usá una List<Button> en vez de siete campos y siete métodos CheckpointXClicked.
             foreach (int checkpointNumber in _checkpointsManager.CheckpointsReached)
             {
                 if (checkpointNumber == 1)

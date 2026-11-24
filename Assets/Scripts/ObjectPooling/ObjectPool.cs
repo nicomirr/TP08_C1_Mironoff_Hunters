@@ -73,6 +73,8 @@ namespace Game.ObjectPooling
 
             Debug.LogError("Error. El pool deberia devolver siempre un objeto", this);
 
+            // Warning: si el pool se agota devuelve null y ningún llamador lo chequea (Throwable.cs, PickableSpawner.cs, DamageEffect.cs, HealEffect.cs). Termina en NullReferenceException.
+            // Instanciá un objeto nuevo cuando no queda ninguno libre o chequeá null en los llamadores.
             return null;
         }
 
@@ -112,6 +114,7 @@ namespace Game.ObjectPooling
                 obj.SetActive(false);
         }
 
+        // Suggestion: DisableBossBullets() es idéntico a DisableBullets(). Extraé un método común y llamalo desde los dos handlers.
         private void DisableBossBullets()
         {
             List<GameObject> plantFastBullets = _objectsPool[PoolObjectType.PlantBulletFast];

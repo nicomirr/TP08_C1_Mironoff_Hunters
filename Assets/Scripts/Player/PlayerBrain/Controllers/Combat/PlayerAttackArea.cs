@@ -24,9 +24,12 @@ namespace Game.Player
 
         private void Start()
         {
+            // Warning: el multiplicador 1.2f está hardcodeado en el MonoBehaviour. La consigna pide toda la configuración en ScriptableObject.
+            // Movelo a DamageEffectDataSo o a PlayerCombatControllerDataSo.
             _damageMod = 1.2f;
         }
 
+        // Suggestion: el daño se recalcula en cada frame aunque solo cambia en SetDamage/SetDamageType. Calculalo ahí y sacá el Update.
         private void Update()
         {
             if(_currentDamageType  == DamageType.Normal)

@@ -24,6 +24,7 @@ namespace Game.Player
             _quantity++;
         }               
 
+        // Suggestion: comentario de duda que quedó en la entrega. Resolvelo o borralo.
         //Quizas puede retornar el item? 
         public ItemType UseItem()
         {           

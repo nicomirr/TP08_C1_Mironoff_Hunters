@@ -18,6 +18,8 @@ namespace Game.Player
 
         public override IEnumerator UseItemRoutine()
         {
+            // Bug: PlayerHealthController.Heal() no hace nada si la vida está completa, pero PlayerInventoryController.UseCurrentSlotItem() ya descontó el ítem.
+            // El jugador pierde el HealingBalm sin curarse. Validá CurrentHealth < MaxHealth antes de consumir el ítem.
             _healthController.Heal();
             GameObject healEffect = ObjectPool.Instance.GetPoolObject(PoolObjectType.HealEffect);
 

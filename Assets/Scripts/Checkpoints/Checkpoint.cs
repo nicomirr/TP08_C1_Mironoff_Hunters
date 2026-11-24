@@ -99,6 +99,7 @@ namespace Game.Checkpoints
         {
             CheckpointSessionData data = new();
 
+            // Suggestion: este switch repite el de GameSessionManager.SaveCheckpointData. Con un diccionario en GameSessionManager quedaría en una línea.
             switch (_checkpointNumber)
             {
                 case 1:

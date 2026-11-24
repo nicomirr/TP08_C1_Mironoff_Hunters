@@ -23,6 +23,7 @@ namespace Game.Enemy
 
             _zombieBrainData = _brainData as ZombieBrainDataSo;
 
+            // Suggestion: es una variable local, no un campo. Por la convención del proyecto debería llamarse rb, sin guion bajo.
             Rigidbody2D _rb = GetComponent<Rigidbody2D>();
             
             _locomotionController = new ZombieLocomotionController(_zombieBrainData.LocomotionData, _rb, this.transform);
@@ -139,6 +140,8 @@ namespace Game.Enemy
 
             if (_audioPlayer.IsPlaying()) return;
 
+            // Warning: tirar un Random por frame hace que la frecuencia del gruñido dependa de los FPS (a 144 FPS suena más del doble que a 60).
+            // Además 1500 y 5 son números mágicos. Usá un timer con Time.deltaTime y un intervalo en ZombieBrainDataSo.
             int num = Random.Range(0, 1500);
             if (num < 5)
                 _audioPlayer.PlayAudio(AudioCategory.ZombieSFX);
